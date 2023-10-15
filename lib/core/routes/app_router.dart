@@ -8,6 +8,7 @@ import 'package:suranect/core/routes/route_utils.dart';
 import 'package:suranect/core/routes/screens/not_found_page.dart';
 import 'package:suranect/features/introduction/presentation/controller/introduction_bloc.dart';
 import 'package:suranect/features/introduction/presentation/pages/introduction_screen.dart';
+import 'package:suranect/features/login/presentation/pages/login_screen.dart';
 import 'package:suranect/features/splash/presentation/pages/splash_screen.dart';
 
 class AppRouter {
@@ -26,9 +27,16 @@ class AppRouter {
         path: PAGES.introduction.screenPath,
         name: PAGES.introduction.screenName,
         builder: (context, state) => BlocProvider(
-          create: (context) => injector<IntroductionBloc>()..add(const IntroductionEvent.changedPage(0)),
+          // create: (context) => injector<IntroductionBloc>()..add(const IntroductionEvent.changedPage(0)),
+          create: (context) => injector<IntroductionBloc>()
+            ..add(const IntroductionEvent.isIntro()),
           child: const IntroductionsScreen(),
         ),
+      ),
+      GoRoute(
+        path: PAGES.login.screenPath,
+        name: PAGES.login.screenName,
+        builder: (context, state) => const LoginScreen(),
       ),
     ],
     errorBuilder: (context, state) => const NotFoundScreen(),

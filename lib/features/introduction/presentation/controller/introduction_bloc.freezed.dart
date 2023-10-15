@@ -16,42 +16,49 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$IntroductionEvent {
-  int get index => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int index) changedPage,
+    required TResult Function(bool status) doneIntro,
+    required TResult Function() isIntro,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int index)? changedPage,
+    TResult? Function(bool status)? doneIntro,
+    TResult? Function()? isIntro,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int index)? changedPage,
+    TResult Function(bool status)? doneIntro,
+    TResult Function()? isIntro,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ChangedPage value) changedPage,
+    required TResult Function(ChangedPageEvent value) changedPage,
+    required TResult Function(DoneIntroEvent value) doneIntro,
+    required TResult Function(IsIntroEvent value) isIntro,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ChangedPage value)? changedPage,
+    TResult? Function(ChangedPageEvent value)? changedPage,
+    TResult? Function(DoneIntroEvent value)? doneIntro,
+    TResult? Function(IsIntroEvent value)? isIntro,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ChangedPage value)? changedPage,
+    TResult Function(ChangedPageEvent value)? changedPage,
+    TResult Function(DoneIntroEvent value)? doneIntro,
+    TResult Function(IsIntroEvent value)? isIntro,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $IntroductionEventCopyWith<IntroductionEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -60,8 +67,6 @@ abstract class $IntroductionEventCopyWith<$Res> {
   factory $IntroductionEventCopyWith(
           IntroductionEvent value, $Res Function(IntroductionEvent) then) =
       _$IntroductionEventCopyWithImpl<$Res, IntroductionEvent>;
-  @useResult
-  $Res call({int index});
 }
 
 /// @nodoc
@@ -73,38 +78,23 @@ class _$IntroductionEventCopyWithImpl<$Res, $Val extends IntroductionEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? index = null,
-  }) {
-    return _then(_value.copyWith(
-      index: null == index
-          ? _value.index
-          : index // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$ChangedPageImplCopyWith<$Res>
-    implements $IntroductionEventCopyWith<$Res> {
-  factory _$$ChangedPageImplCopyWith(
-          _$ChangedPageImpl value, $Res Function(_$ChangedPageImpl) then) =
-      __$$ChangedPageImplCopyWithImpl<$Res>;
-  @override
+abstract class _$$ChangedPageEventImplCopyWith<$Res> {
+  factory _$$ChangedPageEventImplCopyWith(_$ChangedPageEventImpl value,
+          $Res Function(_$ChangedPageEventImpl) then) =
+      __$$ChangedPageEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int index});
 }
 
 /// @nodoc
-class __$$ChangedPageImplCopyWithImpl<$Res>
-    extends _$IntroductionEventCopyWithImpl<$Res, _$ChangedPageImpl>
-    implements _$$ChangedPageImplCopyWith<$Res> {
-  __$$ChangedPageImplCopyWithImpl(
-      _$ChangedPageImpl _value, $Res Function(_$ChangedPageImpl) _then)
+class __$$ChangedPageEventImplCopyWithImpl<$Res>
+    extends _$IntroductionEventCopyWithImpl<$Res, _$ChangedPageEventImpl>
+    implements _$$ChangedPageEventImplCopyWith<$Res> {
+  __$$ChangedPageEventImplCopyWithImpl(_$ChangedPageEventImpl _value,
+      $Res Function(_$ChangedPageEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -112,7 +102,7 @@ class __$$ChangedPageImplCopyWithImpl<$Res>
   $Res call({
     Object? index = null,
   }) {
-    return _then(_$ChangedPageImpl(
+    return _then(_$ChangedPageEventImpl(
       null == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
@@ -123,8 +113,8 @@ class __$$ChangedPageImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ChangedPageImpl implements ChangedPage {
-  const _$ChangedPageImpl(this.index);
+class _$ChangedPageEventImpl implements ChangedPageEvent {
+  const _$ChangedPageEventImpl(this.index);
 
   @override
   final int index;
@@ -138,7 +128,7 @@ class _$ChangedPageImpl implements ChangedPage {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ChangedPageImpl &&
+            other is _$ChangedPageEventImpl &&
             (identical(other.index, index) || other.index == index));
   }
 
@@ -148,13 +138,16 @@ class _$ChangedPageImpl implements ChangedPage {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ChangedPageImplCopyWith<_$ChangedPageImpl> get copyWith =>
-      __$$ChangedPageImplCopyWithImpl<_$ChangedPageImpl>(this, _$identity);
+  _$$ChangedPageEventImplCopyWith<_$ChangedPageEventImpl> get copyWith =>
+      __$$ChangedPageEventImplCopyWithImpl<_$ChangedPageEventImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int index) changedPage,
+    required TResult Function(bool status) doneIntro,
+    required TResult Function() isIntro,
   }) {
     return changedPage(index);
   }
@@ -163,6 +156,8 @@ class _$ChangedPageImpl implements ChangedPage {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int index)? changedPage,
+    TResult? Function(bool status)? doneIntro,
+    TResult? Function()? isIntro,
   }) {
     return changedPage?.call(index);
   }
@@ -171,6 +166,8 @@ class _$ChangedPageImpl implements ChangedPage {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int index)? changedPage,
+    TResult Function(bool status)? doneIntro,
+    TResult Function()? isIntro,
     required TResult orElse(),
   }) {
     if (changedPage != null) {
@@ -182,7 +179,9 @@ class _$ChangedPageImpl implements ChangedPage {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ChangedPage value) changedPage,
+    required TResult Function(ChangedPageEvent value) changedPage,
+    required TResult Function(DoneIntroEvent value) doneIntro,
+    required TResult Function(IsIntroEvent value) isIntro,
   }) {
     return changedPage(this);
   }
@@ -190,7 +189,9 @@ class _$ChangedPageImpl implements ChangedPage {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ChangedPage value)? changedPage,
+    TResult? Function(ChangedPageEvent value)? changedPage,
+    TResult? Function(DoneIntroEvent value)? doneIntro,
+    TResult? Function(IsIntroEvent value)? isIntro,
   }) {
     return changedPage?.call(this);
   }
@@ -198,7 +199,9 @@ class _$ChangedPageImpl implements ChangedPage {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ChangedPage value)? changedPage,
+    TResult Function(ChangedPageEvent value)? changedPage,
+    TResult Function(DoneIntroEvent value)? doneIntro,
+    TResult Function(IsIntroEvent value)? isIntro,
     required TResult orElse(),
   }) {
     if (changedPage != null) {
@@ -208,55 +211,302 @@ class _$ChangedPageImpl implements ChangedPage {
   }
 }
 
-abstract class ChangedPage implements IntroductionEvent {
-  const factory ChangedPage(final int index) = _$ChangedPageImpl;
+abstract class ChangedPageEvent implements IntroductionEvent {
+  const factory ChangedPageEvent(final int index) = _$ChangedPageEventImpl;
 
-  @override
   int get index;
-  @override
   @JsonKey(ignore: true)
-  _$$ChangedPageImplCopyWith<_$ChangedPageImpl> get copyWith =>
+  _$$ChangedPageEventImplCopyWith<_$ChangedPageEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
+abstract class _$$DoneIntroEventImplCopyWith<$Res> {
+  factory _$$DoneIntroEventImplCopyWith(_$DoneIntroEventImpl value,
+          $Res Function(_$DoneIntroEventImpl) then) =
+      __$$DoneIntroEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool status});
+}
+
+/// @nodoc
+class __$$DoneIntroEventImplCopyWithImpl<$Res>
+    extends _$IntroductionEventCopyWithImpl<$Res, _$DoneIntroEventImpl>
+    implements _$$DoneIntroEventImplCopyWith<$Res> {
+  __$$DoneIntroEventImplCopyWithImpl(
+      _$DoneIntroEventImpl _value, $Res Function(_$DoneIntroEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = null,
+  }) {
+    return _then(_$DoneIntroEventImpl(
+      null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DoneIntroEventImpl implements DoneIntroEvent {
+  const _$DoneIntroEventImpl(this.status);
+
+  @override
+  final bool status;
+
+  @override
+  String toString() {
+    return 'IntroductionEvent.doneIntro(status: $status)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DoneIntroEventImpl &&
+            (identical(other.status, status) || other.status == status));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, status);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DoneIntroEventImplCopyWith<_$DoneIntroEventImpl> get copyWith =>
+      __$$DoneIntroEventImplCopyWithImpl<_$DoneIntroEventImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int index) changedPage,
+    required TResult Function(bool status) doneIntro,
+    required TResult Function() isIntro,
+  }) {
+    return doneIntro(status);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int index)? changedPage,
+    TResult? Function(bool status)? doneIntro,
+    TResult? Function()? isIntro,
+  }) {
+    return doneIntro?.call(status);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int index)? changedPage,
+    TResult Function(bool status)? doneIntro,
+    TResult Function()? isIntro,
+    required TResult orElse(),
+  }) {
+    if (doneIntro != null) {
+      return doneIntro(status);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChangedPageEvent value) changedPage,
+    required TResult Function(DoneIntroEvent value) doneIntro,
+    required TResult Function(IsIntroEvent value) isIntro,
+  }) {
+    return doneIntro(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChangedPageEvent value)? changedPage,
+    TResult? Function(DoneIntroEvent value)? doneIntro,
+    TResult? Function(IsIntroEvent value)? isIntro,
+  }) {
+    return doneIntro?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChangedPageEvent value)? changedPage,
+    TResult Function(DoneIntroEvent value)? doneIntro,
+    TResult Function(IsIntroEvent value)? isIntro,
+    required TResult orElse(),
+  }) {
+    if (doneIntro != null) {
+      return doneIntro(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DoneIntroEvent implements IntroductionEvent {
+  const factory DoneIntroEvent(final bool status) = _$DoneIntroEventImpl;
+
+  bool get status;
+  @JsonKey(ignore: true)
+  _$$DoneIntroEventImplCopyWith<_$DoneIntroEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$IsIntroEventImplCopyWith<$Res> {
+  factory _$$IsIntroEventImplCopyWith(
+          _$IsIntroEventImpl value, $Res Function(_$IsIntroEventImpl) then) =
+      __$$IsIntroEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$IsIntroEventImplCopyWithImpl<$Res>
+    extends _$IntroductionEventCopyWithImpl<$Res, _$IsIntroEventImpl>
+    implements _$$IsIntroEventImplCopyWith<$Res> {
+  __$$IsIntroEventImplCopyWithImpl(
+      _$IsIntroEventImpl _value, $Res Function(_$IsIntroEventImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$IsIntroEventImpl implements IsIntroEvent {
+  const _$IsIntroEventImpl();
+
+  @override
+  String toString() {
+    return 'IntroductionEvent.isIntro()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$IsIntroEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int index) changedPage,
+    required TResult Function(bool status) doneIntro,
+    required TResult Function() isIntro,
+  }) {
+    return isIntro();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int index)? changedPage,
+    TResult? Function(bool status)? doneIntro,
+    TResult? Function()? isIntro,
+  }) {
+    return isIntro?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int index)? changedPage,
+    TResult Function(bool status)? doneIntro,
+    TResult Function()? isIntro,
+    required TResult orElse(),
+  }) {
+    if (isIntro != null) {
+      return isIntro();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChangedPageEvent value) changedPage,
+    required TResult Function(DoneIntroEvent value) doneIntro,
+    required TResult Function(IsIntroEvent value) isIntro,
+  }) {
+    return isIntro(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChangedPageEvent value)? changedPage,
+    TResult? Function(DoneIntroEvent value)? doneIntro,
+    TResult? Function(IsIntroEvent value)? isIntro,
+  }) {
+    return isIntro?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChangedPageEvent value)? changedPage,
+    TResult Function(DoneIntroEvent value)? doneIntro,
+    TResult Function(IsIntroEvent value)? isIntro,
+    required TResult orElse(),
+  }) {
+    if (isIntro != null) {
+      return isIntro(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class IsIntroEvent implements IntroductionEvent {
+  const factory IsIntroEvent() = _$IsIntroEventImpl;
+}
+
+/// @nodoc
 mixin _$IntroductionState {
-  int get pageIndex => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int pageIndex) changePage,
+    required TResult Function(bool status) success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int pageIndex)? changePage,
+    TResult? Function(bool status)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int pageIndex)? changePage,
+    TResult Function(bool status)? success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ChangePage value) changePage,
+    required TResult Function(_Success value) success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ChangePage value)? changePage,
+    TResult? Function(_Success value)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ChangePage value)? changePage,
+    TResult Function(_Success value)? success,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $IntroductionStateCopyWith<IntroductionState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -265,8 +515,6 @@ abstract class $IntroductionStateCopyWith<$Res> {
   factory $IntroductionStateCopyWith(
           IntroductionState value, $Res Function(IntroductionState) then) =
       _$IntroductionStateCopyWithImpl<$Res, IntroductionState>;
-  @useResult
-  $Res call({int pageIndex});
 }
 
 /// @nodoc
@@ -278,28 +526,13 @@ class _$IntroductionStateCopyWithImpl<$Res, $Val extends IntroductionState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? pageIndex = null,
-  }) {
-    return _then(_value.copyWith(
-      pageIndex: null == pageIndex
-          ? _value.pageIndex
-          : pageIndex // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$ChangePageImplCopyWith<$Res>
-    implements $IntroductionStateCopyWith<$Res> {
+abstract class _$$ChangePageImplCopyWith<$Res> {
   factory _$$ChangePageImplCopyWith(
           _$ChangePageImpl value, $Res Function(_$ChangePageImpl) then) =
       __$$ChangePageImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({int pageIndex});
 }
@@ -361,6 +594,7 @@ class _$ChangePageImpl implements _ChangePage {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int pageIndex) changePage,
+    required TResult Function(bool status) success,
   }) {
     return changePage(pageIndex);
   }
@@ -369,6 +603,7 @@ class _$ChangePageImpl implements _ChangePage {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int pageIndex)? changePage,
+    TResult? Function(bool status)? success,
   }) {
     return changePage?.call(pageIndex);
   }
@@ -377,6 +612,7 @@ class _$ChangePageImpl implements _ChangePage {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int pageIndex)? changePage,
+    TResult Function(bool status)? success,
     required TResult orElse(),
   }) {
     if (changePage != null) {
@@ -389,6 +625,7 @@ class _$ChangePageImpl implements _ChangePage {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ChangePage value) changePage,
+    required TResult Function(_Success value) success,
   }) {
     return changePage(this);
   }
@@ -397,6 +634,7 @@ class _$ChangePageImpl implements _ChangePage {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ChangePage value)? changePage,
+    TResult? Function(_Success value)? success,
   }) {
     return changePage?.call(this);
   }
@@ -405,6 +643,7 @@ class _$ChangePageImpl implements _ChangePage {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ChangePage value)? changePage,
+    TResult Function(_Success value)? success,
     required TResult orElse(),
   }) {
     if (changePage != null) {
@@ -417,10 +656,145 @@ class _$ChangePageImpl implements _ChangePage {
 abstract class _ChangePage implements IntroductionState {
   const factory _ChangePage(final int pageIndex) = _$ChangePageImpl;
 
-  @override
   int get pageIndex;
-  @override
   @JsonKey(ignore: true)
   _$$ChangePageImplCopyWith<_$ChangePageImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SuccessImplCopyWith<$Res> {
+  factory _$$SuccessImplCopyWith(
+          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
+      __$$SuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool status});
+}
+
+/// @nodoc
+class __$$SuccessImplCopyWithImpl<$Res>
+    extends _$IntroductionStateCopyWithImpl<$Res, _$SuccessImpl>
+    implements _$$SuccessImplCopyWith<$Res> {
+  __$$SuccessImplCopyWithImpl(
+      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = null,
+  }) {
+    return _then(_$SuccessImpl(
+      null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SuccessImpl implements _Success {
+  const _$SuccessImpl(this.status);
+
+  @override
+  final bool status;
+
+  @override
+  String toString() {
+    return 'IntroductionState.success(status: $status)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SuccessImpl &&
+            (identical(other.status, status) || other.status == status));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, status);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int pageIndex) changePage,
+    required TResult Function(bool status) success,
+  }) {
+    return success(status);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int pageIndex)? changePage,
+    TResult? Function(bool status)? success,
+  }) {
+    return success?.call(status);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int pageIndex)? changePage,
+    TResult Function(bool status)? success,
+    required TResult orElse(),
+  }) {
+    if (success != null) {
+      return success(status);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ChangePage value) changePage,
+    required TResult Function(_Success value) success,
+  }) {
+    return success(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ChangePage value)? changePage,
+    TResult? Function(_Success value)? success,
+  }) {
+    return success?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ChangePage value)? changePage,
+    TResult Function(_Success value)? success,
+    required TResult orElse(),
+  }) {
+    if (success != null) {
+      return success(this);
+    }
+    return orElse();
+  }
+
+  @override
+  // TODO: implement pageIndex
+  int get pageIndex => throw UnimplementedError();
+}
+
+abstract class _Success implements IntroductionState {
+  const factory _Success(final bool status) = _$SuccessImpl;
+
+  bool get status;
+  @JsonKey(ignore: true)
+  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

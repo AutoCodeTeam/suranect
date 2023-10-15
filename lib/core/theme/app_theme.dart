@@ -1,35 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:suranect/core/theme/app_colors.dart';
 
 ThemeData appTheme() {
   return ThemeData(
-      fontFamily: "Barlow",
-      scaffoldBackgroundColor: AppColors.neutral_20,
-      textTheme: textTheme(),
-      bottomSheetTheme: const BottomSheetThemeData(
-        backgroundColor: Colors.transparent,
+    fontFamily: "Barlow",
+    scaffoldBackgroundColor: AppColors.neutral_20,
+    textTheme: textTheme(),
+    bottomSheetTheme: const BottomSheetThemeData(
+      backgroundColor: Colors.transparent,
+    ),
+    colorScheme: const ColorScheme.light(
+      brightness: Brightness.light,
+      primary: AppColors.blue_60,
+      onPrimary: AppColors.blue_100,
+      secondary: AppColors.info_60,
+      onSecondary: AppColors.info_100,
+      background: Color(0xFFF6FBFB),
+    ),
+    appBarTheme: const AppBarTheme(
+      systemOverlayStyle: SystemUiOverlayStyle(
+        statusBarBrightness: Brightness.dark,
+        statusBarIconBrightness: Brightness.light,
+        statusBarColor: Colors.transparent,
       ),
-      colorScheme: const ColorScheme.light(
-        brightness: Brightness.light,
-        primary: AppColors.blue_60,
-        onPrimary: AppColors.blue_100,
-        secondary: AppColors.info_60,
-        onSecondary: AppColors.info_100,
-        background: Color(0xFFF6FBFB),
+      backgroundColor: AppColors.white,
+      elevation: 0,
+      centerTitle: true,
+      iconTheme: IconThemeData(
+        color: AppColors.black,
       ),
-      appBarTheme: const AppBarTheme(
-        backgroundColor: AppColors.white,
-        elevation: 0,
-        centerTitle: true,
-        iconTheme: IconThemeData(
-          color: AppColors.black,
-        ),
-        titleTextStyle: TextStyle(
-          color: Colors.black,
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
-        ),
+      titleTextStyle: TextStyle(
+        color: Colors.black,
+        fontSize: 18,
+        fontWeight: FontWeight.bold,
       ),
+    ),
   );
 }
 
