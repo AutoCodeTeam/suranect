@@ -7,6 +7,7 @@ ThemeData appTheme() {
     fontFamily: "Barlow",
     scaffoldBackgroundColor: AppColors.neutral_20,
     textTheme: textTheme(),
+    brightness: Brightness.light,
     bottomSheetTheme: const BottomSheetThemeData(
       backgroundColor: Colors.transparent,
     ),
@@ -20,9 +21,9 @@ ThemeData appTheme() {
     ),
     appBarTheme: const AppBarTheme(
       systemOverlayStyle: SystemUiOverlayStyle(
-        statusBarBrightness: Brightness.dark,
-        statusBarIconBrightness: Brightness.light,
-        statusBarColor: Colors.transparent,
+        statusBarBrightness: Brightness.light,
+        statusBarIconBrightness: Brightness.dark,
+        statusBarColor: AppColors.white,
       ),
       backgroundColor: AppColors.white,
       elevation: 0,
@@ -52,6 +53,11 @@ TextTheme textTheme() {
       fontWeight: FontWeight.bold,
     ),
     displaySmall: TextStyle(
+      color: Colors.black,
+      fontSize: 18,
+      fontWeight: FontWeight.bold,
+    ),
+    headlineLarge: TextStyle(
       color: Colors.black,
       fontSize: 18,
       fontWeight: FontWeight.bold,

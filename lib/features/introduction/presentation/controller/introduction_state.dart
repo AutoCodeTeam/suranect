@@ -2,6 +2,9 @@ part of 'introduction_bloc.dart';
 
 @freezed
 class IntroductionState with _$IntroductionState {
+
+  const IntroductionState._();
+
   const factory IntroductionState.changePage(int pageIndex) = _ChangePage;
 
   const factory IntroductionState.success(bool status) = _Success;

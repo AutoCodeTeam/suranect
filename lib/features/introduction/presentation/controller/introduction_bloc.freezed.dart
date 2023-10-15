@@ -561,8 +561,8 @@ class __$$ChangePageImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ChangePageImpl implements _ChangePage {
-  const _$ChangePageImpl(this.pageIndex);
+class _$ChangePageImpl extends _ChangePage {
+  const _$ChangePageImpl(this.pageIndex) : super._();
 
   @override
   final int pageIndex;
@@ -653,8 +653,9 @@ class _$ChangePageImpl implements _ChangePage {
   }
 }
 
-abstract class _ChangePage implements IntroductionState {
+abstract class _ChangePage extends IntroductionState {
   const factory _ChangePage(final int pageIndex) = _$ChangePageImpl;
+  const _ChangePage._() : super._();
 
   int get pageIndex;
   @JsonKey(ignore: true)
@@ -695,8 +696,8 @@ class __$$SuccessImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SuccessImpl implements _Success {
-  const _$SuccessImpl(this.status);
+class _$SuccessImpl extends _Success {
+  const _$SuccessImpl(this.status) : super._();
 
   @override
   final bool status;
@@ -784,14 +785,11 @@ class _$SuccessImpl implements _Success {
     }
     return orElse();
   }
-
-  @override
-  // TODO: implement pageIndex
-  int get pageIndex => throw UnimplementedError();
 }
 
-abstract class _Success implements IntroductionState {
+abstract class _Success extends IntroductionState {
   const factory _Success(final bool status) = _$SuccessImpl;
+  const _Success._() : super._();
 
   bool get status;
   @JsonKey(ignore: true)

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:suranect/core/routes/app_router.dart';
 import 'package:suranect/core/routes/route_utils.dart';
 import 'package:suranect/core/theme/app_colors.dart';
-import 'package:suranect/core/widgets/sura_button.dart';
+import 'package:suranect/core/widgets/app_button.dart';
 import 'package:suranect/features/introduction/presentation/controller/introduction_bloc.dart';
 
 class PageIntro extends StatefulWidget {
@@ -116,7 +116,7 @@ class _PageIntroState extends State<PageIntro> {
                             children: [
                               widget.showBack
                                   ? Expanded(
-                                      child: SuraButton(
+                                      child: AppButton(
                                         onPressed: () {
                                           context.read<IntroductionBloc>().add(
                                               IntroductionEvent.changedPage(
@@ -134,7 +134,7 @@ class _PageIntroState extends State<PageIntro> {
                                   : const SizedBox.shrink(),
                               state.pageIndex < 2
                                   ? Expanded(
-                                      child: SuraButton(
+                                      child: AppButton(
                                         onPressed: () {
                                           context.read<IntroductionBloc>().add(
                                               IntroductionEvent.changedPage(
@@ -144,17 +144,12 @@ class _PageIntroState extends State<PageIntro> {
                                               .jumpToPage(state.pageIndex + 1);
                                         },
                                         buttonColor: AppColors.neutral_100,
-                                        textStyle: Theme.of(context)
-                                            .textTheme
-                                            .headlineMedium!
-                                            .copyWith(
-                                              color: AppColors.white,
-                                            ),
+                                        colorText: AppColors.white,
                                         text: "Selanjutnya",
                                       ),
                                     )
                                   : Expanded(
-                                      child: SuraButton(
+                                      child: AppButton(
                                         onPressed: () {
                                           context
                                               .read<IntroductionBloc>()
@@ -163,12 +158,7 @@ class _PageIntroState extends State<PageIntro> {
                                               .go(PAGES.login.screenPath);
                                         },
                                         buttonColor: AppColors.neutral_100,
-                                        textStyle: Theme.of(context)
-                                            .textTheme
-                                            .headlineMedium!
-                                            .copyWith(
-                                              color: AppColors.white,
-                                            ),
+                                        colorText: AppColors.white,
                                         text: "Done",
                                       ),
                                     ),

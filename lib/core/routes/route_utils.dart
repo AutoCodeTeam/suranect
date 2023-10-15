@@ -2,6 +2,7 @@ enum PAGES {
   splash,
   introduction,
   login,
+  register,
   home,
   error,
 }
@@ -17,6 +18,8 @@ extension AppPageExtension on PAGES {
         return "/home";
       case PAGES.login:
         return "/login";
+      case PAGES.register:
+        return "/register";
       case PAGES.error:
         return "/error";
       default:
@@ -34,6 +37,8 @@ extension AppPageExtension on PAGES {
         return "HOME";
       case PAGES.login:
         return "LOGIN";
+      case PAGES.register:
+        return "/REGISTER";
       case PAGES.error:
         return "ERROR";
       default:
@@ -50,7 +55,9 @@ extension AppPageExtension on PAGES {
       case PAGES.home:
         return "Home";
       case PAGES.login:
-        return "Login";
+        return "Masuk";
+      case PAGES.register:
+        return "Daftar";
       case PAGES.error:
         return "Error";
       default:
