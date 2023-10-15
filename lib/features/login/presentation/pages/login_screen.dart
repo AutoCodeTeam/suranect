@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:suranect/core/theme/app_colors.dart';
+import 'package:suranect/features/login/presentation/widgets/form_container.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -24,43 +25,21 @@ class _LoginScreenState extends State<LoginScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Hallo!",
-              style: Theme.of(context).textTheme.displayMedium,
+              "Hai! Hai!", style: Theme.of(context).textTheme.displayLarge
             ),
             Text(
-              "Selamat Datang Kembali.",
-              style: Theme.of(context).textTheme.displayMedium,
+              "Selamat Datang di Suranect.",
+              style: Theme.of(context).textTheme.displayLarge,
             ),
-            const SizedBox(height: 20),
-            Container(
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                border: Border.all(),
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(12),
-                ),
-              ),
-              padding: const EdgeInsets.only(left: 15, right: 10),
-              child: Row(
-                children: [
-                  SvgPicture.asset("assets/svg/face_ic.svg"),
-                  const SizedBox(width: 15),
-                  Expanded(
-                    child: TextFormField(
-                      maxLines: 1,
-                      decoration: InputDecoration(
-                          label: Text(
-                            "Username",
-                            style:
-                                Theme.of(context).textTheme.headlineMedium!.copyWith(
-                                      color: AppColors.neutral_40,
-                                    ),
-                          ),
-                          border: InputBorder.none),
-                    ),
-                  ),
-                ],
-              ),
+            const SizedBox(height: 30),
+            const FormContainer(
+              icon: "assets/svg/face_ic.svg",
+              label: 'Username',
+            ),
+            const SizedBox(height: 14),
+            const FormContainer(
+              icon: "assets/svg/key_ic.svg",
+              label: 'Password',
             ),
           ],
         ),
