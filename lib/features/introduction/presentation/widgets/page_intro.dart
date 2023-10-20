@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:suranect/core/routes/app_router.dart';
-import 'package:suranect/core/routes/route_utils.dart';
+import 'package:suranect/app/routes/app_router.dart';
+import 'package:suranect/app/routes/route_utils.dart';
 import 'package:suranect/core/theme/app_colors.dart';
 import 'package:suranect/core/widgets/app_button.dart';
 import 'package:suranect/features/introduction/presentation/controller/introduction_bloc.dart';
@@ -84,7 +84,7 @@ class _PageIntroState extends State<PageIntro> {
               const SizedBox(height: 10),
               Container(
                 width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height * 0.35,
+                height: MediaQuery.of(context).size.height * 0.4,
                 decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.all(

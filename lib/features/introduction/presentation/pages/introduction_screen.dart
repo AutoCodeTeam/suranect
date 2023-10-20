@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:suranect/core/routes/app_router.dart';
-import 'package:suranect/core/routes/route_utils.dart';
+import 'package:suranect/app/routes/app_router.dart';
+import 'package:suranect/app/routes/route_utils.dart';
 import 'package:suranect/core/theme/app_colors.dart';
 import 'package:suranect/features/introduction/presentation/controller/introduction_bloc.dart';
 import 'package:suranect/features/introduction/presentation/widgets/page_intro.dart';
@@ -109,7 +109,11 @@ class _IntroductionsScreenState extends State<IntroductionsScreen> {
             changePage: (pageIndex) {
               return PageView(
                 controller: _pageController,
-                physics: const NeverScrollableScrollPhysics(),
+                onPageChanged: (value) {
+                  context
+                      .read<IntroductionBloc>()
+                      .add(IntroductionEvent.changedPage(value));
+                },
                 children: pageViewList,
               );
             },

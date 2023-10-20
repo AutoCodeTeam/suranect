@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:suranect/core/theme/app_shadow.dart';
+import 'package:suranect/features/auth/domain/entities/user_entity.dart';
 
 class HomeAppBar extends StatelessWidget {
+  final UserEntity userEntity;
+
   const HomeAppBar({
-    super.key,
+    super.key, required this.userEntity,
   });
 
   @override
@@ -38,7 +41,7 @@ class HomeAppBar extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodyLarge,
                 ),
                 Text(
-                  "Suranect",
+                  userEntity.username,
                   style: Theme.of(context).textTheme.headlineMedium,
                 ),
               ],

@@ -3,8 +3,11 @@ import 'package:equatable/equatable.dart';
 
 import '../error/failure.dart';
 
-abstract class BaseUseCase<T, P> {
+abstract class BaseUseCaseParam<T, P> {
   Future<Either<Failure, T>> call(P param);
+}
+abstract class BaseUseCase<T> {
+  Future<Either<Failure, T>> call();
 }
 
 class DefaultParams extends Equatable {

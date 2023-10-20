@@ -3,7 +3,7 @@ import 'package:suranect/core/error/failure.dart';
 import 'package:suranect/core/use_case/base_use_case.dart';
 import 'package:suranect/features/introduction/domain/repositories/intro_repository.dart';
 
-class IsIntroInUseCase extends BaseUseCase<bool, DefaultParams> {
+class IsIntroInUseCase extends BaseUseCaseParam<bool, DefaultParams> {
   final IntroRepository introRepository;
 
   IsIntroInUseCase({

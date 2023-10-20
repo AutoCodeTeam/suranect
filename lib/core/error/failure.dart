@@ -14,12 +14,11 @@ class ConnectionFailure extends Failure {
 }
 
 class ApiFailure extends Failure {
-  final List<ApiError> error;
+  final String error;
+  final String? code;
 
   @override
-  List<Object?> get props => [error];
+  List<Object?> get props => [error, code];
 
-  ApiFailure({
-    required this.error
-  });
+  ApiFailure({required this.error, this.code});
 }

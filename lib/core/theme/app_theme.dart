@@ -37,6 +37,7 @@ ThemeData appTheme() {
         fontWeight: FontWeight.bold,
       ),
     ),
+
   );
 }
 
