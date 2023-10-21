@@ -20,6 +20,7 @@ import 'package:suranect/features/auth/presentation/controller/login/login_cubit
 import 'package:suranect/features/auth/presentation/controller/profile/profile_bloc.dart';
 import 'package:suranect/features/auth/presentation/controller/register/register_cubit.dart';
 import 'package:suranect/features/auth/presentation/controller/verify_otp/verify_otp_cubit.dart';
+import 'package:suranect/features/home/presentation/controller/home_bloc.dart';
 import 'package:suranect/features/introduction/data/data_sources/intro_local_data_source.dart';
 import 'package:suranect/features/introduction/data/data_sources/intro_local_data_source_impl.dart';
 import 'package:suranect/features/introduction/data/repositories/intro_repository_impl.dart';
@@ -90,6 +91,9 @@ Future<void> initDependencies() async {
   );
   injector.registerFactory(
     () => MainTabBloc(),
+  );
+  injector.registerFactory(
+    () => HomeBloc(),
   );
 
   /// Cubit ///

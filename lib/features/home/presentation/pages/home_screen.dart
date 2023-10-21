@@ -1,3 +1,5 @@
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -6,6 +8,7 @@ import 'package:suranect/app/routes/route_utils.dart';
 import 'package:suranect/core/theme/app_colors.dart';
 import 'package:suranect/core/theme/app_shadow.dart';
 import 'package:suranect/features/auth/presentation/controller/profile/profile_bloc.dart';
+import 'package:suranect/features/home/presentation/controller/home_bloc.dart';
 import 'package:suranect/features/home/presentation/widgets/card_carousel.dart';
 import 'package:suranect/features/home/presentation/widgets/home_app_bar.dart';
 
@@ -19,6 +22,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    CarouselController carouselController = CarouselController();
+
     return BlocConsumer<ProfileBloc, ProfileState>(
       listener: (context, state) {},
       builder: (context, state) {
@@ -40,25 +45,173 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(
-                            height: 200,
-                            child: ListView.builder(
-                              itemCount: 3,
-                              shrinkWrap: true,
-                              scrollDirection: Axis.horizontal,
-                              itemBuilder: (context, index) => Padding(
-                                padding: const EdgeInsets.only(left: 8.0),
-                                child: CardCarousel(
-                                  indexCarousel: index,
-                                  backgroundImage:
-                                      "assets/images/carousel_image1.png",
-                                  title: "Mendukung kota Surabaya!",
-                                  subtitle:
-                                      "Yuk cari informasi mengenai kota \nSurabaya dan wisatanya.",
-                                ),
-                              ),
-                            ),
+                          BlocConsumer<HomeBloc, HomeState>(
+                            listener: (context, state) {},
+                            builder: (context, state) {
+                              return state.when(
+                                initial: () {
+                                  return const Center(
+                                    child: CircularProgressIndicator(),
+                                  );
+                                },
+                                loaded: (carouselIndex, news) {
+                                  return CarouselSlider(
+                                    carouselController: carouselController,
+                                    items: news
+                                        .map((e) => Stack(
+                                              alignment: Alignment.bottomCenter,
+                                              children: [
+                                                Container(
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      0.9,
+                                                  decoration: BoxDecoration(
+                                                    image: DecorationImage(
+                                                      image: AssetImage(
+                                                        e,
+                                                      ),
+                                                      fit: BoxFit.fill,
+                                                    ),
+                                                    borderRadius:
+                                                        const BorderRadius.all(
+                                                      Radius.circular(15),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Positioned.fill(
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                        gradient:
+                                                            LinearGradient(
+                                                          colors: [
+                                                            Colors.black
+                                                                .withOpacity(
+                                                                    0.5),
+                                                            AppColors.black
+                                                                .withOpacity(
+                                                                    0.1),
+                                                          ],
+                                                          begin:
+                                                              Alignment.topLeft,
+                                                          end: Alignment
+                                                              .bottomRight,
+                                                        ),
+                                                        borderRadius:
+                                                            const BorderRadius
+                                                                .all(
+                                                                Radius.circular(
+                                                                    15))),
+                                                  ),
+                                                ),
+                                                Positioned.fill(
+                                                  left: 20,
+                                                  top: 20,
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text(
+                                                        "Mendukung kota Surabaya!",
+                                                        style: Theme.of(context)
+                                                            .textTheme
+                                                            .headlineLarge!
+                                                            .copyWith(
+                                                              color: AppColors
+                                                                  .white,
+                                                            ),
+                                                      ),
+                                                      const SizedBox(height: 5),
+                                                      Text(
+                                                        "Yuk cari informasi mengenai kota \nSurabaya dan wisatanya.",
+                                                        style: Theme.of(context)
+                                                            .textTheme
+                                                            .bodyLarge!
+                                                            .copyWith(
+                                                              color: AppColors
+                                                                  .white,
+                                                            ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                Positioned(
+                                                  bottom: 10,
+                                                  left: 20,
+                                                  child: DotsIndicator(
+                                                    dotsCount: news.length,
+                                                    position: carouselIndex,
+                                                    onTap: (position) {
+                                                      carouselController.jumpToPage(position);
+
+                                                      context
+                                                          .read<HomeBloc>()
+                                                          .add(HomeEvent
+                                                              .changeCarousel(
+                                                                  carouselIndex:
+                                                                      position));
+                                                    },
+                                                    decorator: DotsDecorator(
+                                                      size: const Size.square(
+                                                          7.0),
+                                                      activeSize:
+                                                          const Size(25.0, 7.0),
+                                                      color: AppColors.white
+                                                          .withOpacity(0.5),
+                                                      activeColor:
+                                                          AppColors.white,
+                                                      activeShape:
+                                                          const RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius.all(
+                                                          Radius.circular(10),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ))
+                                        .toList(),
+                                    options: CarouselOptions(
+                                      viewportFraction: 1,
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.25,
+                                      onPageChanged: (val, _) {
+                                        carouselController.jumpToPage(val);
+
+                                        context.read<HomeBloc>().add(
+                                              HomeEvent.changeCarousel(
+                                                  carouselIndex: val),
+                                            );
+                                      },
+                                    ),
+                                  );
+                                },
+                              );
+                            },
                           ),
+                          // SizedBox(
+                          //   height: 200,
+                          //   child: ListView.builder(
+                          //     itemCount: 3,
+                          //     shrinkWrap: true,
+                          //     scrollDirection: Axis.horizontal,
+                          //     itemBuilder: (context, index) => Padding(
+                          //       padding: const EdgeInsets.only(left: 8.0),
+                          //       child: CardCarousel(
+                          //         indexCarousel: index,
+                          //         backgroundImage:
+                          //             "assets/images/carousel_image1.png",
+                          //         title: "Mendukung kota Surabaya!",
+                          //         subtitle:
+                          //             "Yuk cari informasi mengenai kota \nSurabaya dan wisatanya.",
+                          //       ),
+                          //     ),
+                          //   ),
+                          // ),
                           const SizedBox(height: 20),
                           Text(
                             "Fasilitas Kota Surabaya",
@@ -69,7 +222,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               InkWell(
                                 onTap: () {
-                                  AppRouter.router.push(PAGES.layananPublik.screenPath);
+                                  AppRouter.router
+                                      .push(PAGES.layananPublik.screenPath);
                                 },
                                 child: Container(
                                   height:
@@ -128,11 +282,12 @@ class _HomeScreenState extends State<HomeScreen> {
                               Expanded(
                                 child: InkWell(
                                   onTap: () {
-                                    AppRouter.router.push(PAGES.berita.screenPath);
+                                    AppRouter.router
+                                        .push(PAGES.berita.screenPath);
                                   },
                                   child: Container(
-                                    height:
-                                        MediaQuery.of(context).size.height * 0.15,
+                                    height: MediaQuery.of(context).size.height *
+                                        0.15,
                                     decoration: BoxDecoration(
                                         color: AppColors.white,
                                         borderRadius: const BorderRadius.all(

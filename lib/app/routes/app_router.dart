@@ -10,6 +10,7 @@ import 'package:suranect/features/auth/presentation/controller/register/register
 import 'package:suranect/features/auth/presentation/controller/verify_otp/verify_otp_cubit.dart';
 import 'package:suranect/features/auth/presentation/pages/verify_otp_screen.dart';
 import 'package:suranect/features/berita/presentation/pages/berita_screen.dart';
+import 'package:suranect/features/home/presentation/controller/home_bloc.dart';
 import 'package:suranect/features/home/presentation/pages/home_screen.dart';
 import 'package:suranect/features/introduction/presentation/controller/introduction_bloc.dart';
 import 'package:suranect/features/introduction/presentation/pages/introduction_screen.dart';
@@ -88,8 +89,12 @@ class AppRouter {
             parentNavigatorKey: _shellNavigatorKey,
             path: PAGES.home.screenPath,
             name: PAGES.home.screenName,
-            pageBuilder: (context, state) =>
-                const NoTransitionPage(child: HomeScreen()),
+            pageBuilder: (context, state) => NoTransitionPage(
+              child: BlocProvider(
+                create: (context) => injector<HomeBloc>()..add(const HomeEvent.started()),
+                child: const HomeScreen(),
+              ),
+            ),
           ),
           GoRoute(
             parentNavigatorKey: _shellNavigatorKey,
