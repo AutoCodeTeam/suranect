@@ -1,30 +1,37 @@
+import 'package:carousel_slider/carousel_controller.dart';
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:suranect/core/theme/app_colors.dart';
+import 'package:suranect/features/home/presentation/controller/home_bloc.dart';
 
 class CardCarousel extends StatelessWidget {
-  final int indexCarousel;
-  final String backgroundImage;
-  final String title;
-  final String subtitle;
+  final String image;
+  final List news;
+  final int dotsIndex;
 
   const CardCarousel({
     super.key,
-    required this.indexCarousel,
-    required this.backgroundImage,
-    this.title = "",
-    this.subtitle = "",
+    required this.carouselController,
+    required this.image,
+    required this.news,
+    required this.dotsIndex,
   });
+
+  final CarouselController carouselController;
 
   @override
   Widget build(BuildContext context) {
     return Stack(
+      alignment: Alignment.bottomCenter,
       children: [
         Container(
-          height: 200,
           width: MediaQuery.of(context).size.width * 0.9,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage(backgroundImage),
+              image: AssetImage(
+                image,
+              ),
               fit: BoxFit.fill,
             ),
             borderRadius: const BorderRadius.all(
@@ -46,20 +53,21 @@ class CardCarousel extends StatelessWidget {
                 borderRadius: const BorderRadius.all(Radius.circular(15))),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+        Positioned.fill(
+          left: 20,
+          top: 20,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                title,
+                "Mendukung kota Surabaya!",
                 style: Theme.of(context).textTheme.headlineLarge!.copyWith(
                       color: AppColors.white,
                     ),
               ),
               const SizedBox(height: 5),
               Text(
-                subtitle,
+                "Yuk cari informasi mengenai kota \nSurabaya dan wisatanya.",
                 style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                       color: AppColors.white,
                     ),
@@ -68,41 +76,31 @@ class CardCarousel extends StatelessWidget {
           ),
         ),
         Positioned(
-          bottom: 20,
+          bottom: 10,
           left: 20,
-          child: SizedBox(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height * 0.008,
-            child: ListView.builder(
-              itemCount: 3,
-              shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, indexDot) {
-                return Padding(
-                  padding: const EdgeInsets.only(left: 8),
-                  child: Container(
-                    width: indexCarousel == indexDot
-                        ? MediaQuery.of(context).size.height * 0.03
-                        : MediaQuery.of(context).size.height * 0.008,
-                    decoration: BoxDecoration(
-                      color: indexCarousel == indexDot
-                          ? AppColors.white
-                          : AppColors.white.withOpacity(0.5),
-                      shape: indexCarousel == indexDot
-                          ? BoxShape.rectangle
-                          : BoxShape.circle,
-                      borderRadius: indexCarousel == indexDot
-                          ? const BorderRadius.all(
-                              Radius.circular(20),
-                            )
-                          : null,
-                    ),
-                  ),
-                );
-              },
+          child: DotsIndicator(
+            dotsCount: news.length,
+            position: dotsIndex,
+            onTap: (position) {
+              carouselController.jumpToPage(position);
+
+              context
+                  .read<HomeBloc>()
+                  .add(HomeEvent.changeCarousel(carouselIndex: position));
+            },
+            decorator: DotsDecorator(
+              size: const Size.square(7.0),
+              activeSize: const Size(25.0, 7.0),
+              color: AppColors.white.withOpacity(0.5),
+              activeColor: AppColors.white,
+              activeShape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(10),
+                ),
+              ),
             ),
           ),
-        )
+        ),
       ],
     );
   }

@@ -96,10 +96,14 @@ class _BeritaScreenState extends State<BeritaScreen> {
         ),
       ),
     ];
+    ScrollController scrollController = ScrollController();
 
     return Scaffold(
       appBar: BaseAppBar(title: PAGES.berita.screenTitle),
       body: BaseBodyPage(
+        onRefresh: () async {},
+        scrollController: scrollController,
+        onLoadNextPage: () {},
         children: [
           SliverFillRemaining(
             hasScrollBody: false,
@@ -188,4 +192,3 @@ class _BeritaScreenState extends State<BeritaScreen> {
     );
   }
 }
-

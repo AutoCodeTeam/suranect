@@ -22,6 +22,7 @@ import 'package:suranect/features/main_tab/presentation/pages/main_tab.dart';
 import 'package:suranect/features/notification/presentation/pages/notification_screen.dart';
 import 'package:suranect/features/profile/presentation/pages/profile_screen.dart';
 import 'package:suranect/features/splash/presentation/pages/splash_screen.dart';
+import 'package:suranect/features/wisata/presentation/pages/wisata_screen.dart';
 
 class AppRouter {
   static final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -130,6 +131,12 @@ class AppRouter {
         path: PAGES.berita.screenPath,
         name: PAGES.berita.screenName,
         builder: (context, state) => const BeritaScreen(),
+      ),
+      GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
+        path: PAGES.wisata.screenPath,
+        name: PAGES.wisata.screenName,
+        builder: (context, state) => const WisataScreen(),
       ),
     ],
     errorBuilder: (context, state) => const NotFoundScreen(),

@@ -11,6 +11,7 @@ enum PAGES {
   profile,
   layananPublik,
   berita,
+  wisata,
   error,
 }
 
@@ -41,6 +42,8 @@ extension AppPageExtension on PAGES {
         return "/layanan_publik";
       case PAGES.berita:
         return "/berita";
+      case PAGES.wisata:
+        return "/wisata";
       case PAGES.error:
         return "/error";
       default:
@@ -74,6 +77,8 @@ extension AppPageExtension on PAGES {
         return "LAYANAN_PUBLIK";
       case PAGES.berita:
         return "BERITA";
+      case PAGES.wisata:
+        return "WISATA";
       case PAGES.error:
         return "ERROR";
       default:
@@ -107,6 +112,8 @@ extension AppPageExtension on PAGES {
         return "Layanan Publik";
       case PAGES.berita:
         return "Berita";
+      case PAGES.wisata:
+        return "Wisata";
       case PAGES.error:
         return "Error";
       default:

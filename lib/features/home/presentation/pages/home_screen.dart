@@ -58,120 +58,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                   return CarouselSlider(
                                     carouselController: carouselController,
                                     items: news
-                                        .map((e) => Stack(
-                                              alignment: Alignment.bottomCenter,
-                                              children: [
-                                                Container(
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.9,
-                                                  decoration: BoxDecoration(
-                                                    image: DecorationImage(
-                                                      image: AssetImage(
-                                                        e,
-                                                      ),
-                                                      fit: BoxFit.fill,
-                                                    ),
-                                                    borderRadius:
-                                                        const BorderRadius.all(
-                                                      Radius.circular(15),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Positioned.fill(
-                                                  child: Container(
-                                                    decoration: BoxDecoration(
-                                                        gradient:
-                                                            LinearGradient(
-                                                          colors: [
-                                                            Colors.black
-                                                                .withOpacity(
-                                                                    0.5),
-                                                            AppColors.black
-                                                                .withOpacity(
-                                                                    0.1),
-                                                          ],
-                                                          begin:
-                                                              Alignment.topLeft,
-                                                          end: Alignment
-                                                              .bottomRight,
-                                                        ),
-                                                        borderRadius:
-                                                            const BorderRadius
-                                                                .all(
-                                                                Radius.circular(
-                                                                    15))),
-                                                  ),
-                                                ),
-                                                Positioned.fill(
-                                                  left: 20,
-                                                  top: 20,
-                                                  child: Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Text(
-                                                        "Mendukung kota Surabaya!",
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .headlineLarge!
-                                                            .copyWith(
-                                                              color: AppColors
-                                                                  .white,
-                                                            ),
-                                                      ),
-                                                      const SizedBox(height: 5),
-                                                      Text(
-                                                        "Yuk cari informasi mengenai kota \nSurabaya dan wisatanya.",
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .bodyLarge!
-                                                            .copyWith(
-                                                              color: AppColors
-                                                                  .white,
-                                                            ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                                Positioned(
-                                                  bottom: 10,
-                                                  left: 20,
-                                                  child: DotsIndicator(
-                                                    dotsCount: news.length,
-                                                    position: carouselIndex,
-                                                    onTap: (position) {
-                                                      carouselController.jumpToPage(position);
-
-                                                      context
-                                                          .read<HomeBloc>()
-                                                          .add(HomeEvent
-                                                              .changeCarousel(
-                                                                  carouselIndex:
-                                                                      position));
-                                                    },
-                                                    decorator: DotsDecorator(
-                                                      size: const Size.square(
-                                                          7.0),
-                                                      activeSize:
-                                                          const Size(25.0, 7.0),
-                                                      color: AppColors.white
-                                                          .withOpacity(0.5),
-                                                      activeColor:
-                                                          AppColors.white,
-                                                      activeShape:
-                                                          const RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius.all(
-                                                          Radius.circular(10),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
+                                        .map((e) => CardCarousel(
+                                              carouselController:
+                                                  carouselController,
+                                              image: e, news: news, dotsIndex: carouselIndex,
                                             ))
                                         .toList(),
                                     options: CarouselOptions(
@@ -193,25 +83,6 @@ class _HomeScreenState extends State<HomeScreen> {
                               );
                             },
                           ),
-                          // SizedBox(
-                          //   height: 200,
-                          //   child: ListView.builder(
-                          //     itemCount: 3,
-                          //     shrinkWrap: true,
-                          //     scrollDirection: Axis.horizontal,
-                          //     itemBuilder: (context, index) => Padding(
-                          //       padding: const EdgeInsets.only(left: 8.0),
-                          //       child: CardCarousel(
-                          //         indexCarousel: index,
-                          //         backgroundImage:
-                          //             "assets/images/carousel_image1.png",
-                          //         title: "Mendukung kota Surabaya!",
-                          //         subtitle:
-                          //             "Yuk cari informasi mengenai kota \nSurabaya dan wisatanya.",
-                          //       ),
-                          //     ),
-                          //   ),
-                          // ),
                           const SizedBox(height: 20),
                           Text(
                             "Fasilitas Kota Surabaya",
@@ -336,48 +207,55 @@ class _HomeScreenState extends State<HomeScreen> {
                           const SizedBox(height: 15),
                           Row(
                             children: [
-                              Container(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.15,
-                                width: MediaQuery.of(context).size.width * 0.65,
-                                decoration: BoxDecoration(
-                                    color: AppColors.white,
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(20)),
-                                    boxShadow: [
-                                      AppShadow.sShadow,
-                                    ]),
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 15.0, vertical: 20.0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      SvgPicture.asset(
-                                        "assets/svg/wisata-service_ic.svg",
-                                      ),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            "Wisata",
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .headlineLarge,
-                                          ),
-                                          Text(
-                                            "Cari Wisata Kota Surabaya",
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodyLarge,
-                                          ),
-                                        ],
-                                      ),
-                                    ],
+                              InkWell(
+                                onTap: () {
+                                  AppRouter.router
+                                      .push(PAGES.wisata.screenPath);
+                                },
+                                child: Container(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.15,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.65,
+                                  decoration: BoxDecoration(
+                                      color: AppColors.white,
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(20)),
+                                      boxShadow: [
+                                        AppShadow.sShadow,
+                                      ]),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 15.0, vertical: 20.0),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        SvgPicture.asset(
+                                          "assets/svg/wisata-service_ic.svg",
+                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "Wisata",
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .headlineLarge,
+                                            ),
+                                            Text(
+                                              "Cari Wisata Kota Surabaya",
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyLarge,
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
