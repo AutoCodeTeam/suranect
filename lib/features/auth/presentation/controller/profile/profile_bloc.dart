@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:suranect/app/network/base/safe_call_extension.dart';
 import 'package:suranect/app/routes/app_router.dart';
 import 'package:suranect/app/routes/route_utils.dart';
 import 'package:suranect/core/error/exceptions.dart';

@@ -16,8 +16,6 @@ class LayananPublikScreen extends StatefulWidget {
 class _LayananPublikScreenState extends State<LayananPublikScreen> {
   @override
   Widget build(BuildContext context) {
-    ScrollController scrollController = ScrollController();
-
     return Scaffold(
       appBar: BaseAppBar(title: PAGES.layananPublik.screenTitle),
       body: BaseBodyPage(

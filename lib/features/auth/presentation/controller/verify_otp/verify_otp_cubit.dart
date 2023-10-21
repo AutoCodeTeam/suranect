@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:suranect/app/network/base/api_result.dart';
 import 'package:suranect/app/network/base/safe_call_extension.dart';
 import 'package:suranect/core/error/failure.dart';
 import 'package:suranect/features/auth/data/remote/models/verify_otp/verify_otp_request.dart';

@@ -4,7 +4,7 @@ import 'package:suranect/app/routes/app_router.dart';
 class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
 
-  BaseAppBar({super.key, required this.title});
+  const BaseAppBar({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {

@@ -5,7 +5,6 @@ import 'package:suranect/app/routes/app_router.dart';
 import 'package:suranect/app/routes/route_utils.dart';
 import 'package:suranect/core/theme/app_colors.dart';
 import 'package:suranect/core/widgets/app_button.dart';
-import 'package:suranect/features/auth/presentation/controller/profile/profile_bloc.dart';
 import 'package:suranect/features/auth/presentation/controller/verify_otp/verify_otp_cubit.dart';
 
 class VerifyOtpScreen extends StatefulWidget {
