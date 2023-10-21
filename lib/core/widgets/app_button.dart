@@ -6,14 +6,17 @@ class AppButton extends StatelessWidget {
   final Color buttonColor;
   final Color? colorText;
   final String text;
-  final double? width, height;
+  final double? width, height, sizeText;
 
   const AppButton({
     super.key,
     required this.onPressed,
     this.buttonColor = AppColors.neutral_30,
     this.colorText,
-    required this.text, this.width, this.height,
+    required this.text,
+    this.width,
+    this.height,
+    this.sizeText,
   });
 
   @override
@@ -41,8 +44,9 @@ class AppButton extends StatelessWidget {
         child: Text(
           text,
           style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-            color: colorText
-          ),
+                color: colorText,
+                fontSize: sizeText,
+              ),
         ),
       ),
     );

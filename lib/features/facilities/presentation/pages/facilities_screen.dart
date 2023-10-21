@@ -29,6 +29,10 @@ class _FacilitiesScreenState extends State<FacilitiesScreen> {
         page: PAGES.wisata,
         iconItem: "assets/svg/wisata-service_blue_ic.svg",
         subtitle: "Layanan yang tersedia untuk warga kota Surabaya"),
+    const ListItem(
+        page: PAGES.umkm,
+        iconItem: "assets/svg/umkm_blue_ic.svg",
+        subtitle: "Lihat UMKM Surabaya yang lagi trending"),
   ];
 
   @override

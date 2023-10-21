@@ -23,6 +23,7 @@ import 'package:suranect/features/main_tab/presentation/pages/main_tab.dart';
 import 'package:suranect/features/notification/presentation/pages/notification_screen.dart';
 import 'package:suranect/features/profile/presentation/pages/profile_screen.dart';
 import 'package:suranect/features/splash/presentation/pages/splash_screen.dart';
+import 'package:suranect/features/umkm/presentation/pages/umkm_screen.dart';
 import 'package:suranect/features/wisata/presentation/pages/wisata_screen.dart';
 
 class AppRouter {
@@ -93,7 +94,8 @@ class AppRouter {
             name: PAGES.home.screenName,
             pageBuilder: (context, state) => NoTransitionPage(
               child: BlocProvider(
-                create: (context) => injector<HomeBloc>()..add(const HomeEvent.started()),
+                create: (context) =>
+                    injector<HomeBloc>()..add(const HomeEvent.started()),
                 child: const HomeScreen(),
               ),
             ),
@@ -144,6 +146,12 @@ class AppRouter {
         path: PAGES.facilities.screenPath,
         name: PAGES.facilities.screenName,
         builder: (context, state) => const FacilitiesScreen(),
+      ),
+      GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
+        path: PAGES.umkm.screenPath,
+        name: PAGES.umkm.screenName,
+        builder: (context, state) => const UmkmScreen(),
       ),
     ],
     errorBuilder: (context, state) => const NotFoundScreen(),
