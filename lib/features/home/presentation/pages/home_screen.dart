@@ -261,39 +261,44 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               const SizedBox(width: 12),
                               Expanded(
-                                child: Container(
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.15,
-                                  decoration: BoxDecoration(
-                                      color: AppColors.blue_20,
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(20)),
-                                      boxShadow: [
-                                        AppShadow.sShadow,
-                                      ]),
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 15.0, vertical: 20.0),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        SvgPicture.asset(
-                                          "assets/svg/more-service_ic.svg",
-                                        ),
-                                        Text(
-                                          "Lihat Semua Fasilitas",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyLarge!
-                                              .copyWith(
-                                                color: AppColors.white,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                        ),
-                                      ],
+                                child: InkWell(
+                                  onTap: () {
+                                    AppRouter.router.push(PAGES.facilities.screenPath);
+                                  },
+                                  child: Container(
+                                    height:
+                                        MediaQuery.of(context).size.height * 0.15,
+                                    decoration: BoxDecoration(
+                                        color: AppColors.blue_20,
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(20)),
+                                        boxShadow: [
+                                          AppShadow.sShadow,
+                                        ]),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 15.0, vertical: 20.0),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          SvgPicture.asset(
+                                            "assets/svg/more-service_ic.svg",
+                                          ),
+                                          Text(
+                                            "Lihat Semua Fasilitas",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodyLarge!
+                                                .copyWith(
+                                                  color: AppColors.white,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),

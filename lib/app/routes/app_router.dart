@@ -10,6 +10,7 @@ import 'package:suranect/features/auth/presentation/controller/register/register
 import 'package:suranect/features/auth/presentation/controller/verify_otp/verify_otp_cubit.dart';
 import 'package:suranect/features/auth/presentation/pages/verify_otp_screen.dart';
 import 'package:suranect/features/berita/presentation/pages/berita_screen.dart';
+import 'package:suranect/features/facilities/presentation/pages/facilities_screen.dart';
 import 'package:suranect/features/home/presentation/controller/home_bloc.dart';
 import 'package:suranect/features/home/presentation/pages/home_screen.dart';
 import 'package:suranect/features/introduction/presentation/controller/introduction_bloc.dart';
@@ -137,6 +138,12 @@ class AppRouter {
         path: PAGES.wisata.screenPath,
         name: PAGES.wisata.screenName,
         builder: (context, state) => const WisataScreen(),
+      ),
+      GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
+        path: PAGES.facilities.screenPath,
+        name: PAGES.facilities.screenName,
+        builder: (context, state) => const FacilitiesScreen(),
       ),
     ],
     errorBuilder: (context, state) => const NotFoundScreen(),
