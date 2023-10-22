@@ -38,64 +38,71 @@ class _UmkmScreenState extends State<UmkmScreen> {
                     boxShadow: [
                       AppShadow.sShadow,
                     ]),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.2,
-                      decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.vertical(
-                            top: Radius.circular(12)),
-                        image: DecorationImage(
-                            image: AssetImage(
-                              "assets/images/umkm_example_img.png",
-                            ),
-                            fit: BoxFit.fill),
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        child: Image.asset(
+                          "assets/images/umkm_example_img.png",
+                          fit: BoxFit.contain,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 10),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          InkWell(
-                            onTap: () {},
-                            child: SvgPicture.asset("assets/svg/heart_ic.svg"),
-                          ),
-                          const Spacer(),
-                          InkWell(
-                            onTap: () {},
-                            child:
-                                SvgPicture.asset("assets/svg/bookmark_ic.svg"),
-                          ),
-                          const SizedBox(width: 10),
-                          Expanded(
-                            child: AppButton(
+                      const SizedBox(height: 10),
+                      Expanded(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            InkWell(
+                              onTap: () {},
+                              child: SvgPicture.asset("assets/svg/heart_ic.svg"),
+                            ),
+                            const Spacer(),
+                            InkWell(
+                              onTap: () {},
+                              child:
+                                  SvgPicture.asset("assets/svg/bookmark_ic.svg"),
+                            ),
+                            const SizedBox(width: 10),
+                            TextButton(
+                              style: const ButtonStyle(
+                                backgroundColor: MaterialStatePropertyAll(
+                                    AppColors.success_40),
+                                shape: MaterialStatePropertyAll(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(6),
+                                    ),
+                                  ),
+                                ),
+                                side: MaterialStatePropertyAll(
+                                  BorderSide(
+                                    color: AppColors.success_60,
+                                  ),
+                                ),
+                              ),
                               onPressed: () {},
-                              text: "Detail",
-                              colorText: AppColors.white,
-                              buttonColor: AppColors.success_40,
-                              height: MediaQuery.of(context).size.height * 0.05,
-                              sizeText: 12,
-                            ),
-                          )
-                        ],
+                              child: Text(
+                                "Detail",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headlineSmall!
+                                    .copyWith(color: AppColors.white),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 10),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: Text(
+                      const SizedBox(height: 10),
+                      Text(
                         "1, 298 Likes",
                         style: Theme.of(context).textTheme.bodyLarge,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: RichText(
+                      RichText(
                         overflow: TextOverflow.ellipsis,
                         text: TextSpan(
                             text: "KreasiFitri ",
@@ -107,9 +114,9 @@ class _UmkmScreenState extends State<UmkmScreen> {
                                 style: Theme.of(context).textTheme.bodyLarge,
                               )
                             ]),
-                      ),
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),
