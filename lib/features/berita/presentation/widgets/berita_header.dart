@@ -4,47 +4,46 @@ import 'package:suranect/core/theme/app_colors.dart';
 import 'package:suranect/core/theme/app_shadow.dart';
 import 'package:suranect/features/berita/presentation/widgets/card_news.dart';
 
-class BeritaHeader extends SliverPersistentHeaderDelegate {
-  @override
-  double get maxExtent => 570;
-
-  @override
-  double get minExtent => 570;
-
-  @override
-  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) =>
-      oldDelegate.maxExtent != maxExtent || oldDelegate.minExtent != minExtent;
+class BeritaHeader extends StatelessWidget {
+  // @override
+  // double get maxExtent => 570;
+  //
+  // @override
+  // double get minExtent => 570;
+  //
+  // @override
+  // bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) =>
+  //     oldDelegate.maxExtent != maxExtent || oldDelegate.minExtent != minExtent;
 
   final List<Widget> chips;
   final Widget cardHeader;
   final Widget listNews;
 
-  const BeritaHeader({
+  const BeritaHeader({super.key,
     required this.chips,
     required this.cardHeader,
     required this.listNews,
   });
 
   @override
-  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
+  // Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
+  Widget build(BuildContext context) {
   return Padding(
-    padding: const EdgeInsets.only(top: 15.0,left: 15.0, right: 15.0),
+    padding: const EdgeInsets.all(15),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          height: MediaQuery.of(context).size.height * 0.05,
+          height: MediaQuery.of(context).size.height * 0.06,
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
               color: AppColors.white,
-              borderRadius:
-              const BorderRadius.all(Radius.circular(10)),
-              boxShadow: [
-                AppShadow.sShadow,
-              ]),
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: AppColors.neutral_30)
+          ),
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            shrinkWrap: true,
             children: chips,
           ),
         ),

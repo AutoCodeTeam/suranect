@@ -5,6 +5,7 @@ import 'package:suranect/app/routes/app_router.dart';
 import 'package:suranect/app/routes/route_utils.dart';
 import 'package:suranect/core/theme/app_colors.dart';
 import 'package:suranect/core/widgets/app_button.dart';
+import 'package:suranect/core/widgets/base_body_page.dart';
 import 'package:suranect/features/auth/presentation/controller/verify_otp/verify_otp_cubit.dart';
 
 class VerifyOtpScreen extends StatefulWidget {
@@ -38,7 +39,7 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
 
     return BlocListener<VerifyOtpCubit, VerifyOtpState>(
       listener: (context, state) {
-        if(state.verifyOtpStatus == VerifyOtpStatus.success){
+        if (state.verifyOtpStatus == VerifyOtpStatus.success) {
           AppRouter.router.go(PAGES.home.screenPath);
         }
       },
@@ -46,8 +47,8 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
         appBar: AppBar(
           title: Text(PAGES.verifyOTP.screenTitle),
         ),
-        body: CustomScrollView(
-          slivers: [
+        body: BaseBodyPage(
+          children: [
             SliverFillRemaining(
               child: Padding(
                 padding: const EdgeInsets.all(20),
@@ -223,7 +224,7 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
                   ],
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

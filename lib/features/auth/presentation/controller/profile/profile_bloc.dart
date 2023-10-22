@@ -55,11 +55,11 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
             print(error);
           }
         },
-        loggedOut: (value) {
+        loggedOut: (value) async {
+          await authLocalDataSource.deleteToken();
           emit(const ProfileState.unauthenticated());
         },
       );
     });
   }
-
 }

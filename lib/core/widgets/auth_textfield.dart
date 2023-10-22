@@ -27,12 +27,24 @@ class AuthTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+
+    double heightContainer = screenHeight * 0.07;
+
+    if (screenHeight <= 732) {
+      heightContainer = screenHeight * 0.08;
+    }
+
+    if (screenHeight <= 640) {
+      heightContainer = screenHeight * 0.09;
+    }
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
           width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height * 0.07,
+          height: heightContainer,
           decoration: BoxDecoration(
             border: Border.all(),
             borderRadius: const BorderRadius.all(
@@ -41,6 +53,7 @@ class AuthTextField extends StatelessWidget {
           ),
           padding: const EdgeInsets.fromLTRB(16, 1, 16, 1),
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SvgPicture.asset(icon),
               const SizedBox(width: 18),
@@ -77,7 +90,7 @@ class AuthTextField extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: Text(
                   error ?? "",
-                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         color: Colors.red,
                       ),
                 ),

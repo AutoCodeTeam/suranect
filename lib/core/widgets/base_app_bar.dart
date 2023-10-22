@@ -3,8 +3,13 @@ import 'package:suranect/app/routes/app_router.dart';
 
 class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
+  final SearchDelegate<String> searchDelegate;
 
-  const BaseAppBar({super.key, required this.title});
+  const BaseAppBar({
+    super.key,
+    required this.title,
+    required this.searchDelegate,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +29,13 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
             .headlineMedium!
             .copyWith(fontWeight: FontWeight.w600),
       ),
+      actions: <Widget>[
+        IconButton(
+            icon: const Icon(Icons.search),
+            onPressed: () {
+              showSearch(context: context, delegate: searchDelegate);
+            })
+      ],
       centerTitle: false,
     );
   }

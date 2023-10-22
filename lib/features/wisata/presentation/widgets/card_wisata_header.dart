@@ -28,7 +28,7 @@ class CardWisataHeader extends SliverPersistentHeaderDelegate {
                 image: AssetImage(
                   "assets/images/taman_apsari_img.png",
                 ),
-                fit: BoxFit.fill,
+                fit: BoxFit.cover,
               ),
               borderRadius: BorderRadius.all(
                 Radius.circular(15),
@@ -67,7 +67,7 @@ class CardWisataHeader extends SliverPersistentHeaderDelegate {
                   Expanded(
                     child: Text(
                       "Yuk cari informasi mengenai wisata di  kota Surabaya.",
-                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                             color: AppColors.white,
                           ),
                     ),

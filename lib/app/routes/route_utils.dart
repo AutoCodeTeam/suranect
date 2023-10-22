@@ -13,6 +13,7 @@ enum PAGES {
   berita,
   wisata,
   umkm,
+  event,
   facilities,
   error,
 }
@@ -48,6 +49,8 @@ extension AppPageExtension on PAGES {
         return "/wisata";
       case PAGES.umkm:
         return "/umkm";
+      case PAGES.event:
+        return "/event";
       case PAGES.facilities:
         return "/facilities";
       case PAGES.error:
@@ -86,7 +89,9 @@ extension AppPageExtension on PAGES {
       case PAGES.wisata:
         return "WISATA";
       case PAGES.umkm:
-        return "/UMKM";
+        return "UMKM";
+      case PAGES.event:
+        return "EVENT";
       case PAGES.facilities:
         return "FACILITIES";
       case PAGES.error:
@@ -126,6 +131,8 @@ extension AppPageExtension on PAGES {
         return "Wisata Surabaya";
       case PAGES.umkm:
         return "UMKM Surabaya";
+      case PAGES.event:
+        return "Event Terbaru";
       case PAGES.facilities:
         return "Fasilitas Kota Surabaya";
       case PAGES.error:

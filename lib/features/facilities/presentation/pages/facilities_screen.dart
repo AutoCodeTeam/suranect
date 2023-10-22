@@ -5,6 +5,7 @@ import 'package:suranect/app/routes/route_utils.dart';
 import 'package:suranect/core/theme/app_colors.dart';
 import 'package:suranect/core/widgets/base_app_bar.dart';
 import 'package:suranect/core/widgets/base_body_page.dart';
+import 'package:suranect/core/widgets/search_screen.dart';
 import 'package:suranect/features/facilities/data/models/list_item_model.dart';
 import 'package:suranect/features/facilities/presentation/widgets/list_item.dart';
 
@@ -33,12 +34,16 @@ class _FacilitiesScreenState extends State<FacilitiesScreen> {
         page: PAGES.umkm,
         iconItem: "assets/svg/umkm_blue_ic.svg",
         subtitle: "Lihat UMKM Surabaya yang lagi trending"),
+    const ListItem(
+        page: PAGES.event,
+        iconItem: "assets/svg/event_blue_ic.svg",
+        subtitle: "Cari event-event terbaru Surabaya yuk"),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BaseAppBar(title: PAGES.facilities.screenTitle),
+      appBar: BaseAppBar(title: PAGES.facilities.screenTitle, searchDelegate: DataSearch(listWords: listWords)),
       body: BaseBodyPage(
         children: [
           SliverList.separated(

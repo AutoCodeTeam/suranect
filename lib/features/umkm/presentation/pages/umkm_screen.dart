@@ -6,6 +6,7 @@ import 'package:suranect/core/theme/app_shadow.dart';
 import 'package:suranect/core/widgets/app_button.dart';
 import 'package:suranect/core/widgets/base_app_bar.dart';
 import 'package:suranect/core/widgets/base_body_page.dart';
+import 'package:suranect/core/widgets/search_screen.dart';
 
 class UmkmScreen extends StatefulWidget {
   const UmkmScreen({super.key});
@@ -17,21 +18,34 @@ class UmkmScreen extends StatefulWidget {
 class _UmkmScreenState extends State<UmkmScreen> {
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+
+    double cardUmkm = screenHeight * 0.34;
+
+    if (screenHeight <= 732) {
+      cardUmkm = screenHeight * 0.38;
+    }
+
+    if (screenHeight <= 640) {
+      cardUmkm = screenHeight * 0.4;
+    }
     return Scaffold(
-      appBar: BaseAppBar(title: PAGES.umkm.screenTitle),
+      appBar: BaseAppBar(
+          title: PAGES.umkm.screenTitle,
+          searchDelegate: DataSearch(listWords: listWords)),
       body: BaseBodyPage(
         children: [
           SliverList.separated(
             itemBuilder: (context, index) => Padding(
               padding: EdgeInsets.only(
                 top: index == 0 ? 18 : 0,
-                bottom: index == 9 ? 32 : 0,
-                left: 20.0,
-                right: 20.0,
+                bottom: index == 9 ? 18 : 0,
+                left: 10,
+                right: 10,
               ),
               child: Container(
-                height: MediaQuery.of(context).size.height * 0.32,
-                width: MediaQuery.of(context).size.width * 0.9,
+                height: cardUmkm,
+                width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(8)),
                     color: AppColors.white,
@@ -57,13 +71,14 @@ class _UmkmScreenState extends State<UmkmScreen> {
                           children: [
                             InkWell(
                               onTap: () {},
-                              child: SvgPicture.asset("assets/svg/heart_ic.svg"),
+                              child:
+                                  SvgPicture.asset("assets/svg/heart_ic.svg"),
                             ),
                             const Spacer(),
                             InkWell(
                               onTap: () {},
-                              child:
-                                  SvgPicture.asset("assets/svg/bookmark_ic.svg"),
+                              child: SvgPicture.asset(
+                                  "assets/svg/bookmark_ic.svg"),
                             ),
                             const SizedBox(width: 10),
                             TextButton(
@@ -89,16 +104,17 @@ class _UmkmScreenState extends State<UmkmScreen> {
                                 style: Theme.of(context)
                                     .textTheme
                                     .headlineSmall!
-                                    .copyWith(color: AppColors.white),
+                                    .copyWith(
+                                      color: AppColors.white,
+                                    ),
                               ),
                             )
                           ],
                         ),
                       ),
-                      const SizedBox(height: 10),
                       Text(
                         "1, 298 Likes",
-                        style: Theme.of(context).textTheme.bodyLarge,
+                        style: Theme.of(context).textTheme.bodyMedium,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -111,7 +127,7 @@ class _UmkmScreenState extends State<UmkmScreen> {
                               TextSpan(
                                 text:
                                     "merupakan usaha perorangan yang memproduksi...",
-                                style: Theme.of(context).textTheme.bodyLarge,
+                                style: Theme.of(context).textTheme.bodyMedium,
                               )
                             ]),
                       )

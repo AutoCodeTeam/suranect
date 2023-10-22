@@ -32,7 +32,7 @@ class CardCarousel extends StatelessWidget {
               image: AssetImage(
                 image,
               ),
-              fit: BoxFit.fill,
+              fit: BoxFit.cover,
             ),
             borderRadius: const BorderRadius.all(
               Radius.circular(15),
@@ -68,7 +68,7 @@ class CardCarousel extends StatelessWidget {
               const SizedBox(height: 5),
               Text(
                 "Yuk cari informasi mengenai kota \nSurabaya dan wisatanya.",
-                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                       color: AppColors.white,
                     ),
               ),

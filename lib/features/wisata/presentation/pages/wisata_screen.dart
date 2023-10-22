@@ -4,6 +4,7 @@ import 'package:suranect/core/theme/app_colors.dart';
 import 'package:suranect/core/theme/app_shadow.dart';
 import 'package:suranect/core/widgets/base_app_bar.dart';
 import 'package:suranect/core/widgets/base_body_page.dart';
+import 'package:suranect/core/widgets/search_screen.dart';
 import 'package:suranect/features/wisata/presentation/widgets/card_wisata_header.dart';
 
 class WisataScreen extends StatefulWidget {
@@ -19,7 +20,7 @@ class _WisataScreenState extends State<WisataScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BaseAppBar(title: PAGES.wisata.screenTitle),
+      appBar: BaseAppBar(title: PAGES.wisata.screenTitle, searchDelegate: DataSearch(listWords: listWords)),
       body: BaseBodyPage(
         onLoadNextPage: () {},
         scrollController: scrollController,
@@ -29,9 +30,13 @@ class _WisataScreenState extends State<WisataScreen> {
             delegate: CardWisataHeader(),
           ),
           SliverList.separated(
-            itemBuilder: (context, index) => const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: CardWisata(
+            itemBuilder: (context, index) => Padding(
+              padding: EdgeInsets.only(
+                left: 10,
+                right: 10,
+                bottom: index == 9 ? 18 : 0,
+              ),
+              child: const CardWisata(
                 image: 'assets/images/taman_apsari_img.png',
                 title: "Kenpark Surabaya",
                 address:
@@ -81,7 +86,7 @@ class CardWisata extends StatelessWidget {
               height: MediaQuery.of(context).size.height * 0.125,
               child: Image.asset(
                 image,
-                fit: BoxFit.fill,
+                fit: BoxFit.cover,
               ),
             ),
             Expanded(
@@ -96,7 +101,7 @@ class CardWisata extends StatelessWidget {
                     ),
                     Text(
                       address,
-                      style: Theme.of(context).textTheme.bodyLarge,
+                      style: Theme.of(context).textTheme.bodyMedium,
                     ),
                   ],
                 ),

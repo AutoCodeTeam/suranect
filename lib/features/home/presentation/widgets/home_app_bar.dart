@@ -3,15 +3,26 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:suranect/core/theme/app_shadow.dart';
 import 'package:suranect/features/auth/domain/entities/user_entity.dart';
 
-class HomeAppBar extends StatelessWidget {
+class HomeAppBar extends SliverPersistentHeaderDelegate {
   final UserEntity userEntity;
 
   const HomeAppBar({
-    super.key, required this.userEntity,
+    required this.userEntity,
   });
 
+
   @override
-  Widget build(BuildContext context) {
+  double get maxExtent => 100;
+
+  @override
+  double get minExtent => 100;
+
+  @override
+  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) =>
+      oldDelegate.maxExtent != maxExtent || oldDelegate.minExtent != minExtent;
+
+  @override
+  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height * 0.15,
@@ -38,7 +49,7 @@ class HomeAppBar extends StatelessWidget {
               children: [
                 Text(
                   "26 September",
-                  style: Theme.of(context).textTheme.bodyLarge,
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 Text(
                   userEntity.username,

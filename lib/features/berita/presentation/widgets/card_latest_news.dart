@@ -19,7 +19,6 @@ class CardLatestNews extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-        height: MediaQuery.of(context).size.height * 0.32,
         width: MediaQuery.of(context).size.width * 0.9,
         decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(8)),
@@ -27,6 +26,7 @@ class CardLatestNews extends StatelessWidget {
             boxShadow: [
               AppShadow.sShadow,
             ]),
+        padding: const EdgeInsets.only(bottom: 15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -39,7 +39,7 @@ class CardLatestNews extends StatelessWidget {
                     image: AssetImage(
                       image,
                     ),
-                    fit: BoxFit.fill),
+                    fit: BoxFit.cover),
               ),
             ),
             const SizedBox(height: 10),
@@ -57,12 +57,11 @@ class CardLatestNews extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Text(
                 subtitle,
-                style: Theme.of(context).textTheme.bodyLarge,
+                style: Theme.of(context).textTheme.bodyMedium,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ),
             ),
-            const SizedBox(height: 10),
           ],
         ),
       ),

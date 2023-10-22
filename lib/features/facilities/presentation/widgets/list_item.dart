@@ -17,7 +17,7 @@ class ItemFacilities extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        AppRouter.router.replace(listItem.page.screenPath);
+        AppRouter.router.push(listItem.page.screenPath);
       },
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -42,7 +42,7 @@ class ItemFacilities extends StatelessWidget {
               ),
               Text(
                 listItem.subtitle,
-                style: Theme.of(context).textTheme.bodyLarge,
+                style: Theme.of(context).textTheme.bodyMedium,
               ),
             ],
           )

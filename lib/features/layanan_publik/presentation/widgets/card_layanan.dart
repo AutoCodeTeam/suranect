@@ -21,7 +21,6 @@ class CardLayanan extends StatelessWidget {
     return InkWell(
       onTap: () {},
       child: Container(
-        height: MediaQuery.of(context).size.height * 0.1,
         decoration: BoxDecoration(
           color: AppColors.white,
           borderRadius: const BorderRadius.all(Radius.circular(15)),

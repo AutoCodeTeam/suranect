@@ -38,13 +38,6 @@ class AuthLocalDataSourceImpl extends AuthLocalDataSource {
     try {
       final authBox = Hive.box<TokenAuth>(_kIntroBox);
 
-      if (authBox.isEmpty) {
-        final convertedTask = TokenAuth(token: token);
-        await authBox.add(convertedTask);
-      } else {
-        await authBox.putAt(0, TokenAuth(token: token));
-      }
-
       final convertedTask = TokenAuth(token: token);
       await authBox.add(convertedTask);
       return Future.value(true);
@@ -62,10 +55,7 @@ class AuthLocalDataSourceImpl extends AuthLocalDataSource {
     final authBox = Hive.box<TokenAuth>(_kIntroBox);
 
     if (authBox.isNotEmpty) {
-      final token = authBox.values.first.token;
-      print('Token to delete: $token');
       await authBox.deleteAt(0);
-      print('after: $token');
       return true;
     }
 

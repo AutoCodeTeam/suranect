@@ -38,9 +38,9 @@ class MainTabBloc extends Bloc<MainTabEvent, MainTabState> {
               ),
               MyCustomBottomNavBarItem(
                 initialLocation: PAGES.notification.screenPath,
-                icon: SvgPicture.asset("assets/svg/docs-dot_ic.svg"),
+                icon: SvgPicture.asset("assets/svg/notification-status_ic.svg"),
                 activeIcon: SvgPicture.asset(
-                  "assets/svg/docs-dot_ic.svg",
+                  "assets/svg/notification-status_ic.svg",
                   color: AppColors.blue_60,
                 ),
                 label: PAGES.notification.screenTitle,

@@ -6,6 +6,7 @@ import 'package:suranect/app/routes/route_utils.dart';
 import 'package:suranect/core/theme/app_colors.dart';
 import 'package:suranect/core/widgets/app_button.dart';
 import 'package:suranect/core/widgets/auth_textfield.dart';
+import 'package:suranect/core/widgets/base_body_page.dart';
 import 'package:suranect/features/auth/domain/entities/password.dart';
 import 'package:suranect/features/auth/domain/entities/username.dart';
 import 'package:suranect/features/auth/presentation/controller/login/login_cubit.dart';
@@ -46,8 +47,8 @@ class _LoginScreenState extends State<LoginScreen> {
             title: Text(PAGES.login.screenTitle),
           ),
           backgroundColor: AppColors.white,
-          body: CustomScrollView(
-            slivers: [
+          body: BaseBodyPage(
+            children: [
               SliverFillRemaining(
                 hasScrollBody: false,
                 child: Padding(
@@ -72,7 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       const SizedBox(height: 14),
                       BlocBuilder<LoginCubit, LoginState>(
                         buildWhen: (previous, current) =>
-                            previous.showPassword != current.showPassword ||
+                        previous.showPassword != current.showPassword ||
                             previous.formStatus != current.formStatus ||
                             previous.password != current.password,
                         builder: (context, state) {
@@ -96,12 +97,17 @@ class _LoginScreenState extends State<LoginScreen> {
                       state.exceptionError == ""
                           ? const SizedBox.shrink()
                           : Text(
-                              state.exceptionError,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleLarge!
-                                  .copyWith(color: Colors.red),
-                            ),
+                        state.exceptionError,
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleLarge!
+                            .copyWith(color: Colors.red),
+                      ),
+                      state.formStatus == FormzSubmissionStatus.inProgress
+                          ? const Center(
+                        child: CircularProgressIndicator(),
+                      )
+                          : const SizedBox.shrink(),
                       const Spacer(),
                       AppButton(
                         onPressed: () async {

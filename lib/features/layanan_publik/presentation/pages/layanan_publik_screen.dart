@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:suranect/app/routes/route_utils.dart';
 import 'package:suranect/core/theme/app_colors.dart';
 import 'package:suranect/core/theme/app_shadow.dart';
 import 'package:suranect/core/widgets/base_app_bar.dart';
 import 'package:suranect/core/widgets/base_body_page.dart';
+import 'package:suranect/core/widgets/search_screen.dart';
 import 'package:suranect/features/layanan_publik/presentation/widgets/card_layanan.dart';
 
 class LayananPublikScreen extends StatefulWidget {
@@ -17,7 +19,9 @@ class _LayananPublikScreenState extends State<LayananPublikScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BaseAppBar(title: PAGES.layananPublik.screenTitle),
+      appBar: BaseAppBar(
+          title: PAGES.layananPublik.screenTitle,
+          searchDelegate: DataSearch(listWords: listWords)),
       body: BaseBodyPage(
         children: [
           SliverFillRemaining(
@@ -61,9 +65,23 @@ class _LayananPublikScreenState extends State<LayananPublikScreen> {
   }
 
   SizedBox _header(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+
+    double headerHeight = screenHeight * 0.23, cardHeader = screenHeight * 0.12;
+
+    if (screenHeight <= 732) {
+      headerHeight = screenHeight * 0.25;
+      cardHeader = screenHeight * 0.14;
+    }
+
+    if (screenHeight <= 640) {
+      headerHeight = screenHeight * 0.25;
+      cardHeader = screenHeight * 0.16;
+    }
+
     return SizedBox(
       width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height * 0.23,
+      height: headerHeight,
       child: Stack(
         children: [
           Positioned(
@@ -99,9 +117,10 @@ class _LayananPublikScreenState extends State<LayananPublikScreen> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0,vertical: 5),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5),
               child: Container(
-                height: MediaQuery.of(context).size.height * 0.12,
+                height: cardHeader,
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                     color: AppColors.white,

@@ -10,6 +10,7 @@ import 'package:suranect/features/auth/presentation/controller/register/register
 import 'package:suranect/features/auth/presentation/controller/verify_otp/verify_otp_cubit.dart';
 import 'package:suranect/features/auth/presentation/pages/verify_otp_screen.dart';
 import 'package:suranect/features/berita/presentation/pages/berita_screen.dart';
+import 'package:suranect/features/event/presentation/pages/event_screen.dart';
 import 'package:suranect/features/facilities/presentation/pages/facilities_screen.dart';
 import 'package:suranect/features/home/presentation/controller/home_bloc.dart';
 import 'package:suranect/features/home/presentation/pages/home_screen.dart';
@@ -152,6 +153,12 @@ class AppRouter {
         path: PAGES.umkm.screenPath,
         name: PAGES.umkm.screenName,
         builder: (context, state) => const UmkmScreen(),
+      ),
+      GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
+        path: PAGES.event.screenPath,
+        name: PAGES.event.screenName,
+        builder: (context, state) => const EventScreen(),
       ),
     ],
     errorBuilder: (context, state) => const NotFoundScreen(),

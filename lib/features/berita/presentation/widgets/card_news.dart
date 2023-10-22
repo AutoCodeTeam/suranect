@@ -28,7 +28,7 @@ class CardNews extends StatelessWidget {
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage(image),
-              fit: BoxFit.fill,
+              fit: BoxFit.cover,
             ),
             borderRadius: const BorderRadius.all(
               Radius.circular(15),
@@ -75,7 +75,7 @@ class CardNews extends StatelessWidget {
                       subtitle,
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                             color: AppColors.white,
                           ),
                     ),
