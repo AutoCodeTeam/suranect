@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:suranect/app/network/base/api_error.dart';
+import 'package:suranect/features/pajak_kendaraan/data/remote/models/pajak_kendaraan_response.dart';
 
 abstract class ApiResult<T> {
   static const String _jsonNodeErrors = "Status";

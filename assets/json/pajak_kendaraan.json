@@ -1,0 +1,84 @@
+{
+  "Data": [
+    {
+      "ID": 1,
+      "Identitas_kendaraan": {
+        "Nopol": "L 1234 AAE",
+        "Warna": "Hitam",
+        "Merek": "Honda",
+        "Model": "Vario",
+        "Tipe": "SEPEDA MONTOR",
+        "Tahun_pembuatan": "2023",
+        "Masa_berlaku": "23 Oktober 2024"
+      },
+      "Penul_tahunan": {
+        "Pkb": 150000,
+        "Progresif": 0,
+        "Swdkllj": 35000,
+        "Parkir_langganan": 0,
+        "Pengesahaan_stnk": 0,
+        "Total_jumlah": 185000
+      },
+      "Penul_5_tahunan": {
+        "Cetak_stnk": 100000,
+        "Cetak_Tnkb": 60000
+      },
+      "UpdatedAt": "2023-10-19T21:10:59.31+07:00",
+      "CreatedAt": "2023-10-19T20:18:01.362+07:00"
+    },
+    {
+      "ID": 2,
+      "Identitas_kendaraan": {
+        "Nopol": "L 5678 AB",
+        "Warna": "Merah",
+        "Merek": "Toyota",
+        "Model": "Corolla",
+        "Tipe": "SEDAN",
+        "Tahun_pembuatan": "2022",
+        "Masa_berlaku": "15 November 2023"
+      },
+      "Penul_tahunan": {
+        "Pkb": 130000,
+        "Progresif": 0,
+        "Swdkllj": 32000,
+        "Parkir_langganan": 0,
+        "Pengesahaan_stnk": 0,
+        "Total_jumlah": 162000
+      },
+      "Penul_5_tahunan": {
+        "Cetak_stnk": 90000,
+        "Cetak_Tnkb": 55000
+      },
+      "UpdatedAt": "2023-10-25T14:45:20.45+07:00",
+      "CreatedAt": "2023-10-25T13:55:37.820+07:00"
+    },
+    {
+      "ID": 3,
+      "Identitas_kendaraan": {
+        "Nopol": "L 9876 AAE",
+        "Warna": "Putih",
+        "Merek": "Nissan",
+        "Model": "X-Trail",
+        "Tipe": "SUV",
+        "Tahun_pembuatan": "2021",
+        "Masa_berlaku": "10 December 2025"
+      },
+      "Penul_tahunan": {
+        "Pkb": 170000,
+        "Progresif": 0,
+        "Swdkllj": 40000,
+        "Parkir_langganan": 0,
+        "Pengesahaan_stnk": 0,
+        "Total_jumlah": 210000
+      },
+      "Penul_5_tahunan": {
+        "Cetak_stnk": 110000,
+        "Cetak_Tnkb": 70000
+      },
+      "UpdatedAt": "2023-10-26T18:30:15.78+07:00",
+      "CreatedAt": "2023-10-26T17:42:55.923+07:00"
+    }
+  ],
+  "Message": "Success Get Pajak Kendaraan",
+  "Status": "success"
+}

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:suranect/app/routes/app_router.dart';
 import 'package:suranect/app/routes/route_utils.dart';
 import 'package:suranect/core/theme/app_colors.dart';
 import 'package:suranect/core/theme/app_shadow.dart';
@@ -41,14 +42,18 @@ class _LayananPublikScreenState extends State<LayananPublikScreen> {
                       ),
                       const SizedBox(height: 10),
                       CardLayanan(
-                        onTap: () {},
+                        onTap: () {
+                          AppRouter.router.push(PAGES.plat.screenPath);
+                        },
                         icon: "assets/svg/car_ic.svg",
                         title: "Pajak Kendaraan",
                         subtitle: "Cek pajak kendaraan bermotor anda.",
                       ),
                       const SizedBox(height: 10),
                       CardLayanan(
-                        onTap: () {},
+                        onTap: () {
+                          AppRouter.router.push(PAGES.nop.screenPath);
+                        },
                         icon: "assets/svg/house_ic.svg",
                         title: "PBB Online",
                         subtitle: "Cek pajak tanah anda.",

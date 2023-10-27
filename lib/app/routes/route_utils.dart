@@ -14,7 +14,16 @@ enum PAGES {
   wisata,
   umkm,
   event,
+  takePhoto,
+  reviewPhoto,
+  reviewLaporan,
+  laporan,
+  peta,
   facilities,
+  plat,
+  pajakKendaraan,
+  nop,
+  pbb,
   error,
 }
 
@@ -51,8 +60,26 @@ extension AppPageExtension on PAGES {
         return "/umkm";
       case PAGES.event:
         return "/event";
+      case PAGES.takePhoto:
+        return "/take_photo";
+      case PAGES.reviewPhoto:
+        return "/review_photo";
+      case PAGES.reviewLaporan:
+        return "/review_laporan";
+      case PAGES.laporan:
+        return "/laporan";
+      case PAGES.peta:
+        return "/peta";
       case PAGES.facilities:
         return "/facilities";
+      case PAGES.plat:
+        return "/plat";
+      case PAGES.pajakKendaraan:
+        return "/pajak_kendaraan";
+      case PAGES.nop:
+        return "/nop";
+      case PAGES.pbb:
+        return "/pbb";
       case PAGES.error:
         return "/error";
       default:
@@ -92,8 +119,26 @@ extension AppPageExtension on PAGES {
         return "UMKM";
       case PAGES.event:
         return "EVENT";
+      case PAGES.takePhoto:
+        return "TAKE_PHOTO";
+      case PAGES.reviewPhoto:
+        return "REVIEW_PHOTO";
+      case PAGES.reviewLaporan:
+        return "REVIEW_LAPORAN";
+      case PAGES.laporan:
+        return "LAPORAN";
+      case PAGES.peta:
+        return "PETA";
       case PAGES.facilities:
         return "FACILITIES";
+      case PAGES.plat:
+        return "PLAT";
+      case PAGES.pajakKendaraan:
+        return "PAJAK_KENDARAAN";
+      case PAGES.nop:
+        return "NOP";
+      case PAGES.pbb:
+        return "PBB";
       case PAGES.error:
         return "ERROR";
       default:
@@ -133,8 +178,26 @@ extension AppPageExtension on PAGES {
         return "UMKM Surabaya";
       case PAGES.event:
         return "Event Terbaru";
+      case PAGES.takePhoto:
+        return "Ambil Foto Laporan";
+      case PAGES.reviewPhoto:
+        return "Tinjau Foto";
+      case PAGES.reviewLaporan:
+        return "Tinjau Laporan";
+      case PAGES.laporan:
+        return "Laporan Warga";
+      case PAGES.peta:
+        return "Peta";
       case PAGES.facilities:
         return "Fasilitas Kota Surabaya";
+      case PAGES.plat:
+        return "Cek Pajak Motor Anda";
+      case PAGES.pajakKendaraan:
+        return "Pajak Kendaraan Bermotor";
+      case PAGES.nop:
+        return "Cek Pajak Tanah Anda";
+      case PAGES.pbb:
+        return "Pajak PBB";
       case PAGES.error:
         return "Error";
       default:

@@ -38,12 +38,22 @@ class _FacilitiesScreenState extends State<FacilitiesScreen> {
         page: PAGES.event,
         iconItem: "assets/svg/event_blue_ic.svg",
         subtitle: "Cari event-event terbaru Surabaya yuk"),
+    const ListItem(
+        page: PAGES.laporan,
+        iconItem: "assets/svg/event_blue_ic.svg",
+        subtitle: "Laporkan permasalahan anda di Surabaya"),
+    const ListItem(
+        page: PAGES.peta,
+        iconItem: "assets/svg/event_blue_ic.svg",
+        subtitle: "Laporkan permasalahan anda di Surabaya"),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BaseAppBar(title: PAGES.facilities.screenTitle, searchDelegate: DataSearch(listWords: listWords)),
+      appBar: BaseAppBar(
+          title: PAGES.facilities.screenTitle,
+          searchDelegate: DataSearch(listWords: listWords)),
       body: BaseBodyPage(
         children: [
           SliverList.separated(
@@ -62,7 +72,7 @@ class _FacilitiesScreenState extends State<FacilitiesScreen> {
               height: 20,
             ),
             itemCount: listItems.length,
-          )
+          ),
         ],
       ),
     );

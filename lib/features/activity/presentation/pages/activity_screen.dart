@@ -137,10 +137,12 @@ class _ActivityScreenState extends State<ActivityScreen> {
                         color: AppColors.white,
                         borderRadius: BorderRadius.circular(12),
                         border: Border.all(color: AppColors.neutral_30)),
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      shrinkWrap: true,
-                      children: chips,
+                    child: Center(
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        shrinkWrap: true,
+                        children: chips,
+                      ),
                     ),
                   )
                 ],

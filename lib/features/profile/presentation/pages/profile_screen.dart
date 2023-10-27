@@ -74,7 +74,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             color: AppColors.info_40,
                             shape: BoxShape.circle,
                           ),
-                          padding: const EdgeInsets.all(8),
+                          padding: const EdgeInsets.all(6),
                           child: SvgPicture.asset(
                             "assets/svg/edit_ic.svg",
                           ),

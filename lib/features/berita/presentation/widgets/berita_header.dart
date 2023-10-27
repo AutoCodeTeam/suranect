@@ -19,66 +19,74 @@ class BeritaHeader extends StatelessWidget {
   final Widget cardHeader;
   final Widget listNews;
 
-  const BeritaHeader({super.key,
+  const BeritaHeader({
+    super.key,
     required this.chips,
     required this.cardHeader,
     required this.listNews,
   });
 
   @override
-  // Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
   Widget build(BuildContext context) {
-  return Padding(
-    padding: const EdgeInsets.all(15),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          height: MediaQuery.of(context).size.height * 0.06,
-          width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-              color: AppColors.white,
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: AppColors.neutral_30)
-          ),
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            shrinkWrap: true,
-            children: chips,
-          ),
-        ),
-        const SizedBox(height: 10),
-        cardHeader,
-        const Divider(
-          thickness: 2,
-          color: AppColors.neutral_30,
-        ),
-        const SizedBox(height: 10),
-        const SizedBox(height: 10),
-        SizedBox(
-          height: MediaQuery.of(context).size.height * 0.2,
-          child: ListView.separated(
-            scrollDirection: Axis.horizontal,
-            itemCount: 5,
-            shrinkWrap: true,
-            separatorBuilder: (context, index) =>
-            const SizedBox(width: 10),
-            itemBuilder: (context, index) => CardNews(
-              image: "assets/images/news_example.png",
-              title: "Surabaya, Tanjungan membuka festival tahunan",
-              height: MediaQuery.of(context).size.height * 0.2,
-              width: MediaQuery.of(context).size.height * 0.2,
+    final screenHeight = MediaQuery.of(context).size.height;
+
+    double heightRowChips = screenHeight * 0.06;
+
+    if (screenHeight <= 732) {
+      heightRowChips = screenHeight * 0.08;
+    }
+
+    if (screenHeight <= 640) {
+      heightRowChips = screenHeight * 0.08;
+    }
+
+    return Padding(
+      padding: const EdgeInsets.all(15),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            height: heightRowChips,
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+                color: AppColors.white,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: AppColors.neutral_30)),
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              shrinkWrap: true,
+              children: chips,
             ),
           ),
-        ),
-        const SizedBox(height: 10),
-        Text(
-          "Berita Terbaru",
-          style: Theme.of(context).textTheme.headlineMedium,
-        ),
-      ],
-    ),
-  );
+          const SizedBox(height: 10),
+          cardHeader,
+          const Divider(
+            thickness: 2,
+            color: AppColors.neutral_30,
+          ),
+          const SizedBox(height: 10),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.2,
+            child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              itemCount: 5,
+              shrinkWrap: true,
+              separatorBuilder: (context, index) => const SizedBox(width: 10),
+              itemBuilder: (context, index) => CardNews(
+                image: "assets/images/news_example.png",
+                title: "Surabaya, Tanjungan membuka festival tahunan",
+                height: MediaQuery.of(context).size.height * 0.2,
+                width: MediaQuery.of(context).size.height * 0.2,
+              ),
+            ),
+          ),
+          const SizedBox(height: 10),
+          Text(
+            "Berita Terbaru",
+            style: Theme.of(context).textTheme.headlineMedium,
+          ),
+        ],
+      ),
+    );
   }
-
 }

@@ -1,10 +1,16 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:suranect/app/di/injector.dart';
 import 'package:suranect/app/routes/route_utils.dart';
 import 'package:suranect/app/routes/screens/not_found_page.dart';
+import 'package:suranect/features/add_laporan/presentation/controller/camera_bloc.dart';
 import 'package:suranect/features/activity/presentation/pages/activity_screen.dart';
+import 'package:suranect/features/add_laporan/presentation/controller/lapor_cubit.dart';
+import 'package:suranect/features/add_laporan/presentation/pages/review_laporan_screen.dart';
+import 'package:suranect/features/add_laporan/presentation/pages/review_photo_screen.dart';
+import 'package:suranect/features/add_laporan/presentation/pages/take_photo_screen.dart';
 import 'package:suranect/features/auth/presentation/controller/login/login_cubit.dart';
 import 'package:suranect/features/auth/presentation/controller/register/register_cubit.dart';
 import 'package:suranect/features/auth/presentation/controller/verify_otp/verify_otp_cubit.dart';
@@ -18,10 +24,19 @@ import 'package:suranect/features/introduction/presentation/controller/introduct
 import 'package:suranect/features/introduction/presentation/pages/introduction_screen.dart';
 import 'package:suranect/features/auth/presentation/pages/login_screen.dart';
 import 'package:suranect/features/auth/presentation/pages/register_screen.dart';
+import 'package:suranect/features/laporan/presentation/pages/laporan_screen.dart';
 import 'package:suranect/features/layanan_publik/presentation/pages/layanan_publik_screen.dart';
 import 'package:suranect/features/main_tab/presentation/controller/main_tab_bloc.dart';
 import 'package:suranect/features/main_tab/presentation/pages/main_tab.dart';
 import 'package:suranect/features/notification/presentation/pages/notification_screen.dart';
+import 'package:suranect/features/pajak_kendaraan/presentation/controller/pajak_kendaraan_bloc.dart';
+import 'package:suranect/features/pajak_kendaraan/presentation/pages/pajak_kendaraan_screen.dart';
+import 'package:suranect/features/pajak_kendaraan/presentation/pages/plat_screen.dart';
+import 'package:suranect/features/pbb/presentation/controller/pajak_pbb_bloc.dart';
+import 'package:suranect/features/pbb/presentation/pages/nop_screen.dart';
+import 'package:suranect/features/pbb/presentation/pages/pajak_pbb_screen.dart';
+import 'package:suranect/features/peta/presentation/controller/current_location_bloc.dart';
+import 'package:suranect/features/peta/presentation/pages/peta_screen.dart';
 import 'package:suranect/features/profile/presentation/pages/profile_screen.dart';
 import 'package:suranect/features/splash/presentation/pages/splash_screen.dart';
 import 'package:suranect/features/umkm/presentation/pages/umkm_screen.dart';
@@ -159,6 +174,87 @@ class AppRouter {
         path: PAGES.event.screenPath,
         name: PAGES.event.screenName,
         builder: (context, state) => const EventScreen(),
+      ),
+      GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
+        path: PAGES.takePhoto.screenPath,
+        name: PAGES.takePhoto.screenName,
+        builder: (context, state) => BlocProvider(
+          create: (context) =>
+              injector<CameraBloc>()..add(const CameraEvent.started()),
+          child: const TakePhotoScreen(),
+        ),
+      ),
+      GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
+        path: PAGES.reviewPhoto.screenPath,
+        name: PAGES.reviewPhoto.screenName,
+        builder: (context, state) => ReviewPhotoScreen(
+          image: state.extra as XFile,
+        ),
+      ),
+      GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
+        path: PAGES.reviewLaporan.screenPath,
+        name: PAGES.reviewLaporan.screenName,
+        builder: (context, state) => BlocProvider(
+          create: (context) => injector<LaporCubit>(),
+          child: ReviewLaporanScreen(
+            image: state.extra as XFile,
+          ),
+        ),
+      ),
+      GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
+        path: PAGES.laporan.screenPath,
+        name: PAGES.laporan.screenName,
+        builder: (context, state) => const LaporanScreen(),
+      ),
+      GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
+        path: PAGES.peta.screenPath,
+        name: PAGES.peta.screenName,
+        builder: (context, state) => BlocProvider(
+          create: (context) => injector<CurrentLocationBloc>()
+            ..add(const CurrentLocationEvent.started()),
+          child: const PetaScreen(),
+        ),
+      ),
+      GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
+        path: PAGES.plat.screenPath,
+        name: PAGES.plat.screenName,
+        builder: (context, state) => const PlatScreen(),
+      ),
+      GoRoute(
+          parentNavigatorKey: _rootNavigatorKey,
+          path: PAGES.pajakKendaraan.screenPath,
+          name: PAGES.pajakKendaraan.screenName,
+          builder: (context, state) {
+            Map<String, dynamic> args = state.extra as Map<String, dynamic>;
+            return BlocProvider(
+              create: (context) => injector<PajakKendaraanBloc>(),
+              child: PajakKendaraanScreen(nopol: args['plat']),
+            );
+          }),
+      GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
+        path: PAGES.nop.screenPath,
+        name: PAGES.nop.screenName,
+        builder: (context, state) => const NopScreen(),
+      ),
+      GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
+        path: PAGES.pbb.screenPath,
+        name: PAGES.pbb.screenName,
+        builder: (context, state) {
+          Map<String, dynamic> args = state.extra as Map<String, dynamic>;
+
+          return BlocProvider(
+            create: (context) => injector<PajakPbbBloc>(),
+            child: PajakPbbScreen(nop: args['nop']),
+          );
+        },
       ),
     ],
     errorBuilder: (context, state) => const NotFoundScreen(),

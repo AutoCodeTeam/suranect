@@ -1,4 +1,7 @@
 import 'package:get_it/get_it.dart';
+import 'package:suranect/features/add_laporan/presentation/controller/camera_bloc.dart';
+import 'package:suranect/core/utils/camera_utils.dart';
+import 'package:suranect/features/add_laporan/presentation/controller/lapor_cubit.dart';
 import 'package:suranect/features/auth/data/local/data_sources/auth_local_data_source.dart';
 import 'package:suranect/features/auth/data/local/data_sources/auth_local_data_source_impl.dart';
 import 'package:suranect/features/auth/data/remote/data_sources/login/login_remote_data_source.dart';
@@ -29,6 +32,21 @@ import 'package:suranect/features/introduction/domain/use_cases/done_intro_use_c
 import 'package:suranect/features/introduction/domain/use_cases/is_intro_in_use_case.dart';
 import 'package:suranect/features/introduction/presentation/controller/introduction_bloc.dart';
 import 'package:suranect/features/main_tab/presentation/controller/main_tab_bloc.dart';
+import 'package:suranect/features/pajak_kendaraan/data/remote/data_sources/pajak_kendaraan_remote_data_source.dart';
+import 'package:suranect/features/pajak_kendaraan/data/remote/data_sources/pajak_kendaraan_remote_data_source_impl.dart';
+import 'package:suranect/features/pajak_kendaraan/data/repositories/pajak_kendaraan_repository_impl.dart';
+import 'package:suranect/features/pajak_kendaraan/domain/repositories/pajak_kendaraan_repository.dart';
+import 'package:suranect/features/pajak_kendaraan/domain/use_cases/get_pajak_kendaraan_use_case.dart';
+import 'package:suranect/features/pajak_kendaraan/presentation/controller/pajak_kendaraan_bloc.dart';
+import 'package:suranect/features/pbb/data/remote/data_sources/pajak_pbb_remote_data_source.dart';
+import 'package:suranect/features/pbb/data/remote/data_sources/pajak_pbb_remote_data_source.dart';
+import 'package:suranect/features/pbb/data/remote/data_sources/pajak_pbb_remote_data_source_impl.dart';
+import 'package:suranect/features/pbb/data/repositories/pajak_pbb_repository_impl.dart';
+import 'package:suranect/features/pbb/domain/repositories/pajak_pbb_repository.dart';
+import 'package:suranect/features/pbb/domain/repositories/pajak_pbb_repository.dart';
+import 'package:suranect/features/pbb/domain/use_cases/get_pajak_pbb_use_case.dart';
+import 'package:suranect/features/pbb/presentation/controller/pajak_pbb_bloc.dart';
+import 'package:suranect/features/peta/presentation/controller/current_location_bloc.dart';
 
 final injector = GetIt.instance;
 
@@ -48,6 +66,10 @@ Future<void> initDependencies() async {
       () => VerifyOtpRemoteDataSourceImpl(authLocalDataSource: injector()));
   injector.registerLazySingleton<ProfileRemoteDataSource>(
       () => ProfileRemoteDataSourceImpl(authLocalDataSource: injector()));
+  injector.registerLazySingleton<PajakKendaraanRemoteDataSource>(
+      () => PajakKendaraanRemoteDataSourceImpl());
+  injector.registerLazySingleton<PajakPBBRemoteDataSource>(
+      () => PajakPBBRemoteDataSourceImpl());
 
   /// Repository ///
   injector.registerLazySingleton<IntroRepository>(
@@ -59,6 +81,16 @@ Future<void> initDependencies() async {
         verifyOtpRemoteDataSource: injector(),
         profileRemoteDataSource: injector(),
       ));
+  injector.registerLazySingleton<PajakKendaraanRepository>(
+    () => PajakKendaraanRepositoryImpl(
+      pajakKendaraanRemoteDataSource: injector(),
+    ),
+  );
+  injector.registerLazySingleton<PajakPBBRepository>(
+    () => PajakPBBRepositoryImpl(
+      pajakPBBRemoteDataSource: injector(),
+    ),
+  );
 
   /// UseCase ///
   injector.registerLazySingleton(
@@ -75,6 +107,13 @@ Future<void> initDependencies() async {
       .registerLazySingleton(() => GetOtpUseCase(userRepository: injector()));
   injector.registerLazySingleton(
       () => GetProfileUseCase(userRepository: injector()));
+  injector.registerLazySingleton(
+      () => GetPajakKendaraanUseCase(pajakKendaraanRepository: injector()));
+  injector.registerLazySingleton(
+      () => GetPajakPbbUseCase(pajakPBBRepository: injector()));
+
+  /// Utility ///
+  injector.registerLazySingleton<CameraUtils>(() => CameraUtils());
 
   /// BloC ///
   injector.registerFactory(
@@ -95,6 +134,24 @@ Future<void> initDependencies() async {
   injector.registerFactory(
     () => HomeBloc(),
   );
+  injector.registerFactory(
+    () => CameraBloc(
+      cameraUtils: injector(),
+    ),
+  );
+  injector.registerFactory(
+    () => CurrentLocationBloc(),
+  );
+  injector.registerFactory(
+    () => PajakKendaraanBloc(
+      getPajakKendaraanUseCase: injector(),
+    ),
+  );
+  injector.registerFactory(
+    () => PajakPbbBloc(
+      getPajakPbbUseCase: injector(),
+    ),
+  );
 
   /// Cubit ///
   injector.registerFactory(
@@ -112,6 +169,9 @@ Future<void> initDependencies() async {
       verifyOtpUseCase: injector(),
       getOtpUseCase: injector(),
     ),
+  );
+  injector.registerFactory(
+    () => LaporCubit(),
   );
 
   await injector<IntroLocalDataSource>().initDb();

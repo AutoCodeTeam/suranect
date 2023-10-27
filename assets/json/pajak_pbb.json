@@ -1,0 +1,33 @@
+{
+  "Data": [
+    {
+      "ID": 1,
+      "Nop": "12.34.567.891.234-5678.9",
+      "Letak_objek_pajak": {
+        "Alamat": "SMEAS NO 4",
+        "RT": "01",
+        "RW": "03",
+        "Kelurahan": "WONOKROMO",
+        "Kecamatan": "WONOKROMO",
+        "Kota": "SURABAYA"
+      },
+      "Alamat_wajib_pajak": {
+        "Atas_nama": "Pak BUDI",
+        "Alamat": "SMEAS NO 4",
+        "RT": "01",
+        "RW": "03",
+        "Kelurahan": "WONOKROMO",
+        "Kota": "SURABAYA"
+      },
+      "Njop_pbb_p2": 4670092000,
+      "Njoptkp": 12000000,
+      "Njop": 4658092000,
+      "Njkp": "40%",
+      "Pbb_yang_terhutang": "0.5%",
+      "Jatuh_Tempo": "28 OKT 2023",
+      "Tempat_pembayaran": "BPD SURABAYA"
+    }
+  ],
+  "Message": "Success Get Pajak Kendaraan",
+  "Status": "success"
+}

@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:suranect/app/routes/app_router.dart';
+import 'package:suranect/core/widgets/search_screen.dart';
 
 class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final SearchDelegate<String> searchDelegate;
+  final bool isShowSearch;
 
-  const BaseAppBar({
-    super.key,
+  BaseAppBar({
+    Key? key,
     required this.title,
-    required this.searchDelegate,
-  });
+    DataSearch? searchDelegate,
+    this.isShowSearch = false,
+  })  : searchDelegate = searchDelegate ?? DataSearch(listWords: listWords),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,11 +34,13 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
             .copyWith(fontWeight: FontWeight.w600),
       ),
       actions: <Widget>[
-        IconButton(
-            icon: const Icon(Icons.search),
-            onPressed: () {
-              showSearch(context: context, delegate: searchDelegate);
-            })
+        isShowSearch
+            ? IconButton(
+                icon: const Icon(Icons.search),
+                onPressed: () {
+                  showSearch(context: context, delegate: searchDelegate);
+                })
+            : const SizedBox.shrink(),
       ],
       centerTitle: false,
     );
