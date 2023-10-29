@@ -65,6 +65,12 @@ import 'package:suranect/features/peta/domain/repositories/peta_repository.dart'
 import 'package:suranect/features/peta/domain/use_cases/get_peta_use_case.dart';
 import 'package:suranect/features/peta/presentation/controller/current_location_bloc.dart';
 import 'package:suranect/features/peta/presentation/controller/peta_bloc.dart';
+import 'package:suranect/features/umkm/data/remote/data_sources/umkm_remote_data_source.dart';
+import 'package:suranect/features/umkm/data/remote/data_sources/umkm_remote_data_source_impl.dart';
+import 'package:suranect/features/umkm/data/repositories/umkm_repository_impl.dart';
+import 'package:suranect/features/umkm/domain/repositories/umkm_repository.dart';
+import 'package:suranect/features/umkm/domain/use_cases/get_umkm_use_case.dart';
+import 'package:suranect/features/umkm/presentation/controller/umkm_bloc.dart';
 import 'package:suranect/features/wisata/data/remote/data_sources/wisata_remote_data_source.dart';
 import 'package:suranect/features/wisata/data/remote/data_sources/wisata_remote_data_source_impl.dart';
 import 'package:suranect/features/wisata/data/repositories/wisata_repostiory_impl.dart';
@@ -103,6 +109,9 @@ Future<void> initDependencies() async {
   );
   injector.registerLazySingleton<PetaRemoteDataSource>(
     () => PetaRemoteDataSourceImpl(),
+  );
+  injector.registerLazySingleton<UmkmRemoteDataSource>(
+    () => UmkmRemoteDataSourceImpl(),
   );
 
   /// Repository ///
@@ -145,6 +154,11 @@ Future<void> initDependencies() async {
       petaRemoteDataSource: injector(),
     ),
   );
+  injector.registerLazySingleton<UmkmRepository>(
+    () => UmkmRepositoryImpl(
+      umkmRemoteDataSource: injector(),
+    ),
+  );
 
   /// UseCase ///
   injector.registerLazySingleton(
@@ -180,6 +194,11 @@ Future<void> initDependencies() async {
   injector.registerLazySingleton<GetPetaUseCase>(
     () => GetPetaUseCase(
       petaRepository: injector(),
+    ),
+  );
+  injector.registerLazySingleton<GetUmkmUseCase>(
+    () => GetUmkmUseCase(
+      umkmRepository: injector(),
     ),
   );
 
@@ -243,6 +262,11 @@ Future<void> initDependencies() async {
     () => PetaBloc(
       getEventUseCase: injector(),
       getPetaUseCase: injector(),
+    ),
+  );
+  injector.registerFactory(
+    () => UmkmBloc(
+      getUmkmUseCase: injector(),
     ),
   );
 

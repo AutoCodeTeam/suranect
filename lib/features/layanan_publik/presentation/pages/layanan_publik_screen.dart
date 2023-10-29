@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:suranect/app/routes/app_router.dart';
 import 'package:suranect/app/routes/route_utils.dart';
 import 'package:suranect/core/theme/app_colors.dart';
 import 'package:suranect/core/theme/app_shadow.dart';
 import 'package:suranect/core/widgets/base_app_bar.dart';
 import 'package:suranect/core/widgets/base_body_page.dart';
-import 'package:suranect/core/widgets/search_screen.dart';
 import 'package:suranect/features/layanan_publik/presentation/widgets/card_layanan.dart';
 
 class LayananPublikScreen extends StatefulWidget {
@@ -22,7 +20,7 @@ class _LayananPublikScreenState extends State<LayananPublikScreen> {
     return Scaffold(
       appBar: BaseAppBar(
           title: PAGES.layananPublik.screenTitle,
-          searchDelegate: DataSearch(listWords: listWords)),
+      ),
       body: BaseBodyPage(
         children: [
           SliverFillRemaining(

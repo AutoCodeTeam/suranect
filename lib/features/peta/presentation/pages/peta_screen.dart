@@ -32,7 +32,7 @@ class _PetaScreenState extends State<PetaScreen> {
   );
 
   final _sheet = GlobalKey();
-  final _controller = DraggableScrollableController();
+  final _draggableController = DraggableScrollableController();
 
   @override
   Widget build(BuildContext context) {
@@ -249,7 +249,7 @@ class _PetaScreenState extends State<PetaScreen> {
                           expand: true,
                           snap: true,
                           snapSizes: const [0.5],
-                          controller: _controller,
+                          controller: _draggableController,
                           builder: (BuildContext context,
                               ScrollController scrollController) {
                             return DecoratedBox(
@@ -349,6 +349,8 @@ class _PetaScreenState extends State<PetaScreen> {
                                                         ),
                                                   ),
                                                   onPressed: () {
+                                                    _draggableController
+                                                        .jumpTo(0.3);
                                                     mapController.move(
                                                         LatLng(
                                                             valuePeta
@@ -504,6 +506,8 @@ class _PetaScreenState extends State<PetaScreen> {
                                                           ),
                                                     ),
                                                     onPressed: () {
+                                                      _draggableController
+                                                          .jumpTo(0.3);
                                                       mapController.move(
                                                           LatLng(
                                                               valuePeta

@@ -7,6 +7,38 @@
       "Address": "Jl. Pantai Ria Kenjeran, Sukolilo Barum Kec. Bulak, Surabaya, Jawa Timur 60122",
       "Image": "https://asset.kompas.com/crops/jvz-4WssMj12FqnWnhbT0JfSOXs=/0x41:1080x761/750x500/data/photo/2022/05/31/629554894596e.jpg",
       "Rating": 4.6
+    },
+    {
+      "ID": 2,
+      "Name": "Surabaya North Quay",
+      "Description": "Surabaya North Quay adalah sebuah kawasan wisata baru yang berlokasi di lantai dua dan tiga gedung megah Terminal Gapura Surya Nusantara, lokasi ini akan segera dibuka.Di destinasi wisata baru tersebut, pengunjung tidak hanya dapat menikmati pemandangan indah, namun juga mewah dengan sandarnya kapal pesiar internasional. Surabaya North Quay berada di terminal penumpang kapal laut modern, Gapura Surya Nusantara, Pelabuhan Tanjung Perak.",
+      "Address": "Jl. Perak Utara, Kec. Pabean Cantikan, Surabaya, Jawa Timur 60165",
+      "Image": "https://blog.oaktree.id/wp-content/uploads/2023/04/surabaya-north-quay.jpg",
+      "Rating": 4.4
+    },
+    {
+      "ID": 3,
+      "Name": "Kebun Binatang Surabaya",
+      "Description": "Kebun Binatang Surabaya adalah salah satu kebun binatang yang populer di Indonesia dan terletak di Surabaya. KBS merupakan kebun binatang yang pernah terlengkap se-Asia Tenggara, di dalamnya terdapat lebih dari 230 spesies satwa yang berbeda yang terdiri lebih dari 2179 ekor satwa.",
+      "Address": "Jl. Setail No.1, Darmo, Kec. Wonokromo, Surabaya, Jawa Timur 60241",
+      "Image": "https://cdn1-production-images-kly.akamaized.net/xHgR7s8icjRASHotVw1kcdrI6Oc=/1200x675/smart/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/538407/original/kbs-surabaya-zoo-140109c.jpg",
+      "Rating": 4.4
+    },
+    {
+      "ID": 4,
+      "Name": "Monumen Tugu Pahlawan dan Museum Sepuluh Nopember Surabaya",
+      "Description": "Monumen Tugu Pahlawan dibangun untuk mengenang sejarah perjuangan Pahlawan Kemerdekaan Bangsa Indonesia dalam peristiwa pertempuran 10 Nopember 1945 di Surabaya. Bangunan monumen dibangun dengan bentuk menyerupai \"paku terbalik\" setinggi 45-yard atau 40,50 meter. Untuk melengkapi monumen, dibangunlah fasilitas sejarah yaitu Museum 10 Nopember yang di dalamnya terdapat ratusan koleksi seperti koleksi foto, senjata rampasan dan artefak peninggalan pertempuran di Surabaya dan fasilitas pendukung lain yaitu diorama elekronik dan diorama statis.",
+      "Address": "Jl. Pahlawan, Alun-alun Contong, Kec. Bubutan, Surabaya, Jawa Timur 60174",
+      "Image": "https://img.okezone.com/content/2022/11/11/408/2705305/tugu-pahlawan-surabaya-sejarah-lokasi-dan-harga-tiket-masuk-6QOmPJAWjP.JPG",
+      "Rating": 4.4
+    },
+    {
+      "ID": 5,
+      "Name": "Monumen Tugu Pahlawan dan Museum Sepuluh Nopember Surabaya",
+      "Description": "Taman Bungkul adalah taman wisata kota yang terletak di pusat kota Surabaya, tepatnya di Jalan Raya Darmo. Taman ini berdiri di area seluas 900 meter persegi. Dilengkapi berbagai fasilitas penunjang, seperti amfiteater berdiameter 33 meter, lajur joging, lahan papan luncur, taman bermain anak-anak, air mancur, dan pujasera. Selain itu, taman ini juga dilengkapi akses internet nirkabel yang terbuka untuk umum sehingga siapapun bisa mengakses internet selama di taman ini. Letaknya yang berada di jantung Kota Surabaya membuat taman ini tidak hanya berfungsi sebagai lahan hijau saja, tetapi juga sebagai destinasi wisata yang populer di Surabaya",
+      "Address": "Jl. Taman Bungkul, Darmo, Kec. Wonokromo, Surabaya, Jawa Timur 60241",
+      "Image": "https://cdn1-production-images-kly.akamaized.net/mhn0u507QMmt5TqDrnpgiQoD3Ks=/1200x675/smart/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/764274/original/055991500_1415678232-4_ragamnusantara_info.jpg",
+      "Rating": 4.6
     }
   ],
   "Message": "Success Get Wisata",

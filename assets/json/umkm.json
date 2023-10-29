@@ -2,9 +2,19 @@
   "Data": [
     {
       "ID": 1,
-      "Image": ""
+      "Image": "https://awsimages.detik.net.id/community/media/visual/2022/01/25/diah-cookies-4_169.jpeg?w=620",
+      "Name": "Diah Cookies",
+      "Description": "Diah Cookies merupakan industri kue kering rumahan yang telah memulai perjalanannya secara online dan semakin sukses sejak pandemi hingga meraih omset ratusan juta rupiah.",
+      "Building": "",
+      "Address": "Jl. Ketandan Baru II Jl. Kebangsren VI No.6-A, Genteng, Kec. Genteng, Surabaya, Jawa Timur 60275",
+      "List_product": [
+        {
+          "Image_product": "https://prod-swara.storage.googleapis.com/wp-content/uploads/2018/11/19223609/dyah-cookies.jpg",
+          "Name-product": "Cookies"
+        }
+      ]
     }
   ],
-  "Message": "Success Get Berita",
+  "Message": "Success Get UMKM",
   "Status": "success"
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:suranect/app/routes/app_router.dart';
-import 'package:suranect/core/widgets/search_screen.dart';
 
 class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;

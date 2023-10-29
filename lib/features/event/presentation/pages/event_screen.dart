@@ -8,7 +8,6 @@ import 'package:suranect/core/theme/app_colors.dart';
 import 'package:suranect/core/theme/app_shadow.dart';
 import 'package:suranect/core/widgets/base_app_bar.dart';
 import 'package:suranect/core/widgets/base_body_page.dart';
-import 'package:suranect/core/widgets/search_screen.dart';
 import 'package:suranect/features/event/domain/entities/event.dart';
 import 'package:suranect/features/event/presentation/controller/event_bloc.dart';
 import 'package:suranect/features/event/presentation/pages/event_search_screen.dart';

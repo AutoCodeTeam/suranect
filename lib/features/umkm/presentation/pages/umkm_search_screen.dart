@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:suranect/app/routes/app_router.dart';
+import 'package:suranect/app/routes/route_utils.dart';
 import 'package:suranect/core/theme/app_colors.dart';
+import 'package:suranect/features/umkm/domain/entities/umkm.dart';
 
-class DataSearch extends SearchDelegate<String> {
-  final List<ListWords> listWords;
+class UmkmSearchScreen extends SearchDelegate {
+  final List<Umkm> umkm;
 
-  DataSearch({
-    required this.listWords,
+  UmkmSearchScreen({
+    required this.umkm,
   });
 
   @override
@@ -51,16 +54,30 @@ class DataSearch extends SearchDelegate<String> {
   @override
   Widget buildResults(BuildContext context) {
     final suggestionList = query.isEmpty
-        ? listWords
-        : listWords
-            .where((p) =>
-                p.titlelist.contains(RegExp(query, caseSensitive: false)))
+        ? umkm
+        : umkm
+            .where((p) => p.name.contains(RegExp(query, caseSensitive: false)))
             .toList();
 
     return ListView.builder(
       itemBuilder: (context, index) => ListTile(
-        title: Text(listWords[index].titlelist),
-        subtitle: Text(listWords[index].definitionlist),
+        onTap: () {
+          AppRouter.router.push(PAGES.umkmDetail.screenPath, extra: {
+            "umkm": suggestionList[index],
+          });
+        },
+        title: RichText(
+          text: TextSpan(
+              text: suggestionList[index].name.substring(0, query.length),
+              style: const TextStyle(
+                  color: Colors.red, fontWeight: FontWeight.bold),
+              children: [
+                TextSpan(
+                    text:
+                    suggestionList[index].name.substring(query.length),
+                    style: const TextStyle(color: Colors.grey)),
+              ]),
+        ),
       ),
       itemCount: suggestionList.length,
     );
@@ -69,25 +86,28 @@ class DataSearch extends SearchDelegate<String> {
   @override
   Widget buildSuggestions(BuildContext context) {
     final suggestionList = query.isEmpty
-        ? listWords
-        : listWords
+        ? umkm
+        : umkm
             .where((p) =>
-                p.titlelist.contains(RegExp(query, caseSensitive: false)))
+                p.name.contains(RegExp(query, caseSensitive: false)))
             .toList();
 
     return ListView.builder(
       itemBuilder: (context, index) => ListTile(
-        onTap: () {},
-        trailing: const Icon(Icons.remove_red_eye),
+        onTap: () {
+          AppRouter.router.push(PAGES.umkmDetail.screenPath, extra: {
+            "umkm": suggestionList[index],
+          });
+        },
         title: RichText(
           text: TextSpan(
-              text: suggestionList[index].titlelist.substring(0, query.length),
+              text: suggestionList[index].name.substring(0, query.length),
               style: const TextStyle(
                   color: Colors.red, fontWeight: FontWeight.bold),
               children: [
                 TextSpan(
                     text:
-                        suggestionList[index].titlelist.substring(query.length),
+                        suggestionList[index].name.substring(query.length),
                     style: const TextStyle(color: Colors.grey)),
               ]),
         ),
@@ -95,17 +115,4 @@ class DataSearch extends SearchDelegate<String> {
       itemCount: suggestionList.length,
     );
   }
-}
-
-List<ListWords> listWords = [
-  ListWords('oneWord', 'OneWord definition'),
-  ListWords('twoWord', 'TwoWord definition.'),
-  ListWords('TreeWord', 'TreeWord definition'),
-];
-
-class ListWords {
-  String titlelist;
-  String definitionlist;
-
-  ListWords(this.titlelist, this.definitionlist);
 }

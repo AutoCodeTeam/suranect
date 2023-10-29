@@ -7,7 +7,6 @@ import 'package:suranect/core/theme/app_colors.dart';
 import 'package:suranect/core/theme/app_shadow.dart';
 import 'package:suranect/core/widgets/base_app_bar.dart';
 import 'package:suranect/core/widgets/base_body_page.dart';
-import 'package:suranect/core/widgets/search_screen.dart';
 import 'package:suranect/features/wisata/presentation/controller/wisata_bloc.dart';
 import 'package:suranect/features/wisata/presentation/pages/wisata_search_screen.dart';
 import 'package:suranect/features/wisata/presentation/widgets/card_wisata_header.dart';

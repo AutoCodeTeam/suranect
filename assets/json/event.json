@@ -7,6 +7,7 @@
       "Openness": "Dibuka Secara Umum",
       "Building": "Amphitheatre Pakuwon City Mall Surabaya (2nd Floor)",
       "Address": "Jalan Raya Laguna KJW Putih Tambak No. 2, Surabaya",
+      "Date": "1 November 2023",
       "Time": "18.30 – 21.00 WIB",
       "Poster": "https://eventsurabaya.net/wp-content/uploads/2023/10/PP-ES-Taylor-Swift-1989-Sing-A-Long-Session-nov-2023-Go-Out-Events-Copy.jpg",
       "Link_registrasion": "https://docs.google.com/forms/d/e/1FAIpQLSdR2bjxXctqUnTMiBvJ4Dz3ie5Oo15JN0JUUKbkZEoKUn35Lw/viewform",
@@ -17,20 +18,37 @@
     },
     {
       "ID": 2,
-      "Title": "Taylor Swift 1989 Sing-A-Long Session: to Celebrate 1989 (Taylor’s Version) Album Released",
-      "Description": "Taylor Swift 1989 Sing-A-Long Session: to Celebrate 1989 (Taylor’s Version) Album Released",
+      "Title": "WEBSVAGANZA 2023",
+      "Description": "BEAUTY BAZAAR, BANYAK GUEST STAR, FREE ENTRY? dimana nih??\n\nHi Adventurepreneurs!\uD83D\uDC4B\uD83C\uDFFB\n\nWho’s excited to WEBSVAGANZA 2023?\uD83D\uDE31\n\nYuk datang dan ramein acaranya!\uD83E\uDD73\uD83D\uDE4C\uD83C\uDFFB Karena akan banyak guest star yang kece nih! Selain itu juga banyak discount dari brand make up dan lifestyle yang lagi hype banget!\n\nOkeyyy kalo udah dicatet jangan lupa dateng yaa! \uD83D\uDC9E and then lets having fun together with us. \uD83E\uDD29\uD83E\uDD29 see youuu!! \uD83D\uDE0D",
       "Openness": "Dibuka Secara Umum",
-      "Building": "Amphitheatre Pakuwon City Mall Surabaya (2nd Floor)",
-      "Address": "Jalan Raya Laguna KJW Putih Tambak No. 2, Surabaya",
+      "Building": "Galaxy Mall Exhibition Center",
+      "Address": "Jl. Dharmahusada Indah Timur No.35-37, Mulyorejo, Kec. Mulyorejo, Surabaya, Jawa Timur 60115",
+      "Date": "10 November 2023",
       "Time": "18.30 – 21.00 WIB",
-      "Poster": "https://eventsurabaya.net/wp-content/uploads/2023/10/PP-ES-Taylor-Swift-1989-Sing-A-Long-Session-nov-2023-Go-Out-Events-Copy.jpg",
+      "Poster": "https://eventsurabaya.net/wp-content/uploads/2023/10/MP-ES-WEBSVAGANZA-2023-Copy.jpg",
       "Link_registrasion": "",
       "Position": {
-        "Lat": -7.288477,
-        "Lon": 112.675969
+        "Lat": -7.276123,
+        "Lon": 112.781921
+      }
+    },
+    {
+      "ID": 3,
+      "Title": "SEMINAR INTERAKTIF “MENDADAK TP DOC”",
+      "Description": "KABAR GEMBIRA PENDAFTARAN EARLY BIRD DIPERPANJANG‼️\n\nBTS Consulting berkolaborasi dengan Taxflash mempersembahkan Seminar Pelatihan Penyusunan Transfer Pricing Documentation dengan judul : SEMINAR INTERAKTIF “MENDADAK TP DOC”\n\nAgenda yang ditujukan untuk memberikan pembekalan dalam teknis pembuatan TP Doc.\n\nSangat disarankan untuk :\n\n    Tax SPV & Tax Manager\n    Finance/Accounting Manager\n    Tax Officer\n    Tax Consultant\n\nPelatihan sudah termasuk :\n\n    Lunch\n    Snack\n    e-Certificate\n    e-module\n\nHanya dengan biaya Investasi :\n\n    Early Bird IDR. 600.000,-\n    Normal Price IDR 750.000,-\n",
+      "Openness": "Dibuka Secara Umum",
+      "Building": "Grand Darmo Suite",
+      "Address": "Jl. Progo No.1-3, Darmo, Kec. Wonokromo, Surabaya, Jawa Timur 60241",
+      "Date": "Sabtu, 28 Oktober 2023",
+      "Time": "09.00 – 16.00 WIB",
+      "Poster": "https://eventsurabaya.net/wp-content/uploads/2023/10/MP-ES-SMANIPDA-CUP-EVALORA-2K23-OSIS-MPK-SMAN-1-Porong-Copy.jpg",
+      "Link_registrasion": "https://bit.ly/MendadakTPDoc",
+      "Position": {
+        "Lat": -7.276123,
+        "Lon": 112.781921
       }
     }
   ],
-  "Message": "Success Get Berita",
+  "Message": "Success Get Event",
   "Status": "success"
 }

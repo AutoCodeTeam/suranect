@@ -30,6 +30,7 @@ enum PAGES {
   eventDetail,
   petaDetail,
   about,
+  umkmDetail,
 }
 
 extension AppPageExtension on PAGES {
@@ -97,6 +98,8 @@ extension AppPageExtension on PAGES {
         return "/peta_detail";
       case PAGES.about:
         return "/about";
+      case PAGES.umkmDetail:
+        return "/umkm_detail";
       default:
         return "/";
     }
@@ -164,8 +167,10 @@ extension AppPageExtension on PAGES {
         return "EVENT_DETAIL";
       case PAGES.petaDetail:
         return "PETA_DETAIL";
-        case PAGES.about:
-            return "ABOUT";
+      case PAGES.about:
+        return "ABOUT";
+      case PAGES.umkmDetail:
+        return "UMKM_DETAIL";
       default:
         return "HOME";
     }
@@ -233,8 +238,10 @@ extension AppPageExtension on PAGES {
         return "Event Detail";
       case PAGES.petaDetail:
         return "Peta Detail";
-        case PAGES.about:
-            return "Tentang Suranect";
+      case PAGES.about:
+        return "Tentang Suranect";
+        case PAGES.umkmDetail:
+            return "Detail UMKM";
       default:
         return "Home";
     }

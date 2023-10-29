@@ -17,6 +17,24 @@
           "Lat": -7.263911
         }
       ]
+    },
+    {
+      "ID": 2,
+      "title": "Jalan Sehat",
+      "Description": "Penutupan ini dikarenakan terdapat upacara memperingati 17 Agustus 1945",
+      "Time": "06:00 - 10:00 WIB",
+      "Address": "Jl. Embong Kaliasin, Kec. Genteng, Surabaya, Jawa Timur",
+      "Detail_location": "Di sekitar depan Plaza Surabaya",
+      "Position": [
+        {
+          "Lon": 112.746216,
+          "Lat": -7.264709
+        },
+        {
+          "Lon": 112.749285,
+          "Lat": -7.265811
+        }
+      ]
     }
   ],
   "Message": "Success Get Peta",

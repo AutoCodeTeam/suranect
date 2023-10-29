@@ -46,6 +46,8 @@ import 'package:suranect/features/peta/presentation/pages/peta_detail_screen.dar
 import 'package:suranect/features/peta/presentation/pages/peta_screen.dart';
 import 'package:suranect/features/profile/presentation/pages/profile_screen.dart';
 import 'package:suranect/features/splash/presentation/pages/splash_screen.dart';
+import 'package:suranect/features/umkm/presentation/controller/umkm_bloc.dart';
+import 'package:suranect/features/umkm/presentation/pages/detail_umkm_screen.dart';
 import 'package:suranect/features/umkm/presentation/pages/umkm_screen.dart';
 import 'package:suranect/features/wisata/presentation/controller/wisata_bloc.dart';
 import 'package:suranect/features/wisata/presentation/pages/wisata_detail_screen.dart';
@@ -192,7 +194,11 @@ class AppRouter {
         parentNavigatorKey: _rootNavigatorKey,
         path: PAGES.umkm.screenPath,
         name: PAGES.umkm.screenName,
-        builder: (context, state) => const UmkmScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) =>
+              injector<UmkmBloc>()..add(const UmkmEvent.started()),
+          child: const UmkmScreen(),
+        ),
       ),
       GoRoute(
         parentNavigatorKey: _rootNavigatorKey,
@@ -340,6 +346,17 @@ class AppRouter {
         path: PAGES.about.screenPath,
         name: PAGES.about.screenName,
         builder: (context, state) => const AboutScreen(),
+      ),
+      GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
+        path: PAGES.umkmDetail.screenPath,
+        name: PAGES.umkmDetail.screenName,
+        builder: (context, state) {
+          Map<String, dynamic> args = state.extra as Map<String, dynamic>;
+          return DetailUmkmScreen(
+            umkm: args['umkm'],
+          );
+        },
       ),
     ],
     errorBuilder: (context, state) => const NotFoundScreen(),
