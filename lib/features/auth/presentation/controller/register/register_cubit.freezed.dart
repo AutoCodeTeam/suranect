@@ -21,6 +21,7 @@ mixin _$RegisterState {
   RePassword get rePassword => throw _privateConstructorUsedError;
   bool get isValid => throw _privateConstructorUsedError;
   bool get showPassword => throw _privateConstructorUsedError;
+  bool get showRePassword => throw _privateConstructorUsedError;
   FormzSubmissionStatus get formStatus => throw _privateConstructorUsedError;
   Username get name => throw _privateConstructorUsedError;
   RegisterResponse get response => throw _privateConstructorUsedError;
@@ -33,6 +34,7 @@ mixin _$RegisterState {
             RePassword rePassword,
             bool isValid,
             bool showPassword,
+            bool showRePassword,
             FormzSubmissionStatus formStatus,
             Username name,
             RegisterResponse response,
@@ -48,6 +50,7 @@ mixin _$RegisterState {
             RePassword rePassword,
             bool isValid,
             bool showPassword,
+            bool showRePassword,
             FormzSubmissionStatus formStatus,
             Username name,
             RegisterResponse response,
@@ -63,6 +66,7 @@ mixin _$RegisterState {
             RePassword rePassword,
             bool isValid,
             bool showPassword,
+            bool showRePassword,
             FormzSubmissionStatus formStatus,
             Username name,
             RegisterResponse response,
@@ -105,6 +109,7 @@ abstract class $RegisterStateCopyWith<$Res> {
       RePassword rePassword,
       bool isValid,
       bool showPassword,
+      bool showRePassword,
       FormzSubmissionStatus formStatus,
       Username name,
       RegisterResponse response,
@@ -131,6 +136,7 @@ class _$RegisterStateCopyWithImpl<$Res, $Val extends RegisterState>
     Object? rePassword = null,
     Object? isValid = null,
     Object? showPassword = null,
+    Object? showRePassword = null,
     Object? formStatus = null,
     Object? name = null,
     Object? response = null,
@@ -156,6 +162,10 @@ class _$RegisterStateCopyWithImpl<$Res, $Val extends RegisterState>
       showPassword: null == showPassword
           ? _value.showPassword
           : showPassword // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showRePassword: null == showRePassword
+          ? _value.showRePassword
+          : showRePassword // ignore: cast_nullable_to_non_nullable
               as bool,
       formStatus: null == formStatus
           ? _value.formStatus
@@ -199,6 +209,7 @@ abstract class _$$InitialImplCopyWith<$Res>
       RePassword rePassword,
       bool isValid,
       bool showPassword,
+      bool showRePassword,
       FormzSubmissionStatus formStatus,
       Username name,
       RegisterResponse response,
@@ -224,6 +235,7 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? rePassword = null,
     Object? isValid = null,
     Object? showPassword = null,
+    Object? showRePassword = null,
     Object? formStatus = null,
     Object? name = null,
     Object? response = null,
@@ -249,6 +261,10 @@ class __$$InitialImplCopyWithImpl<$Res>
       showPassword: null == showPassword
           ? _value.showPassword
           : showPassword // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showRePassword: null == showRePassword
+          ? _value.showRePassword
+          : showRePassword // ignore: cast_nullable_to_non_nullable
               as bool,
       formStatus: null == formStatus
           ? _value.formStatus
@@ -279,6 +295,7 @@ class _$InitialImpl extends _Initial {
       this.rePassword = const RePassword.pure(),
       this.isValid = false,
       this.showPassword = true,
+      this.showRePassword = true,
       this.formStatus = FormzSubmissionStatus.initial,
       this.name = const Username.pure(),
       this.response = const RegisterResponse(message: "", status: ""),
@@ -302,6 +319,9 @@ class _$InitialImpl extends _Initial {
   final bool showPassword;
   @override
   @JsonKey()
+  final bool showRePassword;
+  @override
+  @JsonKey()
   final FormzSubmissionStatus formStatus;
   @override
   @JsonKey()
@@ -315,7 +335,7 @@ class _$InitialImpl extends _Initial {
 
   @override
   String toString() {
-    return 'RegisterState.initial(email: $email, password: $password, rePassword: $rePassword, isValid: $isValid, showPassword: $showPassword, formStatus: $formStatus, name: $name, response: $response, exceptionError: $exceptionError)';
+    return 'RegisterState.initial(email: $email, password: $password, rePassword: $rePassword, isValid: $isValid, showPassword: $showPassword, showRePassword: $showRePassword, formStatus: $formStatus, name: $name, response: $response, exceptionError: $exceptionError)';
   }
 
   @override
@@ -331,6 +351,8 @@ class _$InitialImpl extends _Initial {
             (identical(other.isValid, isValid) || other.isValid == isValid) &&
             (identical(other.showPassword, showPassword) ||
                 other.showPassword == showPassword) &&
+            (identical(other.showRePassword, showRePassword) ||
+                other.showRePassword == showRePassword) &&
             (identical(other.formStatus, formStatus) ||
                 other.formStatus == formStatus) &&
             (identical(other.name, name) || other.name == name) &&
@@ -341,8 +363,18 @@ class _$InitialImpl extends _Initial {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, email, password, rePassword,
-      isValid, showPassword, formStatus, name, response, exceptionError);
+  int get hashCode => Object.hash(
+      runtimeType,
+      email,
+      password,
+      rePassword,
+      isValid,
+      showPassword,
+      showRePassword,
+      formStatus,
+      name,
+      response,
+      exceptionError);
 
   @JsonKey(ignore: true)
   @override
@@ -359,6 +391,7 @@ class _$InitialImpl extends _Initial {
             RePassword rePassword,
             bool isValid,
             bool showPassword,
+            bool showRePassword,
             FormzSubmissionStatus formStatus,
             Username name,
             RegisterResponse response,
@@ -366,7 +399,7 @@ class _$InitialImpl extends _Initial {
         initial,
   }) {
     return initial(email, password, rePassword, isValid, showPassword,
-        formStatus, name, response, exceptionError);
+        showRePassword, formStatus, name, response, exceptionError);
   }
 
   @override
@@ -378,6 +411,7 @@ class _$InitialImpl extends _Initial {
             RePassword rePassword,
             bool isValid,
             bool showPassword,
+            bool showRePassword,
             FormzSubmissionStatus formStatus,
             Username name,
             RegisterResponse response,
@@ -385,7 +419,7 @@ class _$InitialImpl extends _Initial {
         initial,
   }) {
     return initial?.call(email, password, rePassword, isValid, showPassword,
-        formStatus, name, response, exceptionError);
+        showRePassword, formStatus, name, response, exceptionError);
   }
 
   @override
@@ -397,6 +431,7 @@ class _$InitialImpl extends _Initial {
             RePassword rePassword,
             bool isValid,
             bool showPassword,
+            bool showRePassword,
             FormzSubmissionStatus formStatus,
             Username name,
             RegisterResponse response,
@@ -406,7 +441,7 @@ class _$InitialImpl extends _Initial {
   }) {
     if (initial != null) {
       return initial(email, password, rePassword, isValid, showPassword,
-          formStatus, name, response, exceptionError);
+          showRePassword, formStatus, name, response, exceptionError);
     }
     return orElse();
   }
@@ -447,6 +482,7 @@ abstract class _Initial extends RegisterState {
       final RePassword rePassword,
       final bool isValid,
       final bool showPassword,
+      final bool showRePassword,
       final FormzSubmissionStatus formStatus,
       final Username name,
       final RegisterResponse response,
@@ -463,6 +499,8 @@ abstract class _Initial extends RegisterState {
   bool get isValid;
   @override
   bool get showPassword;
+  @override
+  bool get showRePassword;
   @override
   FormzSubmissionStatus get formStatus;
   @override

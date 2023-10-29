@@ -61,16 +61,28 @@ class _PetaScreenState extends State<PetaScreen> {
       listener: (context, state) {},
       builder: (context, state) {
         return state.maybeMap(
-          orElse: () => const Center(
-            child: CircularProgressIndicator(),
+          orElse: () => Scaffold(
+            appBar: BaseAppBar(
+              title: PAGES.peta.screenTitle,
+              isShowSearch: true,
+            ),
+            body: const Center(
+              child: CircularProgressIndicator(),
+            ),
           ),
           currentLocation: (valueCurrentLocation) {
             return BlocConsumer<PetaBloc, PetaState>(
               listener: (context, state) {},
               builder: (context, state) {
                 return state.maybeMap(
-                  orElse: () => const Center(
-                    child: CircularProgressIndicator(),
+                  orElse: () => Scaffold(
+                    appBar: BaseAppBar(
+                      title: PAGES.peta.screenTitle,
+                      isShowSearch: true,
+                    ),
+                    body: const Center(
+                      child: CircularProgressIndicator(),
+                    ),
                   ),
                   loaded: (valuePeta) => Scaffold(
                     appBar: BaseAppBar(

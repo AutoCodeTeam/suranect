@@ -63,6 +63,12 @@ class RegisterCubit extends Cubit<RegisterState> {
     ));
   }
 
+  void showRePassword() {
+    emit(state.copyWith(
+      showRePassword: !state.showRePassword,
+    ));
+  }
+
   void signUpWithCredentials() async {
     if (state.name.error == null &&
         state.email.error == null &&

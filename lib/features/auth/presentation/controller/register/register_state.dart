@@ -10,6 +10,7 @@ class RegisterState with _$RegisterState {
     @Default(RePassword.pure()) RePassword rePassword,
     @Default(false) bool isValid,
     @Default(true) bool showPassword,
+    @Default(true) bool showRePassword,
     @Default(FormzSubmissionStatus.initial) FormzSubmissionStatus formStatus,
     @Default(Username.pure()) Username name,
     @Default(RegisterResponse(message: "", status: "")) RegisterResponse response,

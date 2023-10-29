@@ -127,11 +127,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         return AuthTextField(
                           icon: "assets/svg/key_ic.svg",
                           label: 'rePassword',
-                          obscureText: state.showPassword,
+                          obscureText: state.showRePassword,
                           isPassword: true,
                           formzSubmissionStatus: state.formStatus,
                           showPassword: () {
-                            context.read<RegisterCubit>().showPassword();
+                            context.read<RegisterCubit>().showRePassword();
                           },
                           error: state.rePassword.error?.message,
                           onChanged: (value) {
