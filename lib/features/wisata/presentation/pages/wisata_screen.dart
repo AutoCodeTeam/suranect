@@ -9,6 +9,7 @@ import 'package:suranect/core/widgets/base_app_bar.dart';
 import 'package:suranect/core/widgets/base_body_page.dart';
 import 'package:suranect/core/widgets/search_screen.dart';
 import 'package:suranect/features/wisata/presentation/controller/wisata_bloc.dart';
+import 'package:suranect/features/wisata/presentation/pages/wisata_search_screen.dart';
 import 'package:suranect/features/wisata/presentation/widgets/card_wisata_header.dart';
 
 class WisataScreen extends StatefulWidget {
@@ -26,15 +27,23 @@ class _WisataScreenState extends State<WisataScreen> {
     return BlocConsumer<WisataBloc, WisataState>(
       listener: (context, state) {},
       builder: (context, state) {
-        return Scaffold(
-          appBar: BaseAppBar(
+        return state.maybeMap(
+          orElse: () => Scaffold(
+            appBar: BaseAppBar(
               title: PAGES.wisata.screenTitle,
-              searchDelegate: DataSearch(listWords: listWords)),
-          body: state.maybeMap(
-            orElse: () => const Center(
+              isShowSearch: true,
+            ),
+            body: const Center(
               child: CircularProgressIndicator(),
             ),
-            loaded: (value) => BaseBodyPage(
+          ),
+          loaded: (value) => Scaffold(
+            appBar: BaseAppBar(
+              title: PAGES.wisata.screenTitle,
+              isShowSearch: true,
+              searchDelegate: WisataSearchScreen(wisatas: value.wisatas),
+            ),
+            body: BaseBodyPage(
               onLoadNextPage: () {},
               scrollController: scrollController,
               onRefresh: () async {},

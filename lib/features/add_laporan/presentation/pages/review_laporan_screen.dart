@@ -108,7 +108,7 @@ class _ReviewLaporanScreenState extends State<ReviewLaporanScreen> {
                           style: Theme.of(context).textTheme.headlineMedium),
                       const SizedBox(height: 10),
                       AppTextField(
-                        contentPadding: EdgeInsets.all(20),
+                        contentPadding: const EdgeInsets.all(20),
                         hintText: "Kategori",
                         maxLines: 1,
                         readOnly: true,

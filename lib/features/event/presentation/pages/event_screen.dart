@@ -11,6 +11,7 @@ import 'package:suranect/core/widgets/base_body_page.dart';
 import 'package:suranect/core/widgets/search_screen.dart';
 import 'package:suranect/features/event/domain/entities/event.dart';
 import 'package:suranect/features/event/presentation/controller/event_bloc.dart';
+import 'package:suranect/features/event/presentation/pages/event_search_screen.dart';
 
 class EventScreen extends StatefulWidget {
   const EventScreen({super.key});
@@ -34,18 +35,26 @@ class _EventScreenState extends State<EventScreen> {
       cardBeritaHeader = screenHeight * 0.4;
     }
 
-    return Scaffold(
-      appBar: BaseAppBar(
-          title: PAGES.event.screenTitle,
-          searchDelegate: DataSearch(listWords: listWords)),
-      body: BlocConsumer<EventBloc, EventState>(
-        listener: (context, state) {},
-        builder: (context, state) {
-          return state.maybeMap(
-            orElse: () => const Center(
+    return BlocConsumer<EventBloc, EventState>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        return state.maybeMap(
+          orElse: () => Scaffold(
+            appBar: BaseAppBar(
+              title: PAGES.berita.screenTitle,
+              isShowSearch: true,
+            ),
+            body: const Center(
               child: CircularProgressIndicator(),
             ),
-            loaded: (value) => BaseBodyPage(
+          ),
+          loaded: (value) => Scaffold(
+            appBar: BaseAppBar(
+              title: PAGES.event.screenTitle,
+              isShowSearch: true,
+              searchDelegate: EventSearchScreen(events: value.events),
+            ),
+            body: BaseBodyPage(
               children: [
                 SliverToBoxAdapter(
                   child: Padding(
@@ -146,9 +155,9 @@ class _EventScreenState extends State<EventScreen> {
                 )
               ],
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }

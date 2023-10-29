@@ -6,9 +6,8 @@ import 'package:suranect/core/theme/app_colors.dart';
 import 'package:suranect/core/utils/scale_size.dart';
 import 'package:suranect/core/widgets/base_app_bar.dart';
 import 'package:suranect/core/widgets/base_body_page.dart';
-import 'package:suranect/core/widgets/search_screen.dart';
 import 'package:suranect/features/berita/presentation/controller/berita_bloc.dart';
-import 'package:suranect/features/berita/presentation/widgets/berita_header.dart';
+import 'package:suranect/features/berita/presentation/pages/berita_search_screen.dart';
 import 'package:suranect/features/berita/presentation/widgets/card_news.dart';
 import 'package:suranect/features/berita/presentation/widgets/card_latest_news.dart';
 
@@ -49,18 +48,26 @@ class _BeritaScreenState extends State<BeritaScreen> {
       "Olahraga"
     ];
 
-    return Scaffold(
-      appBar: BaseAppBar(
-          title: PAGES.berita.screenTitle,
-          searchDelegate: DataSearch(listWords: listWords)),
-      body: BlocConsumer<BeritaBloc, BeritaState>(
-        listener: (context, state) {},
-        builder: (context, state) {
-          return state.maybeMap(
-            orElse: () => const Center(
+    return BlocConsumer<BeritaBloc, BeritaState>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        return state.maybeMap(
+          orElse: () => Scaffold(
+            appBar: BaseAppBar(
+              title: PAGES.berita.screenTitle,
+              isShowSearch: true,
+            ),
+            body: const Center(
               child: CircularProgressIndicator(),
             ),
-            loaded: (value) => BaseBodyPage(
+          ),
+          loaded: (value) => Scaffold(
+            appBar: BaseAppBar(
+              title: PAGES.berita.screenTitle,
+              searchDelegate: BeritaSearchScreen(beritas: value.beritas),
+              isShowSearch: true,
+            ),
+            body: BaseBodyPage(
               onRefresh: () async {
                 context.read<BeritaBloc>().add(const BeritaEvent.started());
               },
@@ -200,9 +207,9 @@ class _BeritaScreenState extends State<BeritaScreen> {
                 ),
               ],
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }

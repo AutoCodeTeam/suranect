@@ -57,11 +57,6 @@ class HomeAppBar extends SliverPersistentHeaderDelegate {
                 ),
               ],
             ),
-            const Spacer(),
-            IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset("assets/svg/search_ic.svg"),
-            )
           ],
         ),
       ),

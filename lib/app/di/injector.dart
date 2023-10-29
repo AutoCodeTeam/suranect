@@ -62,7 +62,6 @@ import 'package:suranect/features/peta/data/remote/data_sources/peta_remote_data
 import 'package:suranect/features/peta/data/remote/data_sources/peta_remote_data_source_impl.dart';
 import 'package:suranect/features/peta/data/repositories/peta_repository_impl.dart';
 import 'package:suranect/features/peta/domain/repositories/peta_repository.dart';
-import 'package:suranect/features/peta/domain/repositories/peta_repository.dart';
 import 'package:suranect/features/peta/domain/use_cases/get_peta_use_case.dart';
 import 'package:suranect/features/peta/presentation/controller/current_location_bloc.dart';
 import 'package:suranect/features/peta/presentation/controller/peta_bloc.dart';

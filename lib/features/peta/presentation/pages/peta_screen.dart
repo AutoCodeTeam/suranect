@@ -14,6 +14,7 @@ import 'package:suranect/core/widgets/base_body_page.dart';
 import 'package:suranect/features/event/presentation/pages/event_screen.dart';
 import 'package:suranect/features/peta/presentation/controller/current_location_bloc.dart';
 import 'package:suranect/features/peta/presentation/controller/peta_bloc.dart';
+import 'package:suranect/features/peta/presentation/pages/peta_search_screen.dart';
 
 class PetaScreen extends StatefulWidget {
   const PetaScreen({super.key});
@@ -23,11 +24,11 @@ class PetaScreen extends StatefulWidget {
 }
 
 class _PetaScreenState extends State<PetaScreen> {
-  final surabayaCoords = LatLng(-7.2653, 112.7421);
+  final surabayaCoords = const LatLng(-7.2653, 112.7421);
 
   final surabayaBounds = LatLngBounds(
-    LatLng(-7.3671, 112.6094),
-    LatLng(-7.2221, 112.8039),
+    const LatLng(-7.3671, 112.6094),
+    const LatLng(-7.2221, 112.8039),
   );
 
   final _sheet = GlobalKey();
@@ -56,24 +57,28 @@ class _PetaScreenState extends State<PetaScreen> {
       "Penutupan",
     ];
 
-    return Scaffold(
-      appBar: BaseAppBar(title: PAGES.peta.screenTitle),
-      body: BlocConsumer<CurrentLocationBloc, CurrentLocationState>(
-        listener: (context, state) {},
-        builder: (context, state) {
-          return state.maybeMap(
-            orElse: () => const Center(
-              child: CircularProgressIndicator(),
-            ),
-            currentLocation: (valueCurrentLocation) {
-              return BlocConsumer<PetaBloc, PetaState>(
-                listener: (context, state) {},
-                builder: (context, state) {
-                  return state.maybeMap(
-                    orElse: () => const Center(
-                      child: CircularProgressIndicator(),
+    return BlocConsumer<CurrentLocationBloc, CurrentLocationState>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        return state.maybeMap(
+          orElse: () => const Center(
+            child: CircularProgressIndicator(),
+          ),
+          currentLocation: (valueCurrentLocation) {
+            return BlocConsumer<PetaBloc, PetaState>(
+              listener: (context, state) {},
+              builder: (context, state) {
+                return state.maybeMap(
+                  orElse: () => const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                  loaded: (valuePeta) => Scaffold(
+                    appBar: BaseAppBar(
+                      title: PAGES.peta.screenTitle,
+                      isShowSearch: true,
+                      searchDelegate: PetaSearchScreen(peta: valuePeta.petas),
                     ),
-                    loaded: (valuePeta) => Stack(
+                    body: Stack(
                       children: [
                         FlutterMap(
                           mapController: mapController,
@@ -273,9 +278,10 @@ class _PetaScreenState extends State<PetaScreen> {
                                               // <-- SEE HERE
                                               title:
                                                   const Text('Cancel booking'),
-                                              content: SingleChildScrollView(
+                                              content:
+                                                  const SingleChildScrollView(
                                                 child: ListBody(
-                                                  children: const <Widget>[
+                                                  children: <Widget>[
                                                     Text(
                                                         'Are you sure want to cancel booking?'),
                                                   ],
@@ -426,9 +432,10 @@ class _PetaScreenState extends State<PetaScreen> {
                                               return AlertDialog(
                                                 title: const Text(
                                                     'Cancel booking'),
-                                                content: SingleChildScrollView(
+                                                content:
+                                                    const SingleChildScrollView(
                                                   child: ListBody(
-                                                    children: const <Widget>[
+                                                    children: <Widget>[
                                                       Text(
                                                           'Are you sure want to cancel booking?'),
                                                     ],
@@ -522,13 +529,13 @@ class _PetaScreenState extends State<PetaScreen> {
                         ),
                       ],
                     ),
-                  );
-                },
-              );
-            },
-          );
-        },
-      ),
+                  ),
+                );
+              },
+            );
+          },
+        );
+      },
     );
   }
 }

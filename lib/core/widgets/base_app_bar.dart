@@ -5,17 +5,16 @@ import 'package:suranect/core/widgets/search_screen.dart';
 class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final bool isCenterTitle;
-  final SearchDelegate<String> searchDelegate;
+  final SearchDelegate? searchDelegate;
   final bool isShowSearch;
 
-  BaseAppBar({
+  const BaseAppBar({
     Key? key,
     required this.title,
-    DataSearch? searchDelegate,
     this.isCenterTitle = false,
     this.isShowSearch = false,
-  })  : searchDelegate = searchDelegate ?? DataSearch(listWords: listWords),
-        super(key: key);
+    this.searchDelegate,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,11 +35,11 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
             .copyWith(fontWeight: FontWeight.w600),
       ),
       actions: <Widget>[
-        isShowSearch
+        isShowSearch && searchDelegate != null
             ? IconButton(
                 icon: const Icon(Icons.search),
                 onPressed: () {
-                  showSearch(context: context, delegate: searchDelegate);
+                  showSearch(context: context, delegate: searchDelegate!);
                 })
             : const SizedBox.shrink(),
       ],
