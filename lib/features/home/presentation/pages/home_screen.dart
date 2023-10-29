@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ import 'package:suranect/core/theme/app_colors.dart';
 import 'package:suranect/core/theme/app_shadow.dart';
 import 'package:suranect/core/widgets/base_body_page.dart';
 import 'package:suranect/features/auth/presentation/controller/profile/profile_bloc.dart';
+import 'package:suranect/features/berita/presentation/controller/berita_bloc.dart';
 import 'package:suranect/features/home/presentation/controller/home_bloc.dart';
 import 'package:suranect/features/home/presentation/widgets/card_carousel.dart';
 import 'package:suranect/features/home/presentation/widgets/home_app_bar.dart';
@@ -352,79 +354,113 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                   ),
-                  SliverList.separated(
-                    itemBuilder: (context, index) => Padding(
-                      padding: EdgeInsets.only(
-                        left: 10,
-                        right: 10,
-                        bottom: index == 9 ? 10 : 0,
-                      ),
-                      child: Container(
-                        height: cardRecomendation,
-                        width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(
-                          color: AppColors.white,
-                          boxShadow: [
-                            AppShadow.sShadow,
-                          ],
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(20),
+                  BlocBuilder<BeritaBloc, BeritaState>(
+                    builder: (context, state) {
+                      return state.maybeMap(
+                        orElse: () => const SliverToBoxAdapter(
+                          child: Center(
+                            child: CircularProgressIndicator(),
                           ),
                         ),
-                        padding: const EdgeInsets.all(10),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              height: MediaQuery.of(context).size.height * 0.15,
-                              width: MediaQuery.of(context).size.height * 0.15,
-                              decoration: const BoxDecoration(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(15),
-                                ),
-                                image: DecorationImage(
-                                  image: AssetImage(
-                                    "assets/images/carousel_image1.png",
-                                  ),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
+                        loaded: (value) => SliverList.separated(
+                          itemBuilder: (context, index) => Padding(
+                            padding: EdgeInsets.only(
+                              left: 10,
+                              right: 10,
+                              bottom: index ==
+                                      value.beritas.indexOf(value.beritas.last)
+                                  ? 10
+                                  : 0,
                             ),
-                            const SizedBox(width: 10),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Penutupan Ahmad Yani",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headlineSmall,
+                            child: InkWell(
+                              onTap: () {
+                                AppRouter.router.push(
+                                    PAGES.beritaDetail.screenPath,
+                                    extra: {
+                                      "berita": value.beritas[index],
+                                    });
+                              },
+                              child: Container(
+                                height: cardRecomendation,
+                                width: MediaQuery.of(context).size.width,
+                                decoration: BoxDecoration(
+                                  color: AppColors.white,
+                                  boxShadow: [
+                                    AppShadow.sShadow,
+                                  ],
+                                  borderRadius: const BorderRadius.all(
+                                    Radius.circular(20),
                                   ),
-                                  const SizedBox(height: 5),
-                                  Text(
-                                    "Penutupan Jl. Ahmad Yani akan dilakukan pada tanggal 19 Juni 2023, yang dilaksanakan untuk",
-                                    style:
-                                        Theme.of(context).textTheme.bodyMedium,
-                                  ),
-                                  const Spacer(),
-                                  Align(
-                                    alignment: Alignment.bottomRight,
-                                    child: SvgPicture.asset(
-                                      "assets/svg/arrow-circle-right_ic.svg",
+                                ),
+                                padding: const EdgeInsets.all(10),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.15,
+                                      width:
+                                          MediaQuery.of(context).size.height *
+                                              0.15,
+                                      decoration: BoxDecoration(
+                                        borderRadius: const BorderRadius.all(
+                                          Radius.circular(15),
+                                        ),
+                                        image: DecorationImage(
+                                          image: CachedNetworkImageProvider(
+                                              value.beritas[index].image),
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
                                     ),
-                                  )
-                                ],
+                                    const SizedBox(width: 10),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            value.beritas[index].title,
+                                            textAlign: TextAlign.justify,
+                                            maxLines: 3,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .headlineSmall,
+                                          ),
+                                          const SizedBox(height: 5),
+                                          Text(
+                                            value.beritas[index].text,
+                                            textAlign: TextAlign.justify,
+                                            maxLines: 2,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodyMedium,
+                                          ),
+                                          const Spacer(),
+                                          Align(
+                                            alignment: Alignment.bottomRight,
+                                            child: SvgPicture.asset(
+                                              "assets/svg/arrow-circle-right_ic.svg",
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
-                          ],
+                          ),
+                          separatorBuilder: (context, index) => const SizedBox(
+                            height: 10,
+                          ),
+                          itemCount: value.beritas.length,
                         ),
-                      ),
-                    ),
-                    separatorBuilder: (context, index) => const SizedBox(
-                      height: 10,
-                    ),
-                    itemCount: 10,
+                      );
+                    },
                   )
                 ],
               ),

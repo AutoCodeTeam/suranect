@@ -4,6 +4,7 @@ import 'package:suranect/core/widgets/search_screen.dart';
 
 class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
+  final bool isCenterTitle;
   final SearchDelegate<String> searchDelegate;
   final bool isShowSearch;
 
@@ -11,6 +12,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
     Key? key,
     required this.title,
     DataSearch? searchDelegate,
+    this.isCenterTitle = false,
     this.isShowSearch = false,
   })  : searchDelegate = searchDelegate ?? DataSearch(listWords: listWords),
         super(key: key);
@@ -42,7 +44,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
                 })
             : const SizedBox.shrink(),
       ],
-      centerTitle: false,
+      centerTitle: isCenterTitle,
     );
   }
 

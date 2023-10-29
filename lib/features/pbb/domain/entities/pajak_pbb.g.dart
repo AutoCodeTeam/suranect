@@ -25,6 +25,8 @@ _$PajakPBBImpl _$$PajakPBBImplFromJson(Map<String, dynamic> json) =>
       pbbYangTerhutang: json['Pbb_yang_terhutang'] as String?,
       jatuhTempo: json['Jatuh_Tempo'] as String?,
       tempatPembayaran: json['Tempat_pembayaran'] as String?,
+      createdAt: json['CreatedAt'] as String?,
+      updatedAt: json['UpdatedAt'] as String?,
     );
 
 Map<String, dynamic> _$$PajakPBBImplToJson(_$PajakPBBImpl instance) =>
@@ -40,6 +42,8 @@ Map<String, dynamic> _$$PajakPBBImplToJson(_$PajakPBBImpl instance) =>
       'Pbb_yang_terhutang': instance.pbbYangTerhutang,
       'Jatuh_Tempo': instance.jatuhTempo,
       'Tempat_pembayaran': instance.tempatPembayaran,
+      'CreatedAt': instance.createdAt,
+      'UpdatedAt': instance.updatedAt,
     };
 
 _$AlamatWajibPajakImpl _$$AlamatWajibPajakImplFromJson(

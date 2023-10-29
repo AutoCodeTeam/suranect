@@ -1,13 +1,11 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:suranect/app/routes/app_router.dart';
 import 'package:suranect/app/routes/route_utils.dart';
 import 'package:suranect/core/theme/app_colors.dart';
 import 'package:suranect/core/widgets/base_app_bar.dart';
-import 'package:suranect/features/add_laporan/presentation/controller/lapor_cubit.dart';
 
 class ReviewPhotoScreen extends StatelessWidget {
   final XFile image;

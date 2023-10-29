@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:suranect/core/theme/app_colors.dart';
 import 'package:suranect/core/theme/app_shadow.dart';
@@ -36,8 +37,10 @@ class CardLatestNews extends StatelessWidget {
                 borderRadius:
                 const BorderRadius.vertical(top: Radius.circular(12)),
                 image: DecorationImage(
-                    image: AssetImage(
+                    image: CachedNetworkImageProvider(
                       image,
+                      errorListener: (p0) =>
+                      const Center(child: CircularProgressIndicator()),
                     ),
                     fit: BoxFit.cover),
               ),

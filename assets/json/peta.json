@@ -1,0 +1,24 @@
+{
+  "Data": [
+    {
+      "ID": 1,
+      "title": "Upacara 17 Agustus",
+      "Description": "Penutupan ini dikarenakan terdapat upacara memperingati 17 Agustus 1945",
+      "Time": "06:00 - 08:00 WIB",
+      "Address": "Jl. Gubernur Suryo, Embong Kaliasin, Kec. Genteng, Surabaya, Jawa Timur",
+      "Detail_location": "Di sekitar depan Gedung Negara Grahadi Surabaya",
+      "Position": [
+        {
+          "Lon": 112.741727,
+          "Lat": -7.263003
+        },
+        {
+          "Lon": 112.74413,
+          "Lat": -7.263911
+        }
+      ]
+    }
+  ],
+  "Message": "Success Get Peta",
+  "Status": "success"
+}

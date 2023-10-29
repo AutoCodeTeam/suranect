@@ -24,7 +24,12 @@ enum PAGES {
   pajakKendaraan,
   nop,
   pbb,
+  beritaDetail,
   error,
+  wisataDetail,
+  eventDetail,
+  petaDetail,
+  about,
 }
 
 extension AppPageExtension on PAGES {
@@ -80,8 +85,18 @@ extension AppPageExtension on PAGES {
         return "/nop";
       case PAGES.pbb:
         return "/pbb";
+      case PAGES.beritaDetail:
+        return "/berita_detail";
       case PAGES.error:
         return "/error";
+      case PAGES.wisataDetail:
+        return "/wisata_detail";
+      case PAGES.eventDetail:
+        return "/event_detail";
+      case PAGES.petaDetail:
+        return "/peta_detail";
+      case PAGES.about:
+        return "/about";
       default:
         return "/";
     }
@@ -139,8 +154,18 @@ extension AppPageExtension on PAGES {
         return "NOP";
       case PAGES.pbb:
         return "PBB";
+      case PAGES.beritaDetail:
+        return "BERITA_DETAIL";
       case PAGES.error:
         return "ERROR";
+      case PAGES.wisataDetail:
+        return "WISATA_DETAIL";
+      case PAGES.eventDetail:
+        return "EVENT_DETAIL";
+      case PAGES.petaDetail:
+        return "PETA_DETAIL";
+        case PAGES.about:
+            return "ABOUT";
       default:
         return "HOME";
     }
@@ -198,8 +223,18 @@ extension AppPageExtension on PAGES {
         return "Cek Pajak Tanah Anda";
       case PAGES.pbb:
         return "Pajak PBB";
+      case PAGES.beritaDetail:
+        return "Berita Detail";
       case PAGES.error:
         return "Error";
+      case PAGES.wisataDetail:
+        return "Wisata Detail";
+      case PAGES.eventDetail:
+        return "Event Detail";
+      case PAGES.petaDetail:
+        return "Peta Detail";
+        case PAGES.about:
+            return "Tentang Suranect";
       default:
         return "Home";
     }

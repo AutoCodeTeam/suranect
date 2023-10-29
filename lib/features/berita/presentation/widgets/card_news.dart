@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:suranect/core/theme/app_colors.dart';
 
@@ -27,7 +28,11 @@ class CardNews extends StatelessWidget {
           width: width,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage(image),
+              image: CachedNetworkImageProvider(
+                image,
+                errorListener: (p0) =>
+                    const Center(child: CircularProgressIndicator()),
+              ),
               fit: BoxFit.cover,
             ),
             borderRadius: const BorderRadius.all(

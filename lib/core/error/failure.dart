@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:suranect/app/network/base/api_error.dart';
 
 abstract class Failure extends Equatable {}
 

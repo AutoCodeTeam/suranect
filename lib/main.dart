@@ -6,13 +6,20 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:suranect/app/di/injector.dart';
 import 'package:suranect/app/routes/app_router.dart';
 import 'package:suranect/core/theme/app_theme.dart';
+import 'package:suranect/core/utils/bloc_observer.dart';
 import 'package:suranect/features/auth/presentation/controller/profile/profile_bloc.dart';
 import 'package:device_preview/device_preview.dart';
+import 'package:logger/logger.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: ".env");
+  Logger.level = Level.trace;
   await initDependencies();
+  await injector.allReady();
+
+  Bloc.observer = AppBlocObserver();
+
   await ScreenUtil.ensureScreenSize();
   runApp(
   //   DevicePreview(

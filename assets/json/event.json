@@ -1,0 +1,36 @@
+{
+  "Data": [
+    {
+      "ID": 1,
+      "Title": "Taylor Swift 1989 Sing-A-Long Session: to Celebrate 1989 (Taylor’s Version) Album Released",
+      "Description": "Taylor Swift 1989 Sing-A-Long Session: to Celebrate 1989 (Taylor’s Version) Album Released",
+      "Openness": "Dibuka Secara Umum",
+      "Building": "Amphitheatre Pakuwon City Mall Surabaya (2nd Floor)",
+      "Address": "Jalan Raya Laguna KJW Putih Tambak No. 2, Surabaya",
+      "Time": "18.30 – 21.00 WIB",
+      "Poster": "https://eventsurabaya.net/wp-content/uploads/2023/10/PP-ES-Taylor-Swift-1989-Sing-A-Long-Session-nov-2023-Go-Out-Events-Copy.jpg",
+      "Link_registrasion": "https://docs.google.com/forms/d/e/1FAIpQLSdR2bjxXctqUnTMiBvJ4Dz3ie5Oo15JN0JUUKbkZEoKUn35Lw/viewform",
+      "Position": {
+        "Lat": -7.288477,
+        "Lon": 112.675969
+      }
+    },
+    {
+      "ID": 2,
+      "Title": "Taylor Swift 1989 Sing-A-Long Session: to Celebrate 1989 (Taylor’s Version) Album Released",
+      "Description": "Taylor Swift 1989 Sing-A-Long Session: to Celebrate 1989 (Taylor’s Version) Album Released",
+      "Openness": "Dibuka Secara Umum",
+      "Building": "Amphitheatre Pakuwon City Mall Surabaya (2nd Floor)",
+      "Address": "Jalan Raya Laguna KJW Putih Tambak No. 2, Surabaya",
+      "Time": "18.30 – 21.00 WIB",
+      "Poster": "https://eventsurabaya.net/wp-content/uploads/2023/10/PP-ES-Taylor-Swift-1989-Sing-A-Long-Session-nov-2023-Go-Out-Events-Copy.jpg",
+      "Link_registrasion": "",
+      "Position": {
+        "Lat": -7.288477,
+        "Lon": 112.675969
+      }
+    }
+  ],
+  "Message": "Success Get Berita",
+  "Status": "success"
+}

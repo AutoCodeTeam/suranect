@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:suranect/app/routes/app_router.dart';
 import 'package:suranect/app/routes/route_utils.dart';
 import 'package:suranect/core/theme/app_colors.dart';
-import 'package:suranect/core/utils/terbilang.dart';
+import 'package:suranect/core/utils/terbilang_extension.dart';
 import 'package:suranect/core/widgets/base_app_bar.dart';
 import 'package:suranect/core/widgets/base_body_page.dart';
 import 'package:suranect/features/pbb/presentation/controller/pajak_pbb_bloc.dart';
@@ -32,7 +32,7 @@ class _PajakPbbScreenState extends State<PajakPbbScreen> {
           orElse: () {},
           failure: (value) {
             var snackBar = const SnackBar(
-              content: Text("Kendaraan tidak ditemukan!"),
+              content: Text("PBB tidak ditemukan!"),
               backgroundColor: AppColors.error_60,
               duration: Duration(seconds: 1),
             );

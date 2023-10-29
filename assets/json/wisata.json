@@ -1,0 +1,14 @@
+{
+  "Data": [
+    {
+      "ID": 1,
+      "Name": "Kenpark Surabaya",
+      "Description": "Kenpark Surabaya adalah sebuah pusat perbelanjaan yang terletak di kota Surabaya, Jawa Timur, Indonesia. Dikenal sebagai salah satu pusat perbelanjaan terbesar di kota ini, Kenpark menawarkan berbagai fasilitas dan layanan yang memikat bagi pengunjungnya.",
+      "Address": "Jl. Pantai Ria Kenjeran, Sukolilo Barum Kec. Bulak, Surabaya, Jawa Timur 60122",
+      "Image": "https://asset.kompas.com/crops/jvz-4WssMj12FqnWnhbT0JfSOXs=/0x41:1080x761/750x500/data/photo/2022/05/31/629554894596e.jpg",
+      "Rating": 4.6
+    }
+  ],
+  "Message": "Success Get Wisata",
+  "Status": "success"
+}

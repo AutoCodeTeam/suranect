@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:suranect/app/routes/app_router.dart';
 import 'package:suranect/app/routes/route_utils.dart';
 import 'package:suranect/core/theme/app_colors.dart';
 import 'package:suranect/core/theme/app_shadow.dart';
@@ -58,56 +59,77 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       AppShadow.sShadow,
                     ]),
                 padding: const EdgeInsets.all(10),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Stack(
-                      alignment: Alignment.bottomRight,
-                      children: [
-                        const CircleAvatar(
-                          radius: 40,
-                          backgroundImage:
-                              AssetImage("assets/images/suranect_profile.png"),
-                        ),
-                        Container(
-                          decoration: const BoxDecoration(
-                            color: AppColors.info_40,
-                            shape: BoxShape.circle,
-                          ),
-                          padding: const EdgeInsets.all(6),
-                          child: SvgPicture.asset(
-                            "assets/svg/edit_ic.svg",
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(width: 10),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Suranect",
-                          style: Theme.of(context).textTheme.headlineMedium,
-                        ),
-                        Text(
-                          "@suranect",
-                          style: Theme.of(context).textTheme.bodyMedium,
-                        ),
-                      ],
-                    ),
-                    const Spacer(),
-                    IconButton(
-                      onPressed: () {
-                        context
-                            .read<ProfileBloc>()
-                            .add(const ProfileEvent.loggedOut());
-                      },
-                      icon: SvgPicture.asset(
-                        "assets/svg/logout_ic.svg",
-                        height: MediaQuery.of(context).size.height * 0.03,
+                child: BlocBuilder<ProfileBloc, ProfileState>(
+                  builder: (context, state) {
+                    return state.maybeMap(
+                      orElse: () => const Center(
+                        child: CircularProgressIndicator(),
                       ),
-                    )
-                  ],
+                      authenticated: (value) => Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Stack(
+                          alignment: Alignment.bottomRight,
+                          children: [
+                            const CircleAvatar(
+                              radius: 40,
+                              backgroundImage: AssetImage(
+                                  "assets/images/suranect_profile.png"),
+                            ),
+                            Container(
+                              decoration: const BoxDecoration(
+                                color: AppColors.info_40,
+                                shape: BoxShape.circle,
+                              ),
+                              padding: const EdgeInsets.all(6),
+                              child: InkWell(
+                                onTap: () {
+                                  var snackBar = const SnackBar(
+                                    content: Text("Fitur segera hadir!"),
+                                    backgroundColor: AppColors.error_60,
+                                    duration: Duration(seconds: 1),
+                                  );
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(snackBar);
+                                },
+                                child: SvgPicture.asset(
+                                  "assets/svg/edit_ic.svg",
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(width: 10),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              value.userEntity.username,
+                              style: Theme.of(context).textTheme.headlineMedium,
+                            ),
+                            Text(
+                              "@${value.userEntity.username}",
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            ),
+                          ],
+                        ),
+                        const Spacer(),
+                        IconButton(
+                          onPressed: () {
+                            context
+                                .read<ProfileBloc>()
+                                .add(const ProfileEvent.loggedOut());
+                          },
+                          icon: SvgPicture.asset(
+                            "assets/svg/logout_ic.svg",
+                            height: MediaQuery.of(context).size.height * 0.03,
+                          ),
+                        )
+                      ],
+                    ),
+                    );
+                  },
                 ),
               ),
             ),
@@ -131,7 +153,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     index == itemSettings.indexOf(itemSettings.last) ? 18 : 0,
               ),
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  var snackBar = const SnackBar(
+                    content: Text("Fitur segera hadir!"),
+                    backgroundColor: AppColors.error_60,
+                    duration: Duration(seconds: 1),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
@@ -177,7 +206,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     : 0,
               ),
               child: InkWell(
-                onTap: () {},
+                onTap: index == 0
+                    ? () {
+                        var snackBar = const SnackBar(
+                          content: Text("Fitur segera hadir!"),
+                          backgroundColor: AppColors.error_60,
+                          duration: Duration(seconds: 1),
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      }
+                    : () {
+                        AppRouter.router.push(PAGES.about.screenPath);
+                      },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(

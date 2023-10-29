@@ -42,6 +42,10 @@ mixin _$PajakPBB {
   String? get jatuhTempo => throw _privateConstructorUsedError;
   @JsonKey(name: "Tempat_pembayaran")
   String? get tempatPembayaran => throw _privateConstructorUsedError;
+  @JsonKey(name: "CreatedAt")
+  String? get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: "UpdatedAt")
+  String? get updatedAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -65,7 +69,9 @@ abstract class $PajakPBBCopyWith<$Res> {
       @JsonKey(name: "Njkp") String? njkp,
       @JsonKey(name: "Pbb_yang_terhutang") String? pbbYangTerhutang,
       @JsonKey(name: "Jatuh_Tempo") String? jatuhTempo,
-      @JsonKey(name: "Tempat_pembayaran") String? tempatPembayaran});
+      @JsonKey(name: "Tempat_pembayaran") String? tempatPembayaran,
+      @JsonKey(name: "CreatedAt") String? createdAt,
+      @JsonKey(name: "UpdatedAt") String? updatedAt});
 
   $LetakObjekPajakCopyWith<$Res>? get letakObjekPajak;
   $AlamatWajibPajakCopyWith<$Res>? get alamatWajibPajak;
@@ -95,6 +101,8 @@ class _$PajakPBBCopyWithImpl<$Res, $Val extends PajakPBB>
     Object? pbbYangTerhutang = freezed,
     Object? jatuhTempo = freezed,
     Object? tempatPembayaran = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -140,6 +148,14 @@ class _$PajakPBBCopyWithImpl<$Res, $Val extends PajakPBB>
       tempatPembayaran: freezed == tempatPembayaran
           ? _value.tempatPembayaran
           : tempatPembayaran // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as String?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -188,7 +204,9 @@ abstract class _$$PajakPBBImplCopyWith<$Res>
       @JsonKey(name: "Njkp") String? njkp,
       @JsonKey(name: "Pbb_yang_terhutang") String? pbbYangTerhutang,
       @JsonKey(name: "Jatuh_Tempo") String? jatuhTempo,
-      @JsonKey(name: "Tempat_pembayaran") String? tempatPembayaran});
+      @JsonKey(name: "Tempat_pembayaran") String? tempatPembayaran,
+      @JsonKey(name: "CreatedAt") String? createdAt,
+      @JsonKey(name: "UpdatedAt") String? updatedAt});
 
   @override
   $LetakObjekPajakCopyWith<$Res>? get letakObjekPajak;
@@ -218,6 +236,8 @@ class __$$PajakPBBImplCopyWithImpl<$Res>
     Object? pbbYangTerhutang = freezed,
     Object? jatuhTempo = freezed,
     Object? tempatPembayaran = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
   }) {
     return _then(_$PajakPBBImpl(
       id: freezed == id
@@ -264,6 +284,14 @@ class __$$PajakPBBImplCopyWithImpl<$Res>
           ? _value.tempatPembayaran
           : tempatPembayaran // ignore: cast_nullable_to_non_nullable
               as String?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as String?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -282,7 +310,9 @@ class _$PajakPBBImpl implements _PajakPBB {
       @JsonKey(name: "Njkp") this.njkp,
       @JsonKey(name: "Pbb_yang_terhutang") this.pbbYangTerhutang,
       @JsonKey(name: "Jatuh_Tempo") this.jatuhTempo,
-      @JsonKey(name: "Tempat_pembayaran") this.tempatPembayaran});
+      @JsonKey(name: "Tempat_pembayaran") this.tempatPembayaran,
+      @JsonKey(name: "CreatedAt") this.createdAt,
+      @JsonKey(name: "UpdatedAt") this.updatedAt});
 
   factory _$PajakPBBImpl.fromJson(Map<String, dynamic> json) =>
       _$$PajakPBBImplFromJson(json);
@@ -320,10 +350,16 @@ class _$PajakPBBImpl implements _PajakPBB {
   @override
   @JsonKey(name: "Tempat_pembayaran")
   final String? tempatPembayaran;
+  @override
+  @JsonKey(name: "CreatedAt")
+  final String? createdAt;
+  @override
+  @JsonKey(name: "UpdatedAt")
+  final String? updatedAt;
 
   @override
   String toString() {
-    return 'PajakPBB(id: $id, nop: $nop, letakObjekPajak: $letakObjekPajak, alamatWajibPajak: $alamatWajibPajak, njopPbbP2: $njopPbbP2, njoptkp: $njoptkp, njop: $njop, njkp: $njkp, pbbYangTerhutang: $pbbYangTerhutang, jatuhTempo: $jatuhTempo, tempatPembayaran: $tempatPembayaran)';
+    return 'PajakPBB(id: $id, nop: $nop, letakObjekPajak: $letakObjekPajak, alamatWajibPajak: $alamatWajibPajak, njopPbbP2: $njopPbbP2, njoptkp: $njoptkp, njop: $njop, njkp: $njkp, pbbYangTerhutang: $pbbYangTerhutang, jatuhTempo: $jatuhTempo, tempatPembayaran: $tempatPembayaran, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -347,7 +383,11 @@ class _$PajakPBBImpl implements _PajakPBB {
             (identical(other.jatuhTempo, jatuhTempo) ||
                 other.jatuhTempo == jatuhTempo) &&
             (identical(other.tempatPembayaran, tempatPembayaran) ||
-                other.tempatPembayaran == tempatPembayaran));
+                other.tempatPembayaran == tempatPembayaran) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt));
   }
 
   @JsonKey(ignore: true)
@@ -364,7 +404,9 @@ class _$PajakPBBImpl implements _PajakPBB {
       njkp,
       pbbYangTerhutang,
       jatuhTempo,
-      tempatPembayaran);
+      tempatPembayaran,
+      createdAt,
+      updatedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -382,20 +424,21 @@ class _$PajakPBBImpl implements _PajakPBB {
 
 abstract class _PajakPBB implements PajakPBB {
   const factory _PajakPBB(
-          {@JsonKey(name: "ID") final int? id,
-          @JsonKey(name: "Nop") final String? nop,
-          @JsonKey(name: "Letak_objek_pajak")
-          final LetakObjekPajak? letakObjekPajak,
-          @JsonKey(name: "Alamat_wajib_pajak")
-          final AlamatWajibPajak? alamatWajibPajak,
-          @JsonKey(name: "Njop_pbb_p2") final int? njopPbbP2,
-          @JsonKey(name: "Njoptkp") final int? njoptkp,
-          @JsonKey(name: "Njop") final int? njop,
-          @JsonKey(name: "Njkp") final String? njkp,
-          @JsonKey(name: "Pbb_yang_terhutang") final String? pbbYangTerhutang,
-          @JsonKey(name: "Jatuh_Tempo") final String? jatuhTempo,
-          @JsonKey(name: "Tempat_pembayaran") final String? tempatPembayaran}) =
-      _$PajakPBBImpl;
+      {@JsonKey(name: "ID") final int? id,
+      @JsonKey(name: "Nop") final String? nop,
+      @JsonKey(name: "Letak_objek_pajak")
+      final LetakObjekPajak? letakObjekPajak,
+      @JsonKey(name: "Alamat_wajib_pajak")
+      final AlamatWajibPajak? alamatWajibPajak,
+      @JsonKey(name: "Njop_pbb_p2") final int? njopPbbP2,
+      @JsonKey(name: "Njoptkp") final int? njoptkp,
+      @JsonKey(name: "Njop") final int? njop,
+      @JsonKey(name: "Njkp") final String? njkp,
+      @JsonKey(name: "Pbb_yang_terhutang") final String? pbbYangTerhutang,
+      @JsonKey(name: "Jatuh_Tempo") final String? jatuhTempo,
+      @JsonKey(name: "Tempat_pembayaran") final String? tempatPembayaran,
+      @JsonKey(name: "CreatedAt") final String? createdAt,
+      @JsonKey(name: "UpdatedAt") final String? updatedAt}) = _$PajakPBBImpl;
 
   factory _PajakPBB.fromJson(Map<String, dynamic> json) =
       _$PajakPBBImpl.fromJson;
@@ -433,6 +476,12 @@ abstract class _PajakPBB implements PajakPBB {
   @override
   @JsonKey(name: "Tempat_pembayaran")
   String? get tempatPembayaran;
+  @override
+  @JsonKey(name: "CreatedAt")
+  String? get createdAt;
+  @override
+  @JsonKey(name: "UpdatedAt")
+  String? get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$PajakPBBImplCopyWith<_$PajakPBBImpl> get copyWith =>

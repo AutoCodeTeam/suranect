@@ -25,9 +25,11 @@
       "Njkp": "40%",
       "Pbb_yang_terhutang": "0.5%",
       "Jatuh_Tempo": "28 OKT 2023",
-      "Tempat_pembayaran": "BPD SURABAYA"
+      "Tempat_pembayaran": "BPD SURABAYA",
+      "UpdatedAt": "2023-10-28T21:10:59.31+07:00",
+      "CreatedAt": "2023-10-28T20:18:01.362+07:00"
     }
   ],
-  "Message": "Success Get Pajak Kendaraan",
+  "Message": "Success Get Pajak PBB",
   "Status": "success"
 }

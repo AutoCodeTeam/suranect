@@ -18,6 +18,8 @@ class PajakPBB with _$PajakPBB {
     @JsonKey(name: "Pbb_yang_terhutang") String? pbbYangTerhutang,
     @JsonKey(name: "Jatuh_Tempo") String? jatuhTempo,
     @JsonKey(name: "Tempat_pembayaran") String? tempatPembayaran,
+    @JsonKey(name: "CreatedAt") String? createdAt,
+    @JsonKey(name: "UpdatedAt") String? updatedAt,
   }) = _PajakPBB;
 
   factory PajakPBB.fromJson(Map<String, dynamic> json) =>

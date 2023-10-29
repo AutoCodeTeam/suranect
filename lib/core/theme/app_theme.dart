@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:suranect/core/theme/app_colors.dart';
 
 ThemeData appTheme({required double screenHeight}) {
