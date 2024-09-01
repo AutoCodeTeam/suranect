@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:suranect/app/network/base/api_error.dart';
 import 'package:suranect/app/network/base/api_result.dart';
 import 'package:suranect/core/error/exceptions.dart';
 import 'package:suranect/core/error/failure.dart';
@@ -69,6 +68,10 @@ class UserRepositoryImpl extends UserRepository {
 
         return Right(response.data);
       } else if (response is ServerError<LoginResponse>) {
+        if(response.errors.message.toLowerCase().contains("token is expired")){
+          await authLocalDataSource.deleteToken();
+        }
+
         return Left(ApiFailure(error: response.errors.message));
       }
 

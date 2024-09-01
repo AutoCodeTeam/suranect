@@ -53,13 +53,60 @@ extension DioExtensions on Dio {
       print("iki $response");
       return ApiResult.fromResponse(response, mapper);
     } on DioException catch (exception) {
-      // return NetworkError(List.filled(
-      //     1,
-      //     ApiError(
-      //       code: exception.response?.statusCode,
-      //       message: exception.message ?? "",
-      //     ),
-      //     growable: false));
+      return NetworkError(ApiError(
+          code: exception.response?.statusCode,
+          message: exception.message ?? ""));
+    }
+  }
+
+  Future<ApiResult<T>> safePatch<T>(
+      String path, T Function(Map<String, dynamic>) mapper,
+      {data,
+        Map<String, dynamic>? queryParameters,
+        Options? options,
+        CancelToken? cancelToken,
+        ProgressCallback? onSendProgress,
+        ProgressCallback? onReceiveProgress}) async {
+    try {
+      final response = await patch(
+        "${dotenv.get("API_URL")}/$path",
+        data: data,
+        queryParameters: queryParameters,
+        options: options,
+        cancelToken: cancelToken,
+        onSendProgress: onSendProgress,
+        onReceiveProgress: onReceiveProgress,
+      );
+
+      print("iki $response");
+      return ApiResult.fromResponse(response, mapper);
+    } on DioException catch (exception) {
+      return NetworkError(ApiError(
+          code: exception.response?.statusCode,
+          message: exception.message ?? ""));
+    }
+  }
+
+  Future<ApiResult<T>> safeDelete<T>(
+      String path, T Function(Map<String, dynamic>) mapper,
+      {data,
+        Map<String, dynamic>? queryParameters,
+        Options? options,
+        CancelToken? cancelToken,
+        ProgressCallback? onSendProgress,
+        ProgressCallback? onReceiveProgress}) async {
+    try {
+      final response = await delete(
+        "${dotenv.get("API_URL")}/$path",
+        data: data,
+        queryParameters: queryParameters,
+        options: options,
+        cancelToken: cancelToken,
+      );
+
+      print("iki $response");
+      return ApiResult.fromResponse(response, mapper);
+    } on DioException catch (exception) {
       return NetworkError(ApiError(
           code: exception.response?.statusCode,
           message: exception.message ?? ""));

@@ -32,6 +32,8 @@ mixin _$Event {
   String get building => throw _privateConstructorUsedError;
   @JsonKey(name: "Address")
   String get address => throw _privateConstructorUsedError;
+  @JsonKey(name: "Date")
+  String get date => throw _privateConstructorUsedError;
   @JsonKey(name: "Time")
   String get time => throw _privateConstructorUsedError;
   @JsonKey(name: "Poster")
@@ -58,6 +60,7 @@ abstract class $EventCopyWith<$Res> {
       @JsonKey(name: "Openness") String openness,
       @JsonKey(name: "Building") String building,
       @JsonKey(name: "Address") String address,
+      @JsonKey(name: "Date") String date,
       @JsonKey(name: "Time") String time,
       @JsonKey(name: "Poster") String poster,
       @JsonKey(name: "Link_registrasion") String linkRegistrasion,
@@ -85,6 +88,7 @@ class _$EventCopyWithImpl<$Res, $Val extends Event>
     Object? openness = null,
     Object? building = null,
     Object? address = null,
+    Object? date = null,
     Object? time = null,
     Object? poster = null,
     Object? linkRegistrasion = null,
@@ -114,6 +118,10 @@ class _$EventCopyWithImpl<$Res, $Val extends Event>
       address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
+              as String,
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
               as String,
       time: null == time
           ? _value.time
@@ -157,6 +165,7 @@ abstract class _$$EventImplCopyWith<$Res> implements $EventCopyWith<$Res> {
       @JsonKey(name: "Openness") String openness,
       @JsonKey(name: "Building") String building,
       @JsonKey(name: "Address") String address,
+      @JsonKey(name: "Date") String date,
       @JsonKey(name: "Time") String time,
       @JsonKey(name: "Poster") String poster,
       @JsonKey(name: "Link_registrasion") String linkRegistrasion,
@@ -183,6 +192,7 @@ class __$$EventImplCopyWithImpl<$Res>
     Object? openness = null,
     Object? building = null,
     Object? address = null,
+    Object? date = null,
     Object? time = null,
     Object? poster = null,
     Object? linkRegistrasion = null,
@@ -212,6 +222,10 @@ class __$$EventImplCopyWithImpl<$Res>
       address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
+              as String,
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
               as String,
       time: null == time
           ? _value.time
@@ -243,6 +257,7 @@ class _$EventImpl implements _Event {
       @JsonKey(name: "Openness") required this.openness,
       @JsonKey(name: "Building") required this.building,
       @JsonKey(name: "Address") required this.address,
+      @JsonKey(name: "Date") required this.date,
       @JsonKey(name: "Time") required this.time,
       @JsonKey(name: "Poster") required this.poster,
       @JsonKey(name: "Link_registrasion") required this.linkRegistrasion,
@@ -270,6 +285,9 @@ class _$EventImpl implements _Event {
   @JsonKey(name: "Address")
   final String address;
   @override
+  @JsonKey(name: "Date")
+  final String date;
+  @override
   @JsonKey(name: "Time")
   final String time;
   @override
@@ -284,7 +302,7 @@ class _$EventImpl implements _Event {
 
   @override
   String toString() {
-    return 'Event(id: $id, title: $title, description: $description, openness: $openness, building: $building, address: $address, time: $time, poster: $poster, linkRegistrasion: $linkRegistrasion, position: $position)';
+    return 'Event(id: $id, title: $title, description: $description, openness: $openness, building: $building, address: $address, date: $date, time: $time, poster: $poster, linkRegistrasion: $linkRegistrasion, position: $position)';
   }
 
   @override
@@ -301,6 +319,7 @@ class _$EventImpl implements _Event {
             (identical(other.building, building) ||
                 other.building == building) &&
             (identical(other.address, address) || other.address == address) &&
+            (identical(other.date, date) || other.date == date) &&
             (identical(other.time, time) || other.time == time) &&
             (identical(other.poster, poster) || other.poster == poster) &&
             (identical(other.linkRegistrasion, linkRegistrasion) ||
@@ -312,7 +331,7 @@ class _$EventImpl implements _Event {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, title, description, openness,
-      building, address, time, poster, linkRegistrasion, position);
+      building, address, date, time, poster, linkRegistrasion, position);
 
   @JsonKey(ignore: true)
   @override
@@ -336,6 +355,7 @@ abstract class _Event implements Event {
           @JsonKey(name: "Openness") required final String openness,
           @JsonKey(name: "Building") required final String building,
           @JsonKey(name: "Address") required final String address,
+          @JsonKey(name: "Date") required final String date,
           @JsonKey(name: "Time") required final String time,
           @JsonKey(name: "Poster") required final String poster,
           @JsonKey(name: "Link_registrasion")
@@ -363,6 +383,9 @@ abstract class _Event implements Event {
   @override
   @JsonKey(name: "Address")
   String get address;
+  @override
+  @JsonKey(name: "Date")
+  String get date;
   @override
   @JsonKey(name: "Time")
   String get time;

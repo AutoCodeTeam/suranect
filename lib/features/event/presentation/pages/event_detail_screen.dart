@@ -162,6 +162,29 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        Text("Tanggal",
+                            style: Theme.of(context).textTheme.headlineMedium),
+                        const SizedBox(height: 5),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SvgPicture.asset("assets/svg/calender_ic.svg",
+                                color: AppColors.info_60),
+                            const SizedBox(width: 10),
+                            Expanded(
+                              child: Text(
+                                widget.event.date,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headlineMedium!
+                                    .copyWith(
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                        const SizedBox(height: 10),
                         Text("Pukul",
                             style: Theme.of(context).textTheme.headlineMedium),
                         const SizedBox(height: 5),

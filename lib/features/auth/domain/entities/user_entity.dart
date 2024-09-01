@@ -43,6 +43,7 @@
 // }
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:suranect/features/laporan/domain/entities/laporan.dart';
 
 part 'user_entity.freezed.dart';
 part 'user_entity.g.dart';
@@ -61,6 +62,7 @@ class UserEntity with _$UserEntity {
     @JsonKey(name: "Email") required String email,
     @JsonKey(name: "EmailVerify") required bool emailVerify,
     @JsonKey(name: "EmailCode") required int emailCode,
+    @JsonKey(name: "Laporans") List<Laporan>? laporans,
   }) = _UserEntity;
 
   factory UserEntity.fromJson(Map<String, dynamic> json) =>

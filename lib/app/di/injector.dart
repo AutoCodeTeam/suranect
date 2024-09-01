@@ -1,9 +1,13 @@
 import 'package:get_it/get_it.dart';
 import 'package:suranect/core/utils/log_services.dart';
 import 'package:suranect/debug_log_service.dart';
-import 'package:suranect/features/add_laporan/presentation/controller/camera_bloc.dart';
+import 'package:suranect/features/laporan/domain/use_cases/add_laporan_use_case.dart';
+import 'package:suranect/features/laporan/domain/use_cases/delete_laporan_use_case.dart';
+import 'package:suranect/features/laporan/domain/use_cases/get_detail_laporan_use_case.dart';
+import 'package:suranect/features/laporan/domain/use_cases/update_laporan_use_case.dart';
+import 'package:suranect/features/laporan/presentation/controller/camera_bloc.dart';
 import 'package:suranect/core/utils/camera_utils.dart';
-import 'package:suranect/features/add_laporan/presentation/controller/lapor_cubit.dart';
+import 'package:suranect/features/laporan/presentation/controller/lapor_cubit.dart';
 import 'package:suranect/features/auth/data/local/data_sources/auth_local_data_source.dart';
 import 'package:suranect/features/auth/data/local/data_sources/auth_local_data_source_impl.dart';
 import 'package:suranect/features/auth/data/remote/data_sources/login/login_remote_data_source.dart';
@@ -45,6 +49,13 @@ import 'package:suranect/features/introduction/domain/repositories/intro_reposit
 import 'package:suranect/features/introduction/domain/use_cases/done_intro_use_case.dart';
 import 'package:suranect/features/introduction/domain/use_cases/is_intro_in_use_case.dart';
 import 'package:suranect/features/introduction/presentation/controller/introduction_bloc.dart';
+import 'package:suranect/features/laporan/data/remote/data_sources/laporan_remote_data_source.dart';
+import 'package:suranect/features/laporan/data/remote/data_sources/laporan_remote_data_source_impl.dart';
+import 'package:suranect/features/laporan/data/repositories/laporan_repository_impl.dart';
+import 'package:suranect/features/laporan/domain/repositories/laporan_repository.dart';
+import 'package:suranect/features/laporan/domain/use_cases/get_laporan_use_case.dart';
+import 'package:suranect/features/laporan/presentation/controller/laporan_bloc.dart';
+import 'package:suranect/features/laporan/presentation/controller/laporan_update_cubit.dart';
 import 'package:suranect/features/main_tab/presentation/controller/main_tab_bloc.dart';
 import 'package:suranect/features/pajak_kendaraan/data/remote/data_sources/pajak_kendaraan_remote_data_source.dart';
 import 'package:suranect/features/pajak_kendaraan/data/remote/data_sources/pajak_kendaraan_remote_data_source_impl.dart';
@@ -113,6 +124,11 @@ Future<void> initDependencies() async {
   injector.registerLazySingleton<UmkmRemoteDataSource>(
     () => UmkmRemoteDataSourceImpl(),
   );
+  injector.registerLazySingleton<LaporanRemoteDataSource>(
+    () => LaporanRemoteDataSourceImpl(
+      authLocalDataSource: injector(),
+    ),
+  );
 
   /// Repository ///
   injector.registerLazySingleton<IntroRepository>(
@@ -159,6 +175,11 @@ Future<void> initDependencies() async {
       umkmRemoteDataSource: injector(),
     ),
   );
+  injector.registerLazySingleton<LaporanRepository>(
+    () => LaporanRepositoryImpl(
+      laporanRemoteDataSource: injector(),
+    ),
+  );
 
   /// UseCase ///
   injector.registerLazySingleton(
@@ -199,6 +220,31 @@ Future<void> initDependencies() async {
   injector.registerLazySingleton<GetUmkmUseCase>(
     () => GetUmkmUseCase(
       umkmRepository: injector(),
+    ),
+  );
+  injector.registerLazySingleton<GetLaporanUseCase>(
+    () => GetLaporanUseCase(
+      laporanRepository: injector(),
+    ),
+  );
+  injector.registerLazySingleton<AddLaporanUseCase>(
+    () => AddLaporanUseCase(
+      laporanRepository: injector(),
+    ),
+  );
+  injector.registerLazySingleton<GetDetailLaporanUseCase>(
+    () => GetDetailLaporanUseCase(
+      laporanRepository: injector(),
+    ),
+  );
+  injector.registerLazySingleton<DeleteLaporanUseCase>(
+    () => DeleteLaporanUseCase(
+      laporanRepository: injector(),
+    ),
+  );
+  injector.registerLazySingleton<UpdateLaporanUseCase>(
+    () => UpdateLaporanUseCase(
+      laporanRepository: injector(),
     ),
   );
 
@@ -269,6 +315,13 @@ Future<void> initDependencies() async {
       getUmkmUseCase: injector(),
     ),
   );
+  injector.registerFactory(
+    () => LaporanBloc(
+      getLaporanUseCase: injector(),
+      getDetailLaporanUseCase: injector(),
+      deleteLaporanUseCase: injector(),
+    ),
+  );
 
   /// Cubit ///
   injector.registerFactory(
@@ -288,7 +341,14 @@ Future<void> initDependencies() async {
     ),
   );
   injector.registerFactory(
-    () => LaporCubit(),
+    () => LaporCubit(
+      addLaporanUseCase: injector(),
+    ),
+  );
+  injector.registerFactory(
+    () => LaporanUpdateCubit(
+      updateLaporanUseCase: injector(),
+    ),
   );
 
   await injector<IntroLocalDataSource>().initDb();

@@ -16,7 +16,7 @@ class RePassword extends FormzInput<String, RePasswordValidationError> {
     if (value.isEmpty) {
       return RePasswordValidationError.empty;
     }
-    if (value.length <= 6) {
+    if (value.length < 6) {
       return RePasswordValidationError.short;
     }
     if (hasSpecialChar(value)) {

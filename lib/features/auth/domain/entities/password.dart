@@ -17,7 +17,7 @@ class Password extends FormzInput<String, PasswordValidationError> {
     if (value.isEmpty) {
       return PasswordValidationError.empty;
     }
-    if (value.length <= 6) {
+    if (value.length < 6) {
       return PasswordValidationError.short;
     }
     if (hasSpecialChar(value)) {

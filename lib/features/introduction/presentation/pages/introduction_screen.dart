@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:suranect/app/routes/app_router.dart';
 import 'package:suranect/app/routes/route_utils.dart';
 import 'package:suranect/core/theme/app_colors.dart';
+import 'package:suranect/features/auth/presentation/controller/profile/profile_bloc.dart';
 import 'package:suranect/features/introduction/presentation/controller/introduction_bloc.dart';
 import 'package:suranect/features/introduction/presentation/widgets/page_intro.dart';
 
@@ -100,7 +101,18 @@ class _IntroductionsScreenState extends State<IntroductionsScreen> {
               _pageController.jumpToPage(pageIndex);
             },
             success: (status) {
-              return AppRouter.router.go(PAGES.login.screenPath);
+              context.read<ProfileBloc>().state.maybeMap(
+                orElse: () {
+                  AppRouter.router.go(PAGES.login.screenPath);
+                },
+                authenticated: (value) {
+                  if (value.userEntity.emailVerify != true) {
+                    AppRouter.router.go(PAGES.verifyOTP.screenPath);
+                  } else {
+                    AppRouter.router.go(PAGES.home.screenPath);
+                  }
+                },
+              );
             },
           );
         },

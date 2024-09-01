@@ -19,6 +19,9 @@ _$UserEntityImpl _$$UserEntityImplFromJson(Map<String, dynamic> json) =>
       email: json['Email'] as String,
       emailVerify: json['EmailVerify'] as bool,
       emailCode: json['EmailCode'] as int,
+      laporans: (json['Laporans'] as List<dynamic>?)
+          ?.map((e) => Laporan.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$UserEntityImplToJson(_$UserEntityImpl instance) =>
@@ -34,4 +37,5 @@ Map<String, dynamic> _$$UserEntityImplToJson(_$UserEntityImpl instance) =>
       'Email': instance.email,
       'EmailVerify': instance.emailVerify,
       'EmailCode': instance.emailCode,
+      'Laporans': instance.laporans,
     };

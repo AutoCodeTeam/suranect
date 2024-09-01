@@ -28,113 +28,129 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<LoginCubit, LoginState>(
+    return BlocListener<ProfileBloc, ProfileState>(
       listener: (context, state) {
-        if (state.formStatus.isSuccess) {
-          var snackBar = const SnackBar(
-            content: Text("Success!"),
-            backgroundColor: Colors.green,
-            duration: Duration(seconds: 1),
-          );
-          ScaffoldMessenger.of(context).showSnackBar(snackBar);
-
-          context.read<ProfileBloc>().add(const ProfileEvent.loggedIn());
-        }
-      },
-      builder: (context, state) {
-        return Scaffold(
-          appBar: AppBar(
-            title: Text(PAGES.login.screenTitle),
-          ),
-          backgroundColor: AppColors.white,
-          body: BaseBodyPage(
-            children: [
-              SliverFillRemaining(
-                hasScrollBody: false,
-                child: Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Spacer(),
-                      Text("Hallo! \nSelamat Datang di Suranect.",
-                          style: Theme.of(context).textTheme.displayLarge),
-                      const SizedBox(height: 30),
-                      AuthTextField(
-                        icon: "assets/svg/face_ic.svg",
-                        label: 'Username',
-                        error: state.name.error?.message,
-                        formzSubmissionStatus: state.formStatus,
-                        onChanged: (value) {
-                          context.read<LoginCubit>().usernameChanged(value);
-                        },
-                      ),
-                      const SizedBox(height: 14),
-                      BlocBuilder<LoginCubit, LoginState>(
-                        buildWhen: (previous, current) =>
-                        previous.showPassword != current.showPassword ||
-                            previous.formStatus != current.formStatus ||
-                            previous.password != current.password,
-                        builder: (context, state) {
-                          return AuthTextField(
-                            icon: "assets/svg/key_ic.svg",
-                            label: 'Password',
-                            obscureText: state.showPassword,
-                            error: state.password.error?.message,
-                            formzSubmissionStatus: state.formStatus,
-                            isPassword: true,
-                            showPassword: () {
-                              context.read<LoginCubit>().showPassword();
-                            },
-                            onChanged: (value) {
-                              context.read<LoginCubit>().passwordChanged(value);
-                            },
-                          );
-                        },
-                      ),
-                      const SizedBox(height: 10),
-                      state.exceptionError == ""
-                          ? const SizedBox.shrink()
-                          : Text(
-                        state.exceptionError,
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleLarge!
-                            .copyWith(color: Colors.red),
-                      ),
-                      state.formStatus == FormzSubmissionStatus.inProgress
-                          ? const Center(
-                        child: CircularProgressIndicator(),
-                      )
-                          : const SizedBox.shrink(),
-                      const Spacer(),
-                      AppButton(
-                        onPressed: () async {
-                          context.read<LoginCubit>().loginWithCredentials();
-                        },
-                        text: "Masuk",
-                        width: MediaQuery.of(context).size.width,
-                        buttonColor: AppColors.blue_60,
-                        colorText: AppColors.white,
-                      ),
-                      const SizedBox(height: 10),
-                      AppButton(
-                        onPressed: () {
-                          AppRouter.router.push(PAGES.register.screenPath);
-                        },
-                        text: "Tidak punya akun? Daftar dulu",
-                        width: MediaQuery.of(context).size.width,
-                        buttonColor: AppColors.blue_10,
-                      ),
-                    ],
-                  ),
-                ),
-              )
-            ],
-          ),
+        state.maybeMap(
+          orElse: () {},
+          authenticated: (value) {
+            if (value.userEntity.emailVerify != true) {
+              AppRouter.router.go(PAGES.verifyOTP.screenPath);
+            } else {
+              AppRouter.router.go(PAGES.home.screenPath);
+            }
+          },
         );
       },
+      child: BlocConsumer<LoginCubit, LoginState>(
+        listener: (context, state) {
+          if (state.formStatus.isSuccess) {
+            var snackBar = const SnackBar(
+              content: Text("Success!"),
+              backgroundColor: Colors.green,
+              duration: Duration(seconds: 1),
+            );
+            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
+            context.read<ProfileBloc>().add(const ProfileEvent.loggedIn());
+          }
+        },
+        builder: (context, state) {
+          return Scaffold(
+            appBar: AppBar(
+              title: Text(PAGES.login.screenTitle),
+            ),
+            backgroundColor: AppColors.white,
+            body: BaseBodyPage(
+              children: [
+                SliverFillRemaining(
+                  hasScrollBody: false,
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Spacer(),
+                        Text("Hallo! \nSelamat Datang di Suranect.",
+                            style: Theme.of(context).textTheme.displayLarge),
+                        const SizedBox(height: 30),
+                        AuthTextField(
+                          icon: "assets/svg/face_ic.svg",
+                          label: 'Username',
+                          error: state.name.error?.message,
+                          formzSubmissionStatus: state.formStatus,
+                          onChanged: (value) {
+                            context.read<LoginCubit>().usernameChanged(value);
+                          },
+                        ),
+                        const SizedBox(height: 14),
+                        BlocBuilder<LoginCubit, LoginState>(
+                          buildWhen: (previous, current) =>
+                              previous.showPassword != current.showPassword ||
+                              previous.formStatus != current.formStatus ||
+                              previous.password != current.password,
+                          builder: (context, state) {
+                            return AuthTextField(
+                              icon: "assets/svg/key_ic.svg",
+                              label: 'Password',
+                              obscureText: state.showPassword,
+                              error: state.password.error?.message,
+                              formzSubmissionStatus: state.formStatus,
+                              isPassword: true,
+                              showPassword: () {
+                                context.read<LoginCubit>().showPassword();
+                              },
+                              onChanged: (value) {
+                                context
+                                    .read<LoginCubit>()
+                                    .passwordChanged(value);
+                              },
+                            );
+                          },
+                        ),
+                        const SizedBox(height: 10),
+                        state.exceptionError == ""
+                            ? const SizedBox.shrink()
+                            : Text(
+                                state.exceptionError,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleLarge!
+                                    .copyWith(color: Colors.red),
+                              ),
+                        state.formStatus == FormzSubmissionStatus.inProgress
+                            ? const Center(
+                                child: CircularProgressIndicator(),
+                              )
+                            : const SizedBox.shrink(),
+                        const Spacer(),
+                        AppButton(
+                          onPressed: () async {
+                            context.read<LoginCubit>().loginWithCredentials();
+                          },
+                          text: "Masuk",
+                          width: MediaQuery.of(context).size.width,
+                          buttonColor: AppColors.blue_60,
+                          colorText: AppColors.white,
+                        ),
+                        const SizedBox(height: 10),
+                        AppButton(
+                          onPressed: () {
+                            AppRouter.router.push(PAGES.register.screenPath);
+                          },
+                          text: "Tidak punya akun? Daftar dulu",
+                          width: MediaQuery.of(context).size.width,
+                          buttonColor: AppColors.blue_10,
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 }

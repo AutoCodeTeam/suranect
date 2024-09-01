@@ -31,6 +31,8 @@ enum PAGES {
   petaDetail,
   about,
   umkmDetail,
+  laporanDetail,
+  updateLaporan,
 }
 
 extension AppPageExtension on PAGES {
@@ -100,6 +102,10 @@ extension AppPageExtension on PAGES {
         return "/about";
       case PAGES.umkmDetail:
         return "/umkm_detail";
+      case PAGES.laporanDetail:
+        return "/laporan_detail";
+      case PAGES.updateLaporan:
+        return "/update_laporan";
       default:
         return "/";
     }
@@ -171,6 +177,10 @@ extension AppPageExtension on PAGES {
         return "ABOUT";
       case PAGES.umkmDetail:
         return "UMKM_DETAIL";
+      case PAGES.laporanDetail:
+        return "LAPORAN_DETAIL";
+      case PAGES.updateLaporan:
+        return "UPDATE_LAPORAN";
       default:
         return "HOME";
     }
@@ -240,8 +250,12 @@ extension AppPageExtension on PAGES {
         return "Peta Detail";
       case PAGES.about:
         return "Tentang Suranect";
-        case PAGES.umkmDetail:
-            return "Detail UMKM";
+      case PAGES.umkmDetail:
+        return "Detail UMKM";
+      case PAGES.laporanDetail:
+        return "Detail Laporan";
+      case PAGES.updateLaporan:
+        return "Update Laporan";
       default:
         return "Home";
     }

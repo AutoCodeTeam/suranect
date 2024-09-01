@@ -19,15 +19,9 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return BlocConsumer<ProfileBloc, ProfileState>(
       listener: (context, state) {
-        state.when(
-          initial: () {},
-          authenticated: (userEntity) {},
-          unauthenticated: () {
-            Timer(const Duration(seconds: 1), () {
-              AppRouter.router.go(PAGES.introduction.screenPath);
-            });
-          },
-        );
+        Timer(const Duration(seconds: 1), () {
+          AppRouter.router.go(PAGES.introduction.screenPath);
+        });
       },
       builder: (context, state) {
         return Scaffold(

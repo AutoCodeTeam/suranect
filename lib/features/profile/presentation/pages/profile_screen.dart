@@ -66,68 +66,112 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         child: CircularProgressIndicator(),
                       ),
                       authenticated: (value) => Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Stack(
-                          alignment: Alignment.bottomRight,
-                          children: [
-                            const CircleAvatar(
-                              radius: 40,
-                              backgroundImage: AssetImage(
-                                  "assets/images/suranect_profile.png"),
-                            ),
-                            Container(
-                              decoration: const BoxDecoration(
-                                color: AppColors.info_40,
-                                shape: BoxShape.circle,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Stack(
+                            alignment: Alignment.bottomRight,
+                            children: [
+                              const CircleAvatar(
+                                radius: 40,
+                                backgroundImage: AssetImage(
+                                    "assets/images/suranect_profile.png"),
                               ),
-                              padding: const EdgeInsets.all(6),
-                              child: InkWell(
-                                onTap: () {
-                                  var snackBar = const SnackBar(
-                                    content: Text("Fitur segera hadir!"),
-                                    backgroundColor: AppColors.error_60,
-                                    duration: Duration(seconds: 1),
-                                  );
-                                  ScaffoldMessenger.of(context)
-                                      .showSnackBar(snackBar);
-                                },
-                                child: SvgPicture.asset(
-                                  "assets/svg/edit_ic.svg",
+                              Container(
+                                decoration: const BoxDecoration(
+                                  color: AppColors.info_40,
+                                  shape: BoxShape.circle,
+                                ),
+                                padding: const EdgeInsets.all(6),
+                                child: InkWell(
+                                  onTap: () {
+                                    var snackBar = const SnackBar(
+                                      content: Text("Fitur segera hadir!"),
+                                      backgroundColor: AppColors.error_60,
+                                      duration: Duration(seconds: 1),
+                                    );
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(snackBar);
+                                  },
+                                  child: SvgPicture.asset(
+                                    "assets/svg/edit_ic.svg",
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(width: 10),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              value.userEntity.username,
-                              style: Theme.of(context).textTheme.headlineMedium,
-                            ),
-                            Text(
-                              "@${value.userEntity.username}",
-                              style: Theme.of(context).textTheme.bodyMedium,
-                            ),
-                          ],
-                        ),
-                        const Spacer(),
-                        IconButton(
-                          onPressed: () {
-                            context
-                                .read<ProfileBloc>()
-                                .add(const ProfileEvent.loggedOut());
-                          },
-                          icon: SvgPicture.asset(
-                            "assets/svg/logout_ic.svg",
-                            height: MediaQuery.of(context).size.height * 0.03,
+                            ],
                           ),
-                        )
-                      ],
-                    ),
+                          const SizedBox(width: 10),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                value.userEntity.username,
+                                style:
+                                    Theme.of(context).textTheme.headlineMedium,
+                              ),
+                              Text(
+                                "@${value.userEntity.username}",
+                                style: Theme.of(context).textTheme.bodyMedium,
+                              ),
+                            ],
+                          ),
+                          const Spacer(),
+                          IconButton(
+                            onPressed: () {
+                              showDialog<void>(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    title: const Text(
+                                      'Apakah anda yakin logout?',
+                                    ),
+                                    actions: [
+                                      TextButton(
+                                        child: Text(
+                                          'Cancel',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headlineSmall!
+                                              .copyWith(
+                                            color: AppColors
+                                                .error_60,
+                                          ),
+                                        ),
+                                        onPressed: () {
+                                          Navigator.of(context)
+                                              .pop();
+                                        },
+                                      ),
+                                      TextButton(
+                                        child: Text(
+                                          'Logout',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headlineSmall!
+                                              .copyWith(
+                                            color: AppColors
+                                                .info_60,
+                                          ),
+                                        ),
+                                        onPressed: () {
+                                          AppRouter.router.pop();
+                                          context
+                                              .read<ProfileBloc>()
+                                              .add(const ProfileEvent.loggedOut());
+                                        },
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            },
+                            icon: SvgPicture.asset(
+                              "assets/svg/logout_ic.svg",
+                              height: MediaQuery.of(context).size.height * 0.03,
+                            ),
+                          )
+                        ],
+                      ),
                     );
                   },
                 ),

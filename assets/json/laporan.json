@@ -1,0 +1,33 @@
+{
+  "Data": [
+    {
+      "ID": 1,
+      "CreatedAt": "2023-11-03T22:58:01.711+07:00",
+      "UpdatedAt": "2023-11-03T23:00:27.887+07:00",
+      "DeletedAt": null,
+      "UserID": 1,
+      "User": {
+        "ID": 1,
+        "CreatedAt": "2023-11-02T22:07:13.541+07:00",
+        "UpdatedAt": "2023-11-02T22:07:44.789+07:00",
+        "DeletedAt": null,
+        "Name": "",
+        "Username": "tejuslemonnn",
+        "Password": "$2a$14$RbiMJq42S97/SdACKwUj/Oc6BotWkCZU/7h6gfJtrX2IOQXrkrwf.",
+        "Photo": "",
+        "Email": "tejuslemonnn@gmail.com",
+        "EmailVerify": true,
+        "EmailCode": 0,
+        "Laporans": null
+      },
+      "Lokasi": "Bratan g",
+      "LokasiSpesifik": "depan rumah putih",
+      "Permasalahan": "jalan lubang",
+      "Kategori": "Lalu Lintas",
+      "Photo": "https://storage.googleapis.com/download/storage/v1/b/suranect-ecc12.appspot.com/o/laporan-image-XVlBzgbaiCMRAjWwhTHc?generation=1699027081965898&alt=media",
+      "Status": "pending"
+    }
+  ],
+  "Message": "Success Get Laporan",
+  "Status": "success"
+}

@@ -14,6 +14,7 @@ class Event with _$Event {
     @JsonKey(name: "Openness") required String openness,
     @JsonKey(name: "Building") required String building,
     @JsonKey(name: "Address") required String address,
+    @JsonKey(name: "Date") required String date,
     @JsonKey(name: "Time") required String time,
     @JsonKey(name: "Poster") required String poster,
     @JsonKey(name: "Link_registrasion") required String linkRegistrasion,

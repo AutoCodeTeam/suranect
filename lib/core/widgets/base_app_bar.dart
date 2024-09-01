@@ -6,6 +6,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool isCenterTitle;
   final SearchDelegate? searchDelegate;
   final bool isShowSearch;
+  final List<Widget>? actions;
 
   const BaseAppBar({
     Key? key,
@@ -13,6 +14,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.isCenterTitle = false,
     this.isShowSearch = false,
     this.searchDelegate,
+    this.actions,
   }) : super(key: key);
 
   @override
@@ -20,15 +22,16 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       leading: AppRouter.router.canPop()
           ? IconButton(
-              onPressed: () {
-                AppRouter.router.pop();
-              },
-              icon: const Icon(Icons.chevron_left),
-            )
+        onPressed: () {
+          AppRouter.router.pop();
+        },
+        icon: const Icon(Icons.chevron_left),
+      )
           : const SizedBox.shrink(),
       title: Text(
         title,
-        style: Theme.of(context)
+        style: Theme
+            .of(context)
             .textTheme
             .headlineMedium!
             .copyWith(fontWeight: FontWeight.w600),
@@ -36,11 +39,12 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: <Widget>[
         isShowSearch && searchDelegate != null
             ? IconButton(
-                icon: const Icon(Icons.search),
-                onPressed: () {
-                  showSearch(context: context, delegate: searchDelegate!);
-                })
+            icon: const Icon(Icons.search),
+            onPressed: () {
+              showSearch(context: context, delegate: searchDelegate!);
+            })
             : const SizedBox.shrink(),
+        ...?actions,
       ],
       centerTitle: isCenterTitle,
     );

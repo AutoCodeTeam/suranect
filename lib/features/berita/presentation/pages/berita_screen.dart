@@ -90,7 +90,10 @@ class _BeritaScreenState extends State<BeritaScreen> {
                           child: ListView.separated(
                             itemBuilder: (context, index) => Padding(
                               padding: EdgeInsets.only(
-                                left: index == 0 ? 10 : 0,
+                                left: index ==
+                                        categories.indexOf(categories.first)
+                                    ? 10
+                                    : 0,
                                 right:
                                     index == categories.indexOf(categories.last)
                                         ? 10
@@ -133,19 +136,21 @@ class _BeritaScreenState extends State<BeritaScreen> {
                         ),
                         const SizedBox(height: 10),
                         InkWell(
-                          onTap: () {
-                            AppRouter.router
-                                .push(PAGES.beritaDetail.screenPath, extra: {
-                              "berita": value.beritas[0],
-                            });
-                          },
-                          child: CardNews(
+                          onTap: value.beritas.isNotEmpty
+                              ? () {
+                                  AppRouter.router.push(
+                                    PAGES.beritaDetail.screenPath,
+                                    extra: {"berita": value.beritas[0]},
+                                  );
+                                }
+                              : () {},
+                          child: value.beritas.isNotEmpty ? CardNews(
                             image: value.beritas[0].image,
                             title: value.beritas[0].title,
                             subtitle: value.beritas[0].text,
                             height: beritaHeader,
                             width: MediaQuery.of(context).size.width,
-                          ),
+                          ) : const SizedBox.shrink()
                         ),
                         const Divider(
                           thickness: 2,
@@ -192,12 +197,23 @@ class _BeritaScreenState extends State<BeritaScreen> {
                     padding: EdgeInsets.only(
                       left: 10,
                       right: 10,
-                      bottom: index == 9 ? 18 : 0,
+                      bottom: index ==
+                              value.latestNews.indexOf(value.latestNews.last)
+                          ? 18
+                          : 0,
                     ),
-                    child: CardLatestNews(
-                      image: value.latestNews[index].image,
-                      title: value.latestNews[index].title,
-                      subtitle: value.latestNews[index].text,
+                    child: InkWell(
+                      onTap: () {
+                        AppRouter.router.push(
+                          PAGES.beritaDetail.screenPath,
+                          extra: {"berita": value.beritas[0]},
+                        );
+                      },
+                      child: CardLatestNews(
+                        image: value.latestNews[index].image,
+                        title: value.latestNews[index].title,
+                        subtitle: value.latestNews[index].text,
+                      ),
                     ),
                   ),
                   separatorBuilder: (context, index) => const SizedBox(

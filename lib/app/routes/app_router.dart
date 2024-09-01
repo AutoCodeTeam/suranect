@@ -6,12 +6,14 @@ import 'package:suranect/app/di/injector.dart';
 import 'package:suranect/app/routes/route_utils.dart';
 import 'package:suranect/app/routes/screens/not_found_page.dart';
 import 'package:suranect/features/about/presentation/pages/about_screen.dart';
-import 'package:suranect/features/add_laporan/presentation/controller/camera_bloc.dart';
+import 'package:suranect/features/laporan/data/remote/models/laporan_detail_request.dart';
+import 'package:suranect/features/laporan/presentation/controller/camera_bloc.dart';
 import 'package:suranect/features/activity/presentation/pages/activity_screen.dart';
-import 'package:suranect/features/add_laporan/presentation/controller/lapor_cubit.dart';
-import 'package:suranect/features/add_laporan/presentation/pages/review_laporan_screen.dart';
-import 'package:suranect/features/add_laporan/presentation/pages/review_photo_screen.dart';
-import 'package:suranect/features/add_laporan/presentation/pages/take_photo_screen.dart';
+import 'package:suranect/features/laporan/presentation/controller/lapor_cubit.dart';
+import 'package:suranect/features/laporan/presentation/controller/laporan_update_cubit.dart';
+import 'package:suranect/features/laporan/presentation/pages/laporan_detail_screen.dart';
+import 'package:suranect/features/laporan/presentation/pages/laporan_update_screen.dart';
+import 'package:suranect/features/laporan/presentation/pages/review_laporan_screen.dart';
 import 'package:suranect/features/auth/presentation/controller/login/login_cubit.dart';
 import 'package:suranect/features/auth/presentation/controller/register/register_cubit.dart';
 import 'package:suranect/features/auth/presentation/controller/verify_otp/verify_otp_cubit.dart';
@@ -29,7 +31,10 @@ import 'package:suranect/features/introduction/presentation/controller/introduct
 import 'package:suranect/features/introduction/presentation/pages/introduction_screen.dart';
 import 'package:suranect/features/auth/presentation/pages/login_screen.dart';
 import 'package:suranect/features/auth/presentation/pages/register_screen.dart';
+import 'package:suranect/features/laporan/presentation/controller/laporan_bloc.dart';
 import 'package:suranect/features/laporan/presentation/pages/laporan_screen.dart';
+import 'package:suranect/features/laporan/presentation/pages/review_photo_screen.dart';
+import 'package:suranect/features/laporan/presentation/pages/take_photo_screen.dart';
 import 'package:suranect/features/layanan_publik/presentation/pages/layanan_publik_screen.dart';
 import 'package:suranect/features/main_tab/presentation/controller/main_tab_bloc.dart';
 import 'package:suranect/features/main_tab/presentation/pages/main_tab.dart';
@@ -243,7 +248,11 @@ class AppRouter {
         parentNavigatorKey: _rootNavigatorKey,
         path: PAGES.laporan.screenPath,
         name: PAGES.laporan.screenName,
-        builder: (context, state) => const LaporanScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) =>
+              injector<LaporanBloc>()..add(const LaporanEvent.started()),
+          child: const LaporanScreen(),
+        ),
       ),
       GoRoute(
         parentNavigatorKey: _rootNavigatorKey,
@@ -355,6 +364,51 @@ class AppRouter {
           Map<String, dynamic> args = state.extra as Map<String, dynamic>;
           return DetailUmkmScreen(
             umkm: args['umkm'],
+          );
+        },
+      ),
+      GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
+        path: PAGES.laporanDetail.screenPath,
+        name: PAGES.laporanDetail.screenName,
+        builder: (context, state) {
+          Map<String, dynamic> args = state.extra as Map<String, dynamic>;
+          return BlocProvider(
+            create: (context) => injector<LaporanBloc>()
+              ..add(
+                LaporanEvent.showDetail(
+                  request: LaporanDetailRequest(
+                    id: args['id'],
+                  ),
+                ),
+              ),
+            child: LaporanDetailScreen(id: args['id']),
+          );
+        },
+      ),
+      GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
+        path: PAGES.updateLaporan.screenPath,
+        name: PAGES.updateLaporan.screenName,
+        builder: (context, state) {
+          Map<String, dynamic> args = state.extra as Map<String, dynamic>;
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => injector<LaporanBloc>()
+                  ..add(
+                    LaporanEvent.showDetail(
+                      request: LaporanDetailRequest(
+                        id: args['id'],
+                      ),
+                    ),
+                  ),
+              ),
+              BlocProvider(
+                create: (context) => injector<LaporanUpdateCubit>(),
+              ),
+            ],
+            child: LaporanUpdateScreen(id: args['id']),
           );
         },
       ),

@@ -23,14 +23,14 @@ class _UmkmScreenState extends State<UmkmScreen> {
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
 
-    double cardUmkm = screenHeight * 0.34;
+    double cardUmkm = screenHeight * 0.3;
 
     if (screenHeight <= 732) {
-      cardUmkm = screenHeight * 0.38;
+      cardUmkm = screenHeight * 0.32;
     }
 
     if (screenHeight <= 640) {
-      cardUmkm = screenHeight * 0.4;
+      cardUmkm = screenHeight * 0.34;
     }
     return BlocConsumer<UmkmBloc, UmkmState>(
       listener: (context, state) {},
@@ -94,31 +94,7 @@ class _UmkmScreenState extends State<UmkmScreen> {
                                   ),
                                 ),
                               ),
-                              const SizedBox(height: 10),
-                              Expanded(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    InkWell(
-                                      onTap: () {},
-                                      child: SvgPicture.asset(
-                                          "assets/svg/heart_ic.svg"),
-                                    ),
-                                    const Spacer(),
-                                    InkWell(
-                                      onTap: () {},
-                                      child: SvgPicture.asset(
-                                          "assets/svg/bookmark_ic.svg"),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Text(
-                                "1, 298 Likes",
-                                style: Theme.of(context).textTheme.bodyMedium,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                              ),
+                              const SizedBox(height: 15),
                               RichText(
                                 overflow: TextOverflow.ellipsis,
                                 text: TextSpan(

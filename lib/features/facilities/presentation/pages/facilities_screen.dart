@@ -21,11 +21,11 @@ class _FacilitiesScreenState extends State<FacilitiesScreen> {
     const ListItem(
         page: PAGES.berita,
         iconItem: "assets/svg/news-service_blue_ic.svg",
-        subtitle: "Layanan yang tersedia untuk warga kota Surabaya"),
+        subtitle: "Berita terkini di Surabaya"),
     const ListItem(
         page: PAGES.wisata,
         iconItem: "assets/svg/wisata-service_blue_ic.svg",
-        subtitle: "Layanan yang tersedia untuk warga kota Surabaya"),
+        subtitle: "Temukan banyak wisata menarik di Surabaya"),
     const ListItem(
         page: PAGES.umkm,
         iconItem: "assets/svg/umkm_blue_ic.svg",
@@ -36,12 +36,12 @@ class _FacilitiesScreenState extends State<FacilitiesScreen> {
         subtitle: "Cari event-event terbaru Surabaya yuk"),
     const ListItem(
         page: PAGES.laporan,
-        iconItem: "assets/svg/event_blue_ic.svg",
+        iconItem: "assets/svg/laporan_blue_ic.svg",
         subtitle: "Laporkan permasalahan anda di Surabaya"),
     const ListItem(
         page: PAGES.peta,
-        iconItem: "assets/svg/event_blue_ic.svg",
-        subtitle: "Laporkan permasalahan anda di Surabaya"),
+        iconItem: "assets/svg/map_blue_ic.svg",
+        subtitle: "Cek jalan yang kamu lalui sebelum putar balik"),
   ];
 
   @override

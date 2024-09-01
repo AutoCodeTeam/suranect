@@ -42,6 +42,8 @@ mixin _$UserEntity {
   bool get emailVerify => throw _privateConstructorUsedError;
   @JsonKey(name: "EmailCode")
   int get emailCode => throw _privateConstructorUsedError;
+  @JsonKey(name: "Laporans")
+  List<Laporan>? get laporans => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -66,7 +68,8 @@ abstract class $UserEntityCopyWith<$Res> {
       @JsonKey(name: "Photo") String photo,
       @JsonKey(name: "Email") String email,
       @JsonKey(name: "EmailVerify") bool emailVerify,
-      @JsonKey(name: "EmailCode") int emailCode});
+      @JsonKey(name: "EmailCode") int emailCode,
+      @JsonKey(name: "Laporans") List<Laporan>? laporans});
 }
 
 /// @nodoc
@@ -93,6 +96,7 @@ class _$UserEntityCopyWithImpl<$Res, $Val extends UserEntity>
     Object? email = null,
     Object? emailVerify = null,
     Object? emailCode = null,
+    Object? laporans = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -139,6 +143,10 @@ class _$UserEntityCopyWithImpl<$Res, $Val extends UserEntity>
           ? _value.emailCode
           : emailCode // ignore: cast_nullable_to_non_nullable
               as int,
+      laporans: freezed == laporans
+          ? _value.laporans
+          : laporans // ignore: cast_nullable_to_non_nullable
+              as List<Laporan>?,
     ) as $Val);
   }
 }
@@ -162,7 +170,8 @@ abstract class _$$UserEntityImplCopyWith<$Res>
       @JsonKey(name: "Photo") String photo,
       @JsonKey(name: "Email") String email,
       @JsonKey(name: "EmailVerify") bool emailVerify,
-      @JsonKey(name: "EmailCode") int emailCode});
+      @JsonKey(name: "EmailCode") int emailCode,
+      @JsonKey(name: "Laporans") List<Laporan>? laporans});
 }
 
 /// @nodoc
@@ -187,6 +196,7 @@ class __$$UserEntityImplCopyWithImpl<$Res>
     Object? email = null,
     Object? emailVerify = null,
     Object? emailCode = null,
+    Object? laporans = freezed,
   }) {
     return _then(_$UserEntityImpl(
       id: null == id
@@ -233,6 +243,10 @@ class __$$UserEntityImplCopyWithImpl<$Res>
           ? _value.emailCode
           : emailCode // ignore: cast_nullable_to_non_nullable
               as int,
+      laporans: freezed == laporans
+          ? _value._laporans
+          : laporans // ignore: cast_nullable_to_non_nullable
+              as List<Laporan>?,
     ));
   }
 }
@@ -251,7 +265,9 @@ class _$UserEntityImpl implements _UserEntity {
       @JsonKey(name: "Photo") required this.photo,
       @JsonKey(name: "Email") required this.email,
       @JsonKey(name: "EmailVerify") required this.emailVerify,
-      @JsonKey(name: "EmailCode") required this.emailCode});
+      @JsonKey(name: "EmailCode") required this.emailCode,
+      @JsonKey(name: "Laporans") final List<Laporan>? laporans})
+      : _laporans = laporans;
 
   factory _$UserEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserEntityImplFromJson(json);
@@ -289,10 +305,20 @@ class _$UserEntityImpl implements _UserEntity {
   @override
   @JsonKey(name: "EmailCode")
   final int emailCode;
+  final List<Laporan>? _laporans;
+  @override
+  @JsonKey(name: "Laporans")
+  List<Laporan>? get laporans {
+    final value = _laporans;
+    if (value == null) return null;
+    if (_laporans is EqualUnmodifiableListView) return _laporans;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'UserEntity(id: $id, createdAt: $createdAt, updatedAt: $updatedAt, deletedAt: $deletedAt, name: $name, username: $username, password: $password, photo: $photo, email: $email, emailVerify: $emailVerify, emailCode: $emailCode)';
+    return 'UserEntity(id: $id, createdAt: $createdAt, updatedAt: $updatedAt, deletedAt: $deletedAt, name: $name, username: $username, password: $password, photo: $photo, email: $email, emailVerify: $emailVerify, emailCode: $emailCode, laporans: $laporans)';
   }
 
   @override
@@ -317,7 +343,8 @@ class _$UserEntityImpl implements _UserEntity {
             (identical(other.emailVerify, emailVerify) ||
                 other.emailVerify == emailVerify) &&
             (identical(other.emailCode, emailCode) ||
-                other.emailCode == emailCode));
+                other.emailCode == emailCode) &&
+            const DeepCollectionEquality().equals(other._laporans, _laporans));
   }
 
   @JsonKey(ignore: true)
@@ -334,7 +361,8 @@ class _$UserEntityImpl implements _UserEntity {
       photo,
       email,
       emailVerify,
-      emailCode);
+      emailCode,
+      const DeepCollectionEquality().hash(_laporans));
 
   @JsonKey(ignore: true)
   @override
@@ -362,7 +390,8 @@ abstract class _UserEntity implements UserEntity {
           @JsonKey(name: "Photo") required final String photo,
           @JsonKey(name: "Email") required final String email,
           @JsonKey(name: "EmailVerify") required final bool emailVerify,
-          @JsonKey(name: "EmailCode") required final int emailCode}) =
+          @JsonKey(name: "EmailCode") required final int emailCode,
+          @JsonKey(name: "Laporans") final List<Laporan>? laporans}) =
       _$UserEntityImpl;
 
   factory _UserEntity.fromJson(Map<String, dynamic> json) =
@@ -401,6 +430,9 @@ abstract class _UserEntity implements UserEntity {
   @override
   @JsonKey(name: "EmailCode")
   int get emailCode;
+  @override
+  @JsonKey(name: "Laporans")
+  List<Laporan>? get laporans;
   @override
   @JsonKey(ignore: true)
   _$$UserEntityImplCopyWith<_$UserEntityImpl> get copyWith =>

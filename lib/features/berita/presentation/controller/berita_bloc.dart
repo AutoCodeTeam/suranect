@@ -58,6 +58,9 @@ class BeritaBloc extends Bloc<BeritaEvent, BeritaState> {
           }).toList();
 
           if (category == "Terbaru") {
+            print(beritas[0].createdAt);
+            print(startOfWeek);
+            print(endOfWeek);
             return emit(BeritaState.loaded(
                 beritas: lastestNews,
                 category: category,

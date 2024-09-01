@@ -120,7 +120,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     const SizedBox(height: 14),
                     BlocBuilder<RegisterCubit, RegisterState>(
                       buildWhen: (previous, current) =>
-                          previous.showPassword != current.showPassword ||
+                          previous.showRePassword != current.showRePassword ||
                           previous.formStatus != current.formStatus ||
                           previous.rePassword != current.rePassword,
                       builder: (context, state) {

@@ -16,8 +16,8 @@
 
     <application
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher"
-        android:label="suranect"
+        android:icon="@mipmap/launcher_icon"
+        android:label="Suranect"
         android:requestLegacyExternalStorage="true"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
